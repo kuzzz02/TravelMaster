@@ -7,12 +7,12 @@ const routes =  [
     component:() => import("./components/LoginPage.vue")
   },
   {
-    path: "/RegisterPage",
+    path: "/Register",
     name: "Register",
     component:() => import("./components/RegisterPage.vue")
   },
   {
-    path: "/ExplorePage",
+    path: "/Explore",
     name: "Explore",
     component:() => import("./components/ExplorePage.vue")
   }
