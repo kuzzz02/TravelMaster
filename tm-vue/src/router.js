@@ -15,6 +15,41 @@ const routes =  [
     path: "/Explore",
     name: "Explore",
     component:() => import("./components/ExplorePage.vue")
+  },
+  {
+    path: "/location",
+    name: "Location",
+    component:() => import("./components/Location.vue")
+  },
+  {
+    path: "/hotels",
+    name: "Hotels",
+    component:() => import("./components/Hotels.vue")
+  },
+  {
+    path: "/restaurant",
+    name: "Restaurant",
+    component:() => import("./components/Restaurant.vue")
+  },
+  {
+    path: "/shopping",
+    name: "Shopping",
+    component:() => import("./components/Shopping.vue")
+  },
+  {
+    path: "/ToDo",
+    name: "ToDo",
+    component:() => import("./components/ToDoPage.vue")
+  },
+  {
+    path: "/Weather",
+    name: "Weather",
+    component:() => import("./components/WeatherPage.vue")
+  },
+  {
+    path: "/Vehicle",
+    name: "Vehicle",
+    component:() => import("./components/VehiclePage.vue")
   }
 ];
 const router = createRouter({

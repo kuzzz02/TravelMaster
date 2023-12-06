@@ -10,11 +10,11 @@
         <div class="Pas">Password</div>
         <div class="USD">USD</div>
         <div class="bt">
-            <div @click=goExplore class="white-text">Sign in</div>
+            <div @click=goExplore() class="white-text">Sign in</div>
         </div>   
         <div class="SU">
             <span class="black-text">Don't you have an account?</span>
-            <div @click=goRegister class="green-text">Sign up</div>
+            <div @click=goRegister() class="green-text">Sign up</div>
         </div>
         <div class="input_Email">
             <input type="text" placeholder="example@email.com">
@@ -22,7 +22,7 @@
         <div class="input_Pas">
             <input type="password" placeholder="Your Password" @input="handlePasswordInput">
         </div>
-        <router-view></router-view>         
+              
     </div>
 </template>
  

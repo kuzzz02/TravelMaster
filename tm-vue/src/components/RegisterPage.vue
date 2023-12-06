@@ -11,7 +11,7 @@
         <div class="CP">Confirm your Password</div>
         <div class="USD">USD</div>
         <div class="bt">
-            <div @click=goExplore class="white-text">Create an account</div>
+            <div @click=goLogin() class="white-text">Create an account</div>
         </div>
         <div class="input_Email">
             <input type="text" placeholder="example@email.com">
@@ -34,8 +34,8 @@ export default {
       const hiddenValue = "*".repeat(inputValue.length);
       event.target.value = hiddenValue;
     },
-    goExplore(){
-        this.$router.push({name:"Explore"})
+    goLogin(){
+        this.$router.push({name:"Login"})
     }
   }
 }
