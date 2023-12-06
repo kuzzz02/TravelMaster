@@ -1,6 +1,5 @@
 <template>
     <div class="container">
-        
         <div class="header">Travel Master</div>
         <div class="tital">Where to go?</div>
         <img src="../assets/pic/地图_地球_o.png" alt="Description" class="Ima2">
@@ -82,20 +81,20 @@ export default {
  
 html {
     height: 100%;
-    background-color: #f2f2f2; 
+    background-color: #FFFFFF; 
     margin: 0;
     padding: 0;
 }
 body {
     height: 100%;
-    background-color: #f2f2f2; 
+    background-color: #FFFFFF; 
     margin: 0;
     padding: 0;
 }
 .container {
     height: 800px;
     width: 1280px;
-    background-color: #DCDCDC;
+    background-color: #FFFFFF;
     position: absolute;
     top: 50%;
     left: 50%;

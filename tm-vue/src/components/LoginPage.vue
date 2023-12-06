@@ -14,7 +14,7 @@
         </div>   
         <div class="SU">
             <span class="black-text">Don't you have an account?</span>
-            <div @click=goRegister class="green-text">Sign up</div>
+            <span @click=goRegister class="green-text">Sign up</span>
         </div>
         <div class="input_Email">
             <input type="text" placeholder="example@email.com">
@@ -48,28 +48,21 @@ export default {
 
  
 <style scoped>
- 
-html {
-    height: 100%;
-    background-color: #f2f2f2; 
+ *{
     margin: 0;
-    padding: 0;
-}
-body {
-    height: 100%;
-    background-color: #f2f2f2; 
-    margin: 0;
-    padding: 0;
-}
+    padding:0;
+    box-sizing: border-box;
+  }
+  
 .container {
     height: 800px;
-    width: 1280px;
-    background-color: #DCDCDC;
+    width: 1300px;
+    margin: auto;
+    background-color: #139263;
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    
 }
 .header {
     width: 354px;
@@ -80,7 +73,7 @@ body {
     line-height: 73px; 
     letter-spacing: 0; 
     margin-top: 22px;
-    margin-left: 28px;
+    margin-left: 8px;
     
 }
 .tital {
@@ -93,7 +86,6 @@ body {
     text-align: center; /* 居中对齐 */
     margin-top: 28px; /* 距容器顶部的距离 */
     margin-left: 101px; /* 距容器左侧的距离 */
-    
 }
 .word {
     width: 450px;
@@ -224,6 +216,7 @@ body {
     top: 45px;
     left: 1054px;
 }
+
 .SU {
     width: 382px;
     height: 29px;
