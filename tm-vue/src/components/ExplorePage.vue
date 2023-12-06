@@ -14,7 +14,7 @@
              </ul>
            </div>
         </div>
-        <div class="bt" @click="search">Search</div>
+        <div @click=goSearch() class="bt" >Search</div>
          <div class="carousel-container">
       <el-carousel height="248px" indicator-position="outside">
         <el-carousel-item v-for="item in 2" :key="item">
@@ -47,6 +47,9 @@ export default {
     };
   },
   methods: {
+    goSearch(){
+        this.$router.push({name:"Location"})
+    },
     handleInputChange() {
       // 当输入框内容发生变化时，隐藏下拉框
       this.showDropdown = false;
