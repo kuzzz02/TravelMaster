@@ -23,7 +23,7 @@
                 <div @click=goExplore() class="white-text">Sign in</div>
             </div>
         </div>
-        <img src="../assets/pic/OIP-C.jpg" alt="Description" class="Ima1">            
+        <router-view></router-view>         
     </div>
 </template>
 
