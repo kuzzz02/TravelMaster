@@ -23,6 +23,7 @@
                 <div @click=goExplore() class="white-text">Sign in</div>
             </div>
         </div>
+        <img src="../assets/pic/OIP-C.jpg" alt="Description" class="Ima1">
         <router-view></router-view>         
     </div>
 </template>
@@ -151,7 +152,7 @@ export default {
     letter-spacing: 0;
     color: #A8ABB2;
     text-align: left;
-    border-radius: 50px 50px 50px 50px;
+    border-radius: 50px;
 }
 .input_Pas {
     width: 457px;
@@ -176,9 +177,8 @@ export default {
     letter-spacing: 0;
     color: #A8ABB2;
     text-align: left;
-    border-radius: 50px 50px 50px 50px;
+    border-radius: 50px;
 }
-
 
 .SU {
     width: 382px;
@@ -190,7 +190,6 @@ export default {
     text-align: center;
     margin-left: 192px;
     margin-top: 48px;
-    
 }
 .black-text {
   color: #313957;

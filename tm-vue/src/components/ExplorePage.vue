@@ -2,9 +2,7 @@
     <div class="container">
         <div class="header">Travel Master</div>
         <div class="tital">Where to go?</div>
-        <img src="../assets/pic/地图_地球_o.png" alt="Description" class="Ima2">
         <div class="word">Trip to explore right now</div>
-        <div class="USD">USD</div>
         <div class="input_Se">
            <img class="PIma" src="../assets/pic/Search.png" alt="PIma">
            <input type="text" v-model="searchInput" placeholder="" @input="handleInputChange">
@@ -78,31 +76,13 @@ export default {
 };
 </script>
 
+<style scoped> 
 
- 
-<style scoped>
- 
-html {
-    height: 100%;
-    background-color: #FFFFFF; 
-    margin: 0;
-    padding: 0;
-}
-body {
-    height: 100%;
-    background-color: #FFFFFF; 
-    margin: 0;
-    padding: 0;
-}
 .container {
-    height: 800px;
+    margin : 0 auto;
+    padding: 0;
+    height: 750px;
     width: 1280px;
-    background-color: #FFFFFF;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    
 }
 .header {
     width: 387px;

@@ -1,27 +1,29 @@
 <template>
     <div class="container">
-        <img src="../assets/pic/地图_地球_o.png" alt="Description" class="Ima2">
+        <div class="left-parent">
+            <div class="header">Travel Master</div>
+            <div class="parent">
+                <div class="tital">Welcome to <br>Travel Master🤞</div>
+                <div class="block"></div>
+            </div>
+            <div class="word">Get best experence in your travelling by signing up in our website!</div>
+            <div class="Email">Email</div>
+            <div class="input_Email">
+                <input type="text" placeholder="example@email.com">
+            </div>
+            <div class="Pas">Password</div>
+            <div class="input_Pas">
+                <input type="password" placeholder="Your Password" @input="handlePasswordInput">
+            </div>
+            <div class="CP">Confirm your Password</div>
+            <div class="input_CP">
+                <input type="password" placeholder="Confirm Your Password" @input="handlePasswordInput">
+            </div>
+            <div class="bt">
+                <div @click=goLogin() class="white-text">Create an account</div>
+            </div>
+        </div>
         <img src="../assets/pic/zzpic21051.jpg" alt="Description" class="Ima1">
-        <div class="header">Travel Master</div>
-        <div class="tital">Welcome to Travel Master🤞</div>
-        <div class="word">Get best experence in your travelling by signing up in our website!</div>
-        <div class="Email">Email</div>
-        <div class="block"></div>
-        <div class="Pas">Password</div>
-        <div class="CP">Confirm your Password</div>
-        <div class="USD">USD</div>
-        <div class="bt">
-            <div @click=goLogin class="white-text">Create an account</div>
-        </div>
-        <div class="input_Email">
-            <input type="text" placeholder="example@email.com">
-        </div>
-        <div class="input_Pas">
-            <input type="password" placeholder="Your Password" @input="handlePasswordInput">
-        </div>
-        <div class="input_CP">
-            <input type="password" placeholder="Confirm Your Password" @input="handlePasswordInput">
-        </div>
                  
     </div>
 </template>
@@ -41,117 +43,94 @@ export default {
 }
 </script>
 
-
- 
 <style scoped>
- 
-html {
-    height: 100%;
-    background-color: #FFFFFF; 
-    margin: 0;
+ .container {
+    margin : 0 auto;
     padding: 0;
-}
-body {
-    height: 100%;
-    background-color: #FFFFFF; 
-    margin: 0;
-    padding: 0;
-}
-.container {
-    height: 800px;
+    height: 750px;
     width: 1280px;
-    background-color: #FFFFFF;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    
+}
+.left-parent{
+    display: inline-block;
+    vertical-align: top;
 }
 .header {
     width: 354px;
     height: 73px;
+    margin-left: -30px;
+    padding-left: 25px;
     font-weight: 900; /* 字重为900 */
     font-size: 48px;
-    text-align: center;
     line-height: 73px; 
     letter-spacing: 0; 
-    margin-top: 22px;
-    margin-left: 28px;
-    
+    font-family: "Smiley Sans";
+}
+.parent {
+    width: 600px;
+    height: 199px;
+    margin-left: 90px;
 }
 .tital {
+    font-family: "SourceHanSansHC-VF.ttf";
     width: 582px;
     height: 199px;
-    font-weight: 900; /* 字重为900 */
+    font-weight: 800; /* 字重为900 */
     font-size: 64px; /* 字号为64像素 */
     line-height: 93px; /* 行高为93像素 */
     letter-spacing: 0; /* 字间距为0 */
     text-align: center; /* 居中对齐 */
-    position: absolute;
-    top: 106px;
-    left: 128px;
-    
-}
-.word {
-    width: 418px;
-    height: 64px;
-    font-weight: 500; /* 字重为400 */
-    font-size: 14px; /* 字号为18像素 */
-    line-height: 20px; /* 行高为25像素 */
-    letter-spacing: 0.1; /* 字间距为0 */
-    text-align: center; /* 居中对齐 */
-    position: absolute;
-    top: 334.5px;
-    left: 189px;
-    
-}
-.Email {
-    width: 100px;
-    height: 28px;
-    font-weight: 700; /* 字重为400 */
-    font-size: 18px; /* 字号为18像素 */
-    line-height: 26px; /* 行高为25像素 */
-    letter-spacing: 0; /* 字间距为0 */
-    text-align: center; /* 居中对齐 */
-    position: absolute;
-    top: 384.5px;
-    left: 168px;
-   
-}
-.Pas {
-    width: 100px;
-    height: 28px;
-    font-weight: 700; /* 字重为400 */
-    font-size: 18px; /* 字号为18像素 */
-    line-height: 26px; /* 行高为25像素 */
-    letter-spacing: 0; /* 字间距为0 */
-    text-align: center; /* 居中对齐 */
-    position: absolute;
-    top: 481.5px;
-    left: 183px;
-    
+    position: relative;
+    z-index: 2;
 }
 .block {
     width: 312px;
     height: 37px;
-    position: absolute;
-    top: 161px;
-    left: 224px;
     background-color: #58C4B6;
-    z-index: -1;
+    transform: translate(144px,-55px);
+    position: relative;
+    z-index: 1;
+}
+.word {
+    width: 450px;
+    height: 58px;
+    font-weight: 400; /* 字重为400 */
+    font-size: 18px; /* 字号为18像素 */
+    line-height: 25px; /* 行高为25像素 */
+    letter-spacing: 0; /* 字间距为0 */
+    text-align: center; /* 居中对齐 */
+    margin-left: 157px;
+}
+.Email {
+    width: 100px;
+    height: 28px;
+    font-weight: 700; 
+    font-size: 18px; 
+    line-height: 26px; 
+    letter-spacing: 0; 
+    text-align: center; 
+    margin-left: 132px;
+    margin-top: 1px;
 }
 .input_Email {
     width: 457px;
     height: 40px;
-    position: absolute;
-    top: 418.5px;
-    left: 186px;
+    margin-left: 150px;
     padding: 9px 12px;
     box-sizing: border-box;
-    display: flex;
     align-items: center;
     background-color:#DCDFE6;
-    border-radius: 50px 50px 50px 50px;
+    border-radius: 10px;
+}
+.Pas {
+    width: 100px;
+    height: 28px;
+    font-weight: 700; 
+    font-size: 18px; 
+    line-height: 26px; 
+    letter-spacing: 0; 
+    text-align: center; 
+    margin-left: 144px;
+    margin-top: 20px;
 }
 .input_Email input {
     width: 100%;
@@ -170,15 +149,13 @@ body {
 .input_Pas {
     width: 457px;
     height: 40px;
-    position: absolute;
-    top: 515.5px;
-    left: 186px;
+    margin-left: 150px;
     padding: 9px 12px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
     background-color:#DCDFE6;
-    border-radius: 50px 50px 50px 50px;
+    border-radius: 10px;
 }
 .input_Pas input {
     width: 100%;
@@ -194,71 +171,30 @@ body {
     text-align: left;
     border-radius: 50px 50px 50px 50px;
 }
-.Ima1 {
-    width: 480px; 
-    height: 675px;
-    position: absolute;
-    top: 103px;
-    left: 756px;
-    border-radius: 10px 10px 10px 10px;
-}
-.Ima2 {
-    width: 50px; 
-    height: 50px;
-    position: absolute;
-    top: 35px;
-    left: 1024px;
-}
-.USD {
-    width: 81px;
-    height: 27px;
-    font-weight: 700; 
-    font-size: 20px; 
-    line-height: 29px; 
-    letter-spacing: 0; 
-    text-align: center;
-    position: absolute;
-    top: 45px;
-    left: 1054px;
-}
-
-.black-text {
-  color: #313957;
-}
-
-.green-text {
-  color: #58C4B6;
-}
-
 .white-text {
   color: #FFFFFF;
 }
 
 .CP {
     width: 222px;
-    height: 37px;
-    font-weight: 700; /* 字重为400 */
-    font-size: 18px; /* 字号为18像素 */
-    line-height: 26px; /* 行高为25像素 */
-    letter-spacing: 0; /* 字间距为0 */
-    text-align: center; /* 居中对齐 */
-    position: absolute;
-    top: 575.5px;
-    left: 183px;
-    
+    height: 28px;
+    font-weight: 700; 
+    font-size: 18px; 
+    line-height: 26px; 
+    letter-spacing: 0; 
+    text-align: center; 
+    margin-left: 144px;
+    margin-top: 25px;
 }
 .input_CP {
     width: 457px;
     height: 40px;
-    position: absolute;
-    top: 612.5px;
-    left: 186px;
+    margin-left: 150px;
     padding: 9px 12px;
     box-sizing: border-box;
-    display: flex;
     align-items: center;
     background-color:#DCDFE6;
-    border-radius: 50px 50px 50px 50px;
+    border-radius: 10px;
 }
 .input_CP input {
     width: 100%;
@@ -285,16 +221,17 @@ body {
     line-height: 22px; 
     letter-spacing: 0; 
     text-align: center;
-    position: absolute;
-    top: 693px;
-    left: 258px;
+    margin-left: 258px;
+    margin-top: 40px;
     border-radius: 14px;
     padding: 5px 16px;
     background-color: #000000;
 }
-
-
-
-
+.Ima1 {
+    width: 521px; 
+    height: 690px;
+    margin-left: 40px;
+    border-radius: 10px;
+}
 
 </style>
