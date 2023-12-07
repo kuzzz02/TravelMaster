@@ -221,7 +221,7 @@ export default {
     line-height: 22px; 
     letter-spacing: 0; 
     text-align: center;
-    margin-left: 258px;
+    margin-left: 244px;
     margin-top: 40px;
     border-radius: 14px;
     padding: 5px 16px;

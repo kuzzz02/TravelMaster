@@ -2,7 +2,6 @@
     <div class="container">
         <div class="header">Travel Master</div>
         <div class="tital">Where to go?</div>
-        <div class="word">Trip to explore right now</div>
         <div class="input_Se">
            <img class="PIma" src="../assets/pic/Search.png" alt="PIma">
            <input type="text" v-model="searchInput" placeholder="" @input="handleInputChange">
@@ -13,6 +12,7 @@
            </div>
         </div>
         <div @click=goSearch() class="bt" >Search</div>
+        <div class="word">Trip to explore right now</div>
          <div class="carousel-container">
       <el-carousel height="248px" indicator-position="outside">
         <el-carousel-item v-for="item in 2" :key="item">
@@ -30,8 +30,7 @@
           </div>
         </el-carousel-item>
       </el-carousel>
-    </div>
-        
+        </div>
     </div>
 </template>
  
@@ -75,41 +74,39 @@ export default {
   
 };
 </script>
-
 <style scoped> 
-
 .container {
     margin : 0 auto;
     padding: 0;
     height: 750px;
     width: 1280px;
+    background-image: url("../assets/pic/background.png");
 }
 .header {
-    width: 387px;
-    height: 77px;
+    width: 354px;
+    height: 27px;
+    margin-left: -30px;
+    padding-left: 25px;
     font-weight: 900; /* 字重为900 */
     font-size: 48px;
-    text-align: center;
-    line-height: 70px; 
+    line-height: 73px; 
     letter-spacing: 0; 
-    margin-top: 29px;
-    margin-left: 42px;
-    
+    font-family: "Smiley Sans";
 }
 .tital {
     width: 517px;
     height: 88px;
     font-weight: 900; /* 字重为900 */
-    font-size: 64px; /* 字号为64像素 */
+    font-size: 72px; /* 字号为64像素 */
     line-height: 93px; /* 行高为93像素 */
     letter-spacing: 0; /* 字间距为0 */
     text-align: center; /* 居中对齐 */
-    position: absolute;
-    top: 118px;
-    left: 363px;
-    
+    position: relative;
+    z-index: 2;
+    top: 52px;
+    left: 325px;
+    font-family: "SourceHanSansHC-VF.ttf";
 }
-
 .word {
     width: 306px;
     height: 46px;
@@ -120,43 +117,8 @@ export default {
     text-align: center; /* 居中对齐 */
     position: absolute;
     top: 379px;
-    left: 77px;
-   
+    left: 77px;  
 }
-
-.Ima2 {
-    width: 50px; 
-    height: 50px;
-    position: absolute;
-    top: 35px;
-    left: 1053px;
-}
-
-.USD {
-    width: 81px;
-    height: 27px;
-    font-weight: 700; 
-    font-size: 20px; 
-    line-height: 29px; 
-    letter-spacing: 0; 
-    text-align: center;
-    position: absolute;
-    top: 45px;
-    left: 1083px;
-}
-.SU {
-    width: 382px;
-    height: 29px;
-    font-weight: 400; 
-    font-size: 18px; 
-    line-height: 2px; 
-    letter-spacing: 0; 
-    text-align: center;
-    position: absolute;
-    top: 644px;
-    left: 182px;    
-}
-
 .black-text {
   color: #313957;
 }
@@ -164,7 +126,6 @@ export default {
 .green-text {
   color: #58C4B6;
 }
-
 .input_Se {
     width: 892px;
     height: 71px;
