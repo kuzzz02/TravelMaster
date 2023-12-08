@@ -1,13 +1,13 @@
 <template>
-    <div class="location">
+    <div class="container">
         <div class="content">
             <div class="title">
                 <span>Explore </span> xxx
             </div>
             <div class="list">
-                <div v-for="(item, index) in locationList" :key="index" class="item">
-                    <div @click=Explore(item.name) class="text">{{ item.name }}</div>
-                    <img :src="item.icon" alt="" width="50px">
+                <div v-for="(item, index) in locationList" :key="index" class="item" @click=Explore(item.name)>
+                    <span class="text">{{ item.name }}</span>
+                    <img :src="item.icon" alt="Location Icon" class="icon">
                 </div>
             </div>
             <div class="image">
@@ -39,11 +39,11 @@ import shopping from '../assets/pic/shopping.png'
 import restaurant from '../assets/pic/restaurant.png'
 import hotel from '../assets/pic/Hotel.png'
 import vehicles from '../assets/pic/vehicles.png'
+
 export default {
     data() {
         return {
-            locationList: [
-                {
+            locationList: [{
                     name: 'Hotels',
                     icon: hotel
                 },
@@ -67,7 +67,6 @@ export default {
                     name: 'Vehicle',
                     icon: vehicles
                 }
-
             ]
         }
     },
@@ -81,6 +80,12 @@ export default {
 </script>
 
 <style  scoped>
+.container {
+    margin : 0 auto;
+    padding: 0;
+    height: 750px;
+    width: 1280px;
+}
 .footer{
     font-size: 20px;
     font-weight: 600;
@@ -89,12 +94,10 @@ export default {
 .content {
     padding: 0 20px;
 }
-
 .title {
     font-size: 64px;
     margin-bottom: 10px;
 }
-
 .content .list {
     display: flex;
     flex-wrap: wrap;
@@ -113,6 +116,10 @@ export default {
     border-radius: 10px;
     width: 28%;
 
+}
+.icon{
+    width: 50px;
+    height: 50px;
 }
 
 .item .text {

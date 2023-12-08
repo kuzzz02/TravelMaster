@@ -3,7 +3,7 @@
         <div class="header">Travel Master</div>
         <div class="tital">Where to go?</div>
         <div class="input_Se">
-           <img class="PIma" src="../assets/pic/Search.png" alt="PIma">
+          <el-icon class="search"><Search /></el-icon>
            <input type="text" v-model="searchInput" placeholder="" @input="handleInputChange">
            <div class="dropdown" v-show="showDropdown">
              <ul>
@@ -154,14 +154,9 @@ export default {
     text-align: left;
     border-radius: 24px 24px 24px 24px;
 }
-
-.PIma {
-    
-    width: 60px; /* Ensure the image covers the entire input */
-    height: 53px; /* Ensure the image covers the entire input */
-    
+.search{
+  font-size: 35px;
 }
-
 .bt {
     display: flex;
     justify-content: center;
