@@ -1,7 +1,7 @@
 <template>
-  <div class="hotel">
-    <Header></Header>
+  <div class="container">
     <div class="content">
+      <Nav></Nav>
       <div class="title">
         <div class="text">xxx Hotels and Places to Stay</div>
         <div class="calender">
@@ -19,7 +19,6 @@
         <div class="text">Search various hotels to help you find the best</div>
         <div class="select">
           Sorted By:
-
           <el-select placeholder="Best Price">
             <el-option
               v-for="item in selectOptions"
@@ -65,7 +64,11 @@ import hotelImg from "../assets/pic/hotel_image.png";
 import PhoneImg from "../assets/pic/phone.png";
 import InternetImg from "../assets/pic/internet.png";
 import star from "../assets/pic/star.png";
+import Nav from "./Nav.vue";
 export default {
+  components: {
+      Nav
+    },
   data() {
     return {
       selectOptions: [
@@ -109,12 +112,11 @@ export default {
 </script>
 
 <style scoped>
-.hotel .content {
-  padding: 0 20px;
-}
-.content {
-  width: 1200px;
-  margin: auto;
+.container {
+    margin : 0 auto;
+    padding: 0;
+    height: 750px;
+    width: 1280px;
 }
 .title {
   display: flex;
@@ -125,7 +127,11 @@ export default {
 .text {
   font-size: 36px;
   font-weight: 700;
+  margin-top: 30px;
   position: relative;
+}
+.calender {
+  margin-top: 40px;
 }
 .title .text::after {
   position: absolute;
@@ -135,7 +141,7 @@ export default {
   background: rgb(88, 196, 182);
   right: 0;
   z-index: -1;
-  bottom: 0px;
+  bottom: 20px;
 }
 .search {
   display: flex;
@@ -145,8 +151,10 @@ export default {
   padding: 0 10px;
 }
 .search .text {
-  font-size: 20px;
-  font-weight: 300;
+  margin-top: -10px;
+  font-size: 30px;
+  font-weight: 500;
+  font-family: 'Smiley Sans';
 }
 .list {
   display: flex;
@@ -172,6 +180,7 @@ export default {
   font-size: 400;
 }
 .text .name {
+  margin-top: -20px;
   font-size: 24x;
   font-size: 600;
 }

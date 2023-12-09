@@ -1,10 +1,11 @@
 <template>
   <div class="container">
-    <div class="header">Travel Master</div>
-    <div class="background-image">
-    </div>
+    <Nav></Nav>
     <div class="white-box">
-      <div class="title">Find the best vehicle to xxx</div>
+      <div class="parent">
+        <div class="title1">Find the best vehicle to xxx</div>
+      <div class="block"></div>
+      </div>
       <div class="button-row">
         <div class="button2">
           <img src="../assets/pic/location.png" alt="Icon" class="icon">
@@ -15,7 +16,7 @@
           <span class="button-text2">To</span>
         </div>
       </div>
-      <div class="button-row">
+      <div class="button-row2">
         <div class="button2">
           <img src="../assets/pic/酒店calendar.png" alt="Icon" class="icon">
           <span class="button-text2">Depart</span>
@@ -33,86 +34,83 @@
 </template>
 
 <script>
+import Nav from "./Nav.vue";
 export default {
   name: "MyPage",
+  components: {
+    Nav
+  },
 };
 </script>
 
 <style>
-.container {
-  width: 1280px;
-  height: 800px;
-  position: relative;
-  background-color: rgb(88, 196, 182);
-  border-radius: 0;
-}
-
-.header {
-  width: 387px;
-  height: 77px;
-  font-weight: 900; /* 字重为900 */
-  font-size: 48px;
-  text-align: center;
-  line-height: 70px;
-  letter-spacing: 0;
-  margin-top: 29px;
-  margin-left: 42px;
-
-}
-
-.background-image {
-  width: 1280px;
-  height: 678px;
-  position: absolute;
-  top: 122px;
-  left: 0;
-  border-radius: 0;
+body{
   background-image: url("../assets/pic/dubai.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 0px 70px;
 }
-
+.container {
+    margin : 0 auto;
+    padding: 0;
+    height: 750px;
+    width: 1280px;
+}
 .white-box {
   width: 571px;
-  height: 508px;
-  position: absolute;
-  top: 146px;
-  left: 103px;
-  right: 90px;
+  height: 478px;
+  margin-left: -20px;
+  margin-top: 50px;
   border-radius: 18px;
-  border: none;
+  padding-top: 30px;
+  background-color: #ffffff;
 }
-
-.title {
-  width: 378px;
+.parent {
+    width: 600px;
+    height: 199px;
+    margin-left: 10px;
+}
+.title1{
+  width: 398px;
   height: 50px;
-  position: absolute;
-  top: 36px;
-  left: 103px;
-  right: 90px;
-  font-family: "思源黑体";
+  margin-bottom: 60px;
+  margin-left: 90px;
+  font-size: 32px;
   font-weight: 600;
-  font-size: 28px;
-  line-height: 41px;
-  letter-spacing: 0;
   text-align: center;
-}
-
-.button-row {
+  letter-spacing: 0; /* 字间距为0 */
   position: relative;
-  top: 120px;
+  z-index: 2;
+  font-family: "smiley sans";
+}
+.block {
+    width: 242px;
+    height: 12px;
+    background-color: #58C4B6;
+    transform: translate(194px,-90px);
+    position: relative;
+    z-index: 1;
+}
+.button-row {
   display: flex;
   justify-content: space-between;
-  margin-top: 30px;
+  margin-top: -120px;
+  margin-left: 10px;
   padding:  0 20px;
 }
 
+.button-row2 {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  margin-left: 10px;
+  padding:  0 20px;
+}
 .button {
-  position: absolute;
   width: 207px;
   height: 50px;
-  top: 389px;
-  left: 182px;
-  right: 182px;
+  margin-left: 155px;
+  margin-top: 60px;
   border-radius: 11px;
   border: 1px solid #000;
   background-color: #fff;
@@ -123,11 +121,10 @@ export default {
 .button2 {
   width: 264px;
   height: 70px;
-  top: 266px;
-  left: 57px;
-  border-radius: 30px;
+  margin-top: 10px;
+  border-radius: 11px;
   background-color: #fff;
-  border: 3px solid #000;
+  border: 1px solid #000;
   margin-right: 5px;
 }
 
@@ -155,7 +152,7 @@ export default {
   justify-content: center;
   align-items: center;
   background-color: rgb(88, 196, 182);
-  border-radius: 40px;
+  border-radius: 22px;
   border: none;
 }
 

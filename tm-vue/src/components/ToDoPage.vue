@@ -1,30 +1,27 @@
 <template>
   <div class="container">
-    <div class="header">Travel Master</div>
+    <Nav></Nav>
     <div class="bg-block">
-      <div class="green-bg"></div>
-    </div>
-    <div class="image-container">
-      <img src="../assets/pic/greatWall.jpg" alt="Image" class="greatwall">
-    </div>
-    <div class="text-box">
+      <div class="green-bg">
+        <div class="text-box">
       Things to Do in xxx
     </div>
-    <div class="nav-buttons">
-      <button class="prev-button">&lt;</button>
-      <button class="page-button">1</button>
-      <button class="page-button">2</button>
-      <button class="page-button">3</button>
-      <button class="page-button">4</button>
-      <button class="page-button">5</button>
-      <button class="next-button"> &gt;</button>
+      </div>
     </div>
+    <div class="image-container">
+      <img src="../assets/pic/greatWall.jpg" alt="" class="greatwall">
+    </div>
+    <el-pagination class="page" background layout="prev, pager, next" :total="100" />
   </div>
 </template>
 
 <script>
+import Nav from "./Nav.vue";
 export default {
   name:"ToDoPage",
+  components: {
+    Nav
+  },
   methods: {
     
   }
@@ -32,60 +29,30 @@ export default {
 </script>
 
 <style>
-html {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background-color: #ffffff;
-}
-body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  background-color: #ffffff;
-}
+
 .container {
-  height: 800px;
-  width: 1280px;
-  background-color: #ffffff;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
+    margin : 0 auto;
+    padding: 0;
+    height: 750px;
+    width: 1280px;
 }
 
-.header {
-  width: 387px;
-  height: 77px;
-  font-weight: 900; /* 字重为900 */
-  font-size: 48px;
-  text-align: center;
-  line-height: 70px;
-  letter-spacing: 0;
-  margin-top: 29px;
-  margin-left: 42px;
-
-}
 .bg-block {
-  position: absolute;
   width: 1179px;
   height: 648px;
-  top: 99px;
-  left: 82px;
+  margin-left: 45px;
+  margin-top: 15px;
   background-color: rgb(88, 196, 182);
   border-radius: 10px;
   overflow: hidden;
 }
 
-
-
 .image-container {
   position: absolute;
-  top: 130px;
+  top: 125px;
   left: 30px;
   width: 900px;
-  height: 562.59px;
+  height: 563px;
 }
 
 .greatwall {
@@ -96,37 +63,16 @@ body {
   object-fit: contain;
 }
 
-.nav-buttons {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.prev-button,
-.next-button,
-.page-button {
-  width: 32px;
-  height: 32px;
-  border-radius: 2px;
-  padding: 4px 12px;
-  background-color: rgb(226, 231, 239);
-  font-family: "HarmonyOS Sans SC", sans-serif;
-  font-weight: 400;
-  font-size: 13px;
-  line-height: 20px;
-  text-align: center;
-  color: rgb(96, 98, 102);
-  margin: 0 5px;
-  border: none;
+.page{
+  margin-left: 400px;
+  margin-top: 20px;
 }
 
 .text-box {
   width: 295px;
   height: 556px;
-  position: absolute;
-  top: 122px;
-  left: 920px;
+  margin-left: 850px;
+  margin-top: 35px;
   font-family: "Source Han Sans", sans-serif;
   font-weight: 900;
   font-size: 36px;

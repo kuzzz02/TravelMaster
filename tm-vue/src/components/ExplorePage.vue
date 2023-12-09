@@ -10,8 +10,8 @@
                <li v-for="result in searchResults" :key="result">{{ result }}</li>
              </ul>
            </div>
+           <div @click=goSearch() class="bt" >Search</div>
         </div>
-        <div @click=goSearch() class="bt" >Search</div>
         <div class="word">Trip to explore right now</div>
          <div class="carousel-container">
       <el-carousel height="248px" indicator-position="outside">
@@ -104,7 +104,7 @@ export default {
     position: relative;
     z-index: 2;
     top: 52px;
-    left: 325px;
+    left: 355px;
     font-family: "SourceHanSansHC-VF.ttf";
 }
 .word {
@@ -115,9 +115,8 @@ export default {
     line-height: 35px; /* 行高为25像素 */
     letter-spacing: 0; /* 字间距为0 */
     text-align: center; /* 居中对齐 */
-    position: absolute;
-    top: 379px;
-    left: 77px;  
+    margin-top: 70px;
+    margin-left: 87px;  
 }
 .black-text {
   color: #313957;
@@ -129,9 +128,8 @@ export default {
 .input_Se {
     width: 892px;
     height: 71px;
-    position: absolute;
-    top: 243px;
-    left: 194px;
+    margin-top: 118px;
+    margin-left: 180px;
     padding: 9px 12px;
     box-sizing: border-box;
     display: flex;
@@ -168,9 +166,7 @@ export default {
     line-height: 35px; 
     letter-spacing: 0; 
     text-align: center;
-    position: absolute;
-    top: 250px;
-    left: 959px;
+    margin-left: 100px;
     border-radius: 24px;
     background-color: #58C4B6;
 }
@@ -193,20 +189,16 @@ export default {
 .bg {
     width: 256px;
     height: 248px;
-    position: absolute;
-    top: 433px;
-    left: 107px;
     background-color: #C4C4C4;
 
 }
 
 .carousel-container {
-  height: 248px; 
+  height: 348px; 
   width: 1057px;
-  position: absolute;
-  top: 433px;
-  left: 107px;
+  margin-left: 110px;
 }
+
 .image-container {
   display: flex;
 }

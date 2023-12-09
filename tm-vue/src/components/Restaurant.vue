@@ -1,19 +1,9 @@
 <template>
-  <div class="restaurant">
-    <Header></Header>
+  <div class="container">
+    <Nav></Nav>
     <div class="content">
       <div class="title">
         <div class="text">Restaurant in XXXXX</div>
-        <!-- <div class="calender">
-          <el-date-picker
-            v-model="value1"
-            type="daterange"
-            range-separator="To"
-            start-placeholder="Check in"
-            end-placeholder="Check out"
-          >
-          </el-date-picker>
-        </div> -->
       </div>
       <div class="search">
         <div class="text">Search various restaurants to help you find the best</div>
@@ -64,7 +54,11 @@ import hotelImg from "../assets/pic/hotel_image.png";
 import PhoneImg from "../assets/pic/phone.png";
 import InternetImg from "../assets/pic/internet.png";
 import star from "../assets/pic/star.png";
+import Nav from "./Nav.vue";
 export default {
+  components: {
+      Nav
+    },
   data() {
     return {
       selectOptions: [
@@ -108,21 +102,25 @@ export default {
 </script>
 
 <style scoped>
-.hotel .content {
-  padding: 0 20px;
+.container {
+  margin : 0 auto;
+    padding: 0;
+    height: 750px;
+    width: 1280px;
 }
+
 .content {
-  width: 1200px;
-  margin: auto;
+  margin-top: 40px;
 }
 .title {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: -25px;
   margin-bottom: 40px;
 }
 .text {
-  font-size: 36px;
+  font-size: 38px;
   font-weight: 700;
   position: relative;
 }
@@ -134,7 +132,7 @@ export default {
   background: rgb(88, 196, 182);
   right: 0;
   z-index: -1;
-  bottom: 0px;
+  bottom: 20px;
 }
 .search {
   display: flex;
@@ -144,8 +142,9 @@ export default {
   padding: 0 10px;
 }
 .search .text {
-  font-size: 20px;
+  font-size: 30px;
   font-weight: 300;
+  font-family: 'smiley sans';
 }
 .list {
   display: flex;
