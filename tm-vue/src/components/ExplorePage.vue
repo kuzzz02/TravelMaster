@@ -10,7 +10,7 @@
                <li v-for="result in searchResults" :key="result">{{ result }}</li>
              </ul>
            </div>
-           <div @click=goSearch() class="bt" >Search</div>
+           <div @click="goSearch()" class="bt" >Search</div>
         </div>
         <div class="word">Trip to explore right now</div>
          <div class="carousel-container">

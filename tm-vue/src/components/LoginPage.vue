@@ -17,10 +17,10 @@
             </div>   
             <div class="SU">
                 <span class="black-text">Don't you have an account?</span>
-                <span @click=goRegister class="green-text">Sign up</span>
+                <span @click="goRegister()" class="green-text">Sign up</span>
             </div>
             <div class="bt">
-                <div @click=goExplore() class="white-text">Sign in</div>
+                <div @click="goExplore()" class="white-text">Sign in</div>
             </div>
         </div>
         <img src="../assets/pic/OIP-C.jpg" alt="Description" class="Ima1">

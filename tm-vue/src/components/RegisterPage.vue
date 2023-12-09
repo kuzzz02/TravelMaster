@@ -20,7 +20,7 @@
                 <input type="password" placeholder="Confirm Your Password" @input="handlePasswordInput">
             </div>
             <div class="bt">
-                <div @click=goLogin() class="white-text">Create an account</div>
+                <div @click="goLogin()" class="white-text">Create an account</div>
             </div>
         </div>
         <img src="../assets/pic/zzpic21051.jpg" alt="Description" class="Ima1">
