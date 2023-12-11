@@ -27,6 +27,9 @@ export default {
         this.$router.push({name: path})
     },
   },
+  mounted(){
+    
+  }
 };
 </script>
 

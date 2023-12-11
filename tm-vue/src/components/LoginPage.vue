@@ -30,6 +30,7 @@
 
  
 <script>
+// import MapService from '@/services/MapService';
 export default {
   name:"LoginPage",
   methods: {
@@ -43,6 +44,12 @@ export default {
     },
     goExplore(){
         this.$router.push({name:"Explore"})
+        // MapService.getIP()
+        // .then(response =>{
+        //     this.url = response.data
+        //     console.log(this.url)
+        //     window.open(this.url)
+        // })
     }
   }
 }
