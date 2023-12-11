@@ -29,18 +29,18 @@
               <img :src="internetImg" alt="" width="25px" />
               <div>{{ item.website }}</div>
             </div>
-            <!-- <div class="phone">
+            <div class="phone">
               <img :src="phoneImg" alt="" width="25px" />
               <div>{{ item.phone }}</div>
-            </div> -->
-            <div class="btn">View in the map</div>
+            </div>
+            <el-button class="bt" @mouseover="h">View in the Map</el-button>
           </div>
           <div class="star">
-          <img :src="star" alt="" />
-          <img :src="star" alt="" />
-          <img :src="star" alt="" />
-          <img :src="star" alt="" />
-          <img :src="star" alt="" />
+            <el-icon><Star /></el-icon>
+            <el-icon><Star /></el-icon>
+            <el-icon><Star /></el-icon>
+            <el-icon><Star /></el-icon>
+            <el-icon><Star /></el-icon>
         </div>
         </div>
    
@@ -71,25 +71,25 @@ export default {
         {
           name: "XXXXXXXX",
           website: "wwww.baidu.com",
-          // phone: "185121312",
+          phone: "185121312",
           image: hotelImg
         },
         {
           name: "XXXXXXXX",
           website: "wwww.baidu.com",
-          // phone: "185121312",
+          phone: "185121312",
           image: hotelImg
         },
         {
           name: "XXXXXXXX",
           website: "wwww.baidu.com",
-          // phone: "185121312",
+          phone: "185121312",
           image: hotelImg
         },
         {
           name: "XXXXXXXX",
           website: "wwww.baidu.com",
-          // phone: "185121312",
+          phone: "185121312",
           image: hotelImg
         }
       ],
@@ -116,6 +116,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'smiley sans';
   margin-bottom: 40px;
   
 }
@@ -132,9 +133,9 @@ export default {
   width: 300px;
   height: 15px;
   background: rgb(88, 196, 182);
+  top: 25px;
   left: 30px;
   z-index: -1;
-  bottom: 20px;
 }
 .search {
   display: flex;
@@ -172,17 +173,23 @@ export default {
   font-size: 400;
 }
 .text .name {
-  font-size: 24x;
+  font-size: 24px;
+  font-family: 'smiley sans';
   font-size: 600;
 }
-.btn {
-  width: 240px;
-  border: 2px solid black;
-  font-size: 24px;
+.bt {
+  width: 210px;
+  font-size: 18px;
   line-height: 50px;
   text-align: center;
-  height: 50px;
-  border-radius: 12px;
+  height: 40px;
+  border-radius: 10px;
+  font-family: 'smiley sans';
+  color: black;
+}
+.bt:hover {
+  background-color:#58c4b6 !important;
+  color: white !important;
 }
 .website {
   display: flex;
@@ -203,5 +210,8 @@ export default {
   gap: 8px;
   right: 20px;
   top: 20px;
+}
+.el-icon{
+  font-size: 25px;
 }
 </style>

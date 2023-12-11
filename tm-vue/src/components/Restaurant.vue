@@ -34,14 +34,14 @@
               <img :src="phoneImg" alt="" width="25px" />
               <div>{{ item.phone }}</div>
             </div>
-            <div class="btn">View in the map</div>
+            <el-button class="bt" @mouseover="h">View in the Map</el-button>
           </div>
           <div class="star">
-            <img :src="star" alt="" />
-            <img :src="star" alt="" />
-            <img :src="star" alt="" />
-            <img :src="star" alt="" />
-            <img :src="star" alt="" />
+            <el-icon><Star /></el-icon>
+            <el-icon><Star /></el-icon>
+            <el-icon><Star /></el-icon>
+            <el-icon><Star /></el-icon>
+            <el-icon><Star /></el-icon>
           </div>
         </div>
       </div>
@@ -116,6 +116,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: 'smiley sans';
   margin-top: -25px;
   margin-bottom: 40px;
 }
@@ -124,15 +125,20 @@ export default {
   font-weight: 700;
   position: relative;
 }
+.text .name {
+  font-size: 24px;
+  font-family: 'smiley sans';
+  font-size: 600;
+}
 .title .text::after {
   position: absolute;
   content: "";
   width: 200px;
   height: 15px;
   background: rgb(88, 196, 182);
-  right: 0;
+  top: 25px;
+  right: 0px;
   z-index: -1;
-  bottom: 20px;
 }
 .search {
   display: flex;
@@ -173,14 +179,19 @@ export default {
   font-size: 24x;
   font-size: 600;
 }
-.btn {
-  width: 240px;
-  border: 2px solid black;
-  font-size: 24px;
+.bt {
+  width: 210px;
+  font-size: 18px;
   line-height: 50px;
   text-align: center;
-  height: 50px;
-  border-radius: 12px;
+  height: 40px;
+  border-radius: 10px;
+  font-family: 'smiley sans';
+  color: black;
+}
+.bt:hover {
+  background-color:#58c4b6 !important;
+  color: white !important;
 }
 .website {
   display: flex;
@@ -201,5 +212,8 @@ export default {
   gap: 8px;
   right: 20px;
   top: 20px;
+}
+.el-icon{
+  font-size: 25px;
 }
 </style>

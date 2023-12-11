@@ -95,6 +95,7 @@
     font-size: 64px;
     font-weight: 700;
     margin-top: 10px;
+    font-family: "smiley sans";
   }
   .content .list {
     display: flex;
@@ -110,8 +111,7 @@
     display: flex;
     padding: 14px 13px;
     font-size: 32px;
-    font-weight: 500;
-    font-family: "source sans pro";
+    font-family: "smiley sans";
     justify-content: space-between;
     align-items: center;
     border: 2px solid black;
@@ -119,7 +119,7 @@
     width: 180px;
   }
   .list :hover {
-    background-color:#25d4b7;
+    background-color:#7ddbcf;
     border: 0;
     color: white;
   }

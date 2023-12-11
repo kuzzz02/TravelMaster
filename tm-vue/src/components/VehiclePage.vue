@@ -7,24 +7,12 @@
       <div class="block"></div>
       </div>
       <div class="button-row">
-        <div class="button2">
-          <img src="../assets/pic/location.png" alt="Icon" class="icon">
-          <span class="button-text2">From</span>
-        </div>
-        <div class="button2">
-          <img src="../assets/pic/location.png" alt="Icon" class="icon">
-          <span class="button-text2">To</span>
-        </div>
+        <el-button class="bt" @mouseover="h"><el-icon class="left"><Location /></el-icon>From</el-button>
+        <el-button class="bt" @mouseover="h"><el-icon class="left"><Position /></el-icon>To</el-button>
       </div>
       <div class="button-row2">
-        <div class="button2">
-          <img src="../assets/pic/酒店calendar.png" alt="Icon" class="icon">
-          <span class="button-text2">Depart</span>
-        </div>
-        <div class="button2">
-          <img src="../assets/pic/酒店calendar.png" alt="Icon" class="icon">
-          <span class="button-text2">Return</span>
-        </div>
+        <el-button class="bt" @mouseover="h"><el-icon class="left"><Calendar /></el-icon>Depart</el-button>
+        <el-button class="bt" @mouseover="h"><el-icon class="left"><Calendar /></el-icon>Return</el-button>
       </div>
         <div class="button">
           <span class="button-text">Create the Route</span>
@@ -57,16 +45,16 @@ body{
     width: 1280px;
 }
 .white-box {
-  width: 571px;
-  height: 478px;
+  width: 570px;
+  height: 460px;
   margin-left: -20px;
-  margin-top: 50px;
+  margin-top: 80px;
   border-radius: 18px;
   padding-top: 30px;
   background-color: #ffffff;
 }
 .parent {
-    width: 600px;
+    width: 100%;
     height: 199px;
     margin-left: 10px;
 }
@@ -94,57 +82,49 @@ body{
 .button-row {
   display: flex;
   justify-content: space-between;
-  margin-top: -120px;
-  margin-left: 10px;
-  padding:  0 20px;
+  height: 100px;
+  margin-top: -110px;
+  padding:  0 10px;
 }
 
 .button-row2 {
   display: flex;
   justify-content: space-between;
-  margin-top: 40px;
-  margin-left: 10px;
+  margin-top: 20px;
+  height: 100px;
   padding:  0 20px;
+}
+.bt{
+  font-family: "smiley sans";
+  color: black;
+  font-size: 30px;
+  width: 300px;
+  height: 80px;
+  margin: auto;
+  border-radius: 11px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+}
+.bt:hover {
+  background-color:#58c4b6 !important;
+  color: white !important;
+}
+.left{ 
+  font-size: 30px;
+  margin-right: 25px;
+  color: black;
 }
 .button {
   width: 207px;
   height: 50px;
   margin-left: 155px;
-  margin-top: 60px;
+  margin-top: 50px;
   border-radius: 11px;
-  border: 1px solid #000;
   background-color: #fff;
   display: flex;
   align-items: center;
 }
-
-.button2 {
-  width: 264px;
-  height: 70px;
-  margin-top: 10px;
-  border-radius: 11px;
-  background-color: #fff;
-  border: 1px solid #000;
-  margin-right: 5px;
-}
-
-.icon {
-  position: relative;
-  top: 12px;
-  left: 3px;
-  width: 40px;
-  height: 40px;
-}
-
-.button-text2 {
-  font-family: "HarmonyOS Sans SC";
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 29px;
-  letter-spacing: 0;
-  text-align: center;
-}
-
 
 .button {
   padding: 5px 16px;
@@ -165,4 +145,5 @@ body{
   text-align: center;
   color: #fff;
 }
+
 </style>

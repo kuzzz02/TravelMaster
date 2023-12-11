@@ -105,18 +105,19 @@ export default {
     z-index: 2;
     top: 52px;
     left: 355px;
-    font-family: "SourceHanSansHC-VF.ttf";
+    font-family: "smiley sans";
 }
 .word {
     width: 306px;
     height: 46px;
     font-weight: 900; /* 字重为400 */
-    font-size: 24px; /* 字号为18像素 */
+    font-size: 28px; /* 字号为18像素 */
     line-height: 35px; /* 行高为25像素 */
     letter-spacing: 0; /* 字间距为0 */
     text-align: center; /* 居中对齐 */
+    font-family: 'smiley sans';
     margin-top: 70px;
-    margin-left: 87px;  
+    margin-left: 70px;  
 }
 .black-text {
   color: #313957;
