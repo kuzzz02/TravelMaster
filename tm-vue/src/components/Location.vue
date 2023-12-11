@@ -72,6 +72,9 @@
         this.$router.push({ name: name });
       },
     },
+    mounted(){
+
+    }
   };
   </script>
   

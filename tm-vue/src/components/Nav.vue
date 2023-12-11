@@ -35,6 +35,9 @@ export default {
       hover:false,
     }
   },
+  mounted(){
+    
+  }
 };
 </script>
 
