@@ -33,7 +33,7 @@
         </div>
       </div>
       <div class="list">
-        <div class="item" v-for="(item, index) in data" :key="index" @click="showdetail">
+        <div class="item" v-for="(item, index) in data" :key="index" @click="showdetail()">
           <img :src="item.image" alt="" />
           <div class="text">
             <div class="name">{{ `${index + 1}.${item.name} ` }}</div>
@@ -117,13 +117,16 @@ export default {
   },
   methods: {
     showdetail() {
-      this.$refs.Drawer.drawer.value=true;
+      this.$refs.Drawer.drawer=true;
       console.log("showdetail");
     },
     h(){
       this.hover=true;
     }
-}
+  },
+  mounted(){
+    this.$refs.Drawer.drawer=false;
+  }
 }
 </script>
 

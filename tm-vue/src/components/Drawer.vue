@@ -17,12 +17,12 @@
   <script>
   import { ref } from 'vue';
   export default{
+    name: "Drawer",
     data(){
       return{
-        drawer:ref(true)
+        drawer:ref(false)
       }
-    },
-    name: "Drawer"
+    }
   }
   </script>
 

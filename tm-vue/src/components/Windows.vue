@@ -20,10 +20,10 @@ import { ref } from 'vue'
 export default{
     name: "Windows",
     data() {
-    return {
+      return {
         dialogVisible:ref(false)
-     }
-}
+      }
+  }
 }
 </script>
 
