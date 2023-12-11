@@ -47,32 +47,8 @@ export default {
     goSearch(){
         this.$router.push({name:"Location"})
     },
-    handleInputChange() {
-      // 当输入框内容发生变化时，隐藏下拉框
-      this.showDropdown = false;
-    },
-    search() {
-      // 执行搜索操作（这里使用假数据）
-      this.searchResults = ["Result 1", "Result 2", "Result 3"];
-
-      // 显示下拉框
-      this.showDropdown = true;
-    },
-    hideDropdown() {
-      // 点击其他地方时隐藏下拉框
-      this.showDropdown = false;
-    }
-  },
-  mounted() {
-    // 在页面加载时添加点击事件监听器
-    document.addEventListener("click", this.hideDropdown);
-  },
-  beforeUnmount() {
-    // 在组件销毁前移除点击事件监听器
-    document.removeEventListener("click", this.hideDropdown);
   }
-  
-};
+}
 </script>
 <style scoped> 
 .container {

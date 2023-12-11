@@ -1,6 +1,7 @@
 <template>
-    <el-drawer v-model="drawer" title="xxxxxx" size="50%" direction="rtl" >
+    <el-drawer v-model="drawer" title="" size="50%" direction="rtl" >
       <div class="body">
+        <div class="title">111</div>
         <div class="image">
           <div class="area1"></div>
           <div class="area2">
@@ -8,6 +9,8 @@
             <div class="area2-2"></div>
           </div>
         </div>
+        <div class="con"><el-icon class="m"><CreditCard /></el-icon>Averge Price:</div>
+        <div class="con"><el-icon class="m"><MapLocation /></el-icon>Distance:</div>
         <div class="con">xxx</div>
       </div>
     </el-drawer>
@@ -15,15 +18,15 @@
   
   
   <script>
-  import { ref } from 'vue';
+import { ref } from 'vue';
   export default{
     name: "Drawer",
-    data(){
-      return{
-        drawer:ref(false)
-      }
+    data() {
+        return {
+            drawer: ref(false)
+        };
     }
-  }
+}
   </script>
 
 <style scoped>
@@ -32,7 +35,7 @@
   height: 100%;
 }
 .image {
-    margin-top: 20px;
+    margin-top: -50px;
     display: flex;
     flex-direction: row;
     height: 400px;
@@ -62,9 +65,12 @@
     width: 100%;
     background-color: rgb(196, 196, 196);
   }
-
-.el-drawer{
-  font-size: 64px !important;
-  
-}
+  .con{
+    font-size: 26px;
+    font-family: 'smiley sans';
+  }
+  .m{
+    font-size: 30px;
+    margin-top: 15px;
+  }
 </style>

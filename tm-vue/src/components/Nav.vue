@@ -15,6 +15,7 @@
       <el-menu-item class="Nav" @mouseover="h" index="3" @click="goExplore('Shopping')">Shopping</el-menu-item>
       <el-menu-item class="Nav" @mouseover="h" index="4" @click="goExplore('ToDo')">ToDo</el-menu-item>
       <el-menu-item class="Nav" @mouseover="h" index="5" @click="goExplore('Vehicle')">Vehicle</el-menu-item>
+      <el-menu-item class="Nav" @mouseover="h" index="6" @click="goExplore('Weather')">Weather</el-menu-item>
     </el-sub-menu>  
   </el-menu>
 </template>

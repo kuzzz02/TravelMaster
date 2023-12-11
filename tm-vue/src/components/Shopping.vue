@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <Drawer ref="Drawer"></Drawer>
     <Nav></Nav>
     <div class="content">
       <div class="title">
@@ -9,9 +10,9 @@
         <div class="text">Search various shoppingmall to help you find the best</div>
         <div class="select">
           Sorted By:
-          <el-select placeholder="Best Price">
+          <el-select v-model="value" placeholder="Best Rated">
             <el-option
-              v-for="item in selectOptions"
+              v-for="item in options"
               :key="item.value"
               :label="item.label"
               :value="item.value"
@@ -21,7 +22,7 @@
         </div>
       </div>
       <div class="list">
-        <div class="item" v-for="(item, index) in data" :key="index">
+        <div class="item" v-for="(item, index) in data" :key="index" @click="showdetail()">
           <img :src="item.image" alt="" />
           <div class="text">
             <div class="name">{{ `${index + 1}.${item.name} ` }}</div>
@@ -33,7 +34,7 @@
               <img :src="phoneImg" alt="" width="25px" />
               <div>{{ item.phone }}</div>
             </div>
-            <el-button class="bt" @mouseover="h">View in the Map</el-button>
+            <el-button class="bt" @mouseover="h" @click.stop="showmap()">View in the Map</el-button>
           </div>
           <div class="star">
             <el-icon><Star /></el-icon>
@@ -43,7 +44,7 @@
             <el-icon><Star /></el-icon>
         </div>
         </div>
-   
+        <WindowsMap ref="WindowsMap"></WindowsMap>>
       </div>
     </div>
   </div>
@@ -55,16 +56,27 @@ import PhoneImg from "../assets/pic/phone.png";
 import InternetImg from "../assets/pic/internet.png";
 import star from "../assets/pic/star.png";
 import Nav from "./Nav.vue";
+import WindowsMap from "./WindowsMap.vue";
+import Drawer from "./Drawer.vue";
+import { ref } from 'vue'
+const value = ref('')
 export default {
   components: {
-    Nav
+    Nav,
+    Drawer,
+    WindowsMap
   },
   data() {
     return {
-      selectOptions: [
+      value,
+      options: [
         {
-          value: "price",
-          label: "Best Price"
+          value: "Best Rated",
+          label: "Best Rated"
+        },
+        {
+          value: "Shortest Distance",
+          label: "Shortest Distance"
         }
       ],
       data: [
@@ -97,7 +109,18 @@ export default {
       internetImg: InternetImg,
       star: star
     };
-  }
+  },
+  methods: {
+  showdetail() {
+      this.$refs.Drawer.drawer=true;
+    },
+  showmap(){
+      this.$refs.WindowsMap.dialogVisible=true;
+    },
+    h(){
+      this.hover=true;
+    }
+}
 };
 </script>
 

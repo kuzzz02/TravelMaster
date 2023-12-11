@@ -21,9 +21,9 @@
         <div class="text">Search various hotels to help you find the best</div>
         <div class="select">
           Sorted By:
-          <el-select placeholder="Best Price">
+          <el-select v-model="value" placeholder="Best Rated">
             <el-option
-              v-for="item in selectOptions"
+              v-for="item in options"
               :key="item.value"
               :label="item.label"
               :value="item.value"
@@ -45,7 +45,7 @@
               <img :src="phoneImg" alt="" width="25px" />
               <div>{{ item.phone }}</div>
             </div>
-            <el-button class="bt" @mouseover="h">View in the Map</el-button>
+            <el-button class="bt" @mouseover="h" @click.stop="showmap()">View in the Map</el-button>
           </div>
           <Windows></Windows>
           <div class="star">
@@ -56,7 +56,7 @@
             <el-icon><Star /></el-icon>
         </div>
         </div>
-   
+   <WindowsMap ref="WindowsMap"></WindowsMap>>
       </div>
     </div>
   </div>
@@ -69,26 +69,25 @@ import InternetImg from "../assets/pic/internet.png";
 import star from "../assets/pic/star.png";
 import Nav from "./Nav.vue";
 import Drawer from "./Drawer.vue";
-import Windows from "./Windows.vue";
+import WindowsMap from "./WindowsMap.vue";
+import { ref } from 'vue'
+const value1 = ref('')
+const value = ref('')
 export default {
   components: {
       Drawer,
       Nav,
-      Windows
+      WindowsMap
     },
   data() {
     return {
-      selectOptions: [
-        {
-          value: "price",
-          label: "Best Price"
-        }
-      ],
+      value1,
+      value,
       data: [
         {
           name: "XXXXXXXX",
           website: "wwww.baidu.com",
-          phone: "185121312",
+          phone: "111121312",
           image: hotelImg
         },
         {
@@ -108,6 +107,19 @@ export default {
           website: "wwww.baidu.com",
           phone: "185121312",
           image: hotelImg
+        }],
+        options:[
+        {
+          value: 'Best Price',
+          label: 'Best Price',
+        },
+        {
+          value: 'Shortest Distance',
+          label: 'Shortest Distance',
+        },
+        {
+          value: 'Best Rated',
+          label: 'Best Rated',
         }
       ],
       phoneImg: PhoneImg,
@@ -118,14 +130,16 @@ export default {
   methods: {
     showdetail() {
       this.$refs.Drawer.drawer=true;
-      console.log("showdetail");
+    },
+    showmap(){
+      this.$refs.WindowsMap.dialogVisible=true;
     },
     h(){
       this.hover=true;
     }
   },
   mounted(){
-    this.$refs.Drawer.drawer=false;
+    this.$refs.Drawer.drawer=false
   }
 }
 </script>

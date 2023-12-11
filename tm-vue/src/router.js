@@ -42,6 +42,11 @@ const routes =  [
     component:() => import("./components/ToDoPage.vue")
   },
   {
+    path: "/Weather",
+    name: "Weather",
+    component:() => import("./components/WeatherPage.vue")
+  },
+  {
     path: "/Vehicle",
     name: "Vehicle",
     component:() => import("./components/VehiclePage.vue")

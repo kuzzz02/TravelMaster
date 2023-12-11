@@ -11,7 +11,7 @@
     <div class="image-container">
       <img src="../assets/pic/greatWall.jpg" alt="" class="greatwall">
     </div>
-    <el-pagination class="page" background layout="prev, pager, next" :total="100" />
+    <el-pagination class="page" background="true" layout="prev, pager, next" :total="100" />
   </div>
 </template>
 
@@ -48,9 +48,9 @@ export default {
 }
 
 .image-container {
-  position: absolute;
-  top: 125px;
-  left: 30px;
+  position: relative;
+  top: -600px;
+  left: -30px;
   width: 900px;
   height: 563px;
 }
@@ -64,8 +64,8 @@ export default {
 }
 
 .page{
-  margin-left: 400px;
-  margin-top: 20px;
+  margin-left: 430px;
+  margin-top: -560px;
 }
 
 .text-box {
@@ -73,7 +73,7 @@ export default {
   height: 556px;
   margin-left: 850px;
   margin-top: 35px;
-  font-family: "Source Han Sans", sans-serif;
+  font-family: "Smiley Sans";
   font-weight: 900;
   font-size: 36px;
   line-height: 52px;

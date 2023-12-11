@@ -18,7 +18,7 @@
 <script>
 import { ref } from 'vue'
 export default{
-    name: "Windows",
+    name: "WindowsMap",
     data() {
       return {
         dialogVisible:ref(false)
