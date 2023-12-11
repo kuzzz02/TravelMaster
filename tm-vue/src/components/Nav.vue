@@ -45,8 +45,12 @@ export default {
 .flex-grow {
   flex-grow: 1;
 }
+.el-menu{
+  position: sticky;
+  top: 0;
+  z-index: 999;;
+}
 .title {
-    height: 73px;
     margin-left: -30px;
     font-weight: 900; /* 字重为900 */
     font-size: 48px;
