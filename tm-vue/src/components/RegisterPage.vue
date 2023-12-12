@@ -9,18 +9,18 @@
             <div class="word">Get best experence in your travelling by signing up in our website!</div>
             <div class="Email">Email</div>
             <div class="input_Email">
-                <input type="text" placeholder="example@email.com">
+                <input type="text" v-model="username" placeholder="Your Username">
             </div>
             <div class="Pas">Password</div>
             <div class="input_Pas">
-                <input type="password" placeholder="Your Password" @input="handlePasswordInput">
+                <input type="password" v-model="password" placeholder="Your Password" @input="handlePasswordInput">
             </div>
             <div class="CP">Confirm your Password</div>
             <div class="input_CP">
-                <input type="password" placeholder="Confirm Your Password" @input="handlePasswordInput">
+                <input type="password" v-model="password2" placeholder="Confirm Your Password" @keyup.enter="Register()" @input="handlePasswordInput">
             </div>
             <div class="bt">
-                <div @click="goLogin()" class="white-text">Create an account</div>
+                <div @click="Register()" class="white-text">Create an account</div>
             </div>
         </div>
         <img src="../assets/pic/zzpic21051.jpg" alt="Description" class="Ima1">
@@ -29,17 +29,37 @@
 </template>
  
 <script>
+import UserService from '@/services/UserService';
 export default {
-  methods: {
-    handlePasswordInput(event) {
-      const inputValue = event.target.value;
-      const hiddenValue = "*".repeat(inputValue.length);
-      event.target.value = hiddenValue;
+    props:["user"],
+    data(){
+        return{
+            username:"",
+            password:"",
+            password2:""
+        }
     },
-    goLogin(){
-        this.$router.push({name:"Login"})
+    methods: {
+        handlePasswordInput(event) {
+        const inputValue = event.target.value;
+        const hiddenValue = "*".repeat(inputValue.length);
+        event.target.value = hiddenValue;
+        },
+        Register(name,password){
+            if(this.password == this.password2){
+                UserService.createUser(name,password)
+                .then(response =>{
+                    this.user = response.data
+                })
+                setTimeout(() => {
+                    this.$router.push({name:"Login"})
+                },1000)
+            }
+            else{
+                alert("INVALID INPUT")
+            }
+        }
     }
-  }
 }
 </script>
 

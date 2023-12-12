@@ -9,18 +9,18 @@
             <div class="word">Our website gives you the best experience in everything in travelling</div>
             <div class="Email">Email</div>
             <div class="input_Email">
-                <input type="text" placeholder="example@email.com">
+                <input type="text" v-model="username" placeholder="Your Username">
             </div>
             <div class="Pas">Password</div>
             <div class="input_Pas">
-                <input type="password" placeholder="Your Password" @input="handlePasswordInput">
+                <input type="password" v-model="password" placeholder="Your Password" @keyup.enter="Login(username,password)" @input="handlePasswordInput">
             </div>   
             <div class="SU">
                 <span class="black-text">Don't you have an account?</span>
                 <span @click="goRegister()" class="green-text">Sign up</span>
             </div>
             <div class="bt">
-                <div @click="goExplore()" class="white-text">Sign in</div>
+                <div @click="Login()" class="white-text">Sign in</div>
             </div>
         </div>
         <img src="../assets/pic/OIP-C.jpg" alt="Description" class="Ima1">
@@ -30,28 +30,42 @@
 
  
 <script>
-// import MapService from '@/services/MapService';
+import RegisterPage from './RegisterPage.vue';
+import UserService from '@/services/UserService';
 export default {
-  name:"LoginPage",
-  methods: {
-    handlePasswordInput(event) {
-      const inputValue = event.target.value;
-      const hiddenValue = "*".repeat(inputValue.length);
-      event.target.value = hiddenValue;
+    components:{RegisterPage},
+    data(){
+        return{
+            username:"",
+            password:"",
+            user:undefined
+        }
     },
-    goRegister(){
-        this.$router.push({name:"Register"})
-    },
-    goExplore(){
-        this.$router.push({name:"Explore"})
-        // MapService.getIP()
-        // .then(response =>{
-        //     this.url = response.data
-        //     console.log(this.url)
-        //     window.open(this.url)
-        // })
+    methods: {
+        handlePasswordInput(event) {
+        const inputValue = event.target.value;
+        const hiddenValue = "*".repeat(inputValue.length);
+        event.target.value = hiddenValue;
+        },
+        Login(username,password){
+            UserService.getUsername(username)
+            .then(reponse =>{
+                username = reponse.data
+            })
+            UserService.getPassword(username,password)
+            .then(response =>{
+                if(password == response.data){
+                    this.$router.push({name:"Explore"})
+                }
+                else{
+                    alert("INVALID INPUT")
+                }
+            })
+        },
+        goRegister(){
+            this.$router.push({name:"Register"})
+        }
     }
-  }
 }
 </script>
 
