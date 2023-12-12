@@ -36,6 +36,7 @@
   import hotel from "../assets/pic/Hotel.png";
   import vehicles from "../assets/pic/vehicles.png";
   import Nav from "./Nav.vue";
+  import weather from "../assets/pic/weather.png";
   
   export default {
     components: {
@@ -64,6 +65,10 @@
             name: "Vehicle",
             icon: vehicles,
           },
+          {
+            name: "Weather",
+            icon: weather,
+          }
         ],
       };
     },
@@ -104,15 +109,16 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-left: auto;
+    margin-right: auto;
     gap: 20px;
+    width: 1050px;
     margin-top: 20px;
   }
   
   .content .list .item {
     display: flex;
-    padding: 14px 13px;
+    padding: 14px 23px;
     font-size: 32px;
     font-family: "smiley sans";
     justify-content: space-between;
@@ -120,6 +126,7 @@
     border: 2px solid black;
     border-radius: 10px;
     width: 180px;
+    margin-left: 20px;
   }
   .list :hover {
     background-color:#7ddbcf;

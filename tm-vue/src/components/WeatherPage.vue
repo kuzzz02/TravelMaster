@@ -8,7 +8,7 @@
         <div class="button-row11">
           <el-button class="btq" @mouseover="h"><el-icon class="left"><Location /></el-icon>Location</el-button>
           <div class="btq"><el-date-picker style="width:300px; height:80px; font-size: 25px;border-radius: 11px; " v-model="value1" type="date" size="larege" placeholder="Pick a date"
-        :default-value="new Date(2010, 9, 1)"/></div>
+        :default-value="new Date(2023, 12, 12)"/></div>
         </div>
         <div class="plat"><el-button class="bt1" @click="search">Search The Weather</el-button></div>
       </div>

@@ -11,23 +11,42 @@
         <el-button class="bt" @mouseover="h"><el-icon class="left"><Position /></el-icon>To</el-button>
       </div>
       <div class="button-row2">
-        <el-button class="bt" @mouseover="h"><el-icon class="left"><Calendar /></el-icon>Depart</el-button>
-        <el-button class="bt" @mouseover="h"><el-icon class="left"><Calendar /></el-icon>Return</el-button>
+        <div class="bt2"><el-date-picker style="width:270px; height:80px; font-size: 25px;border-radius: 11px; " v-model="value1" type="date" size="larege" placeholder="Depart Date"
+        :default-value="new Date(2023, 12, 12)"/></div>
+        <div class="bt2"><el-date-picker style="width:270px; height:80px; font-size: 25px;border-radius: 11px; " v-model="value2" type="date" size="larege" placeholder="Return Date"
+        :default-value="new Date(2023, 12, 12)"/></div>
       </div>
         <div class="button">
-          <span class="button-text">Create the Route</span>
+          <span class="button-text" @click.stop="showmap()">Create the Route</span>
       </div>
     </div>
+    <WindowsMap ref="WindowsMap"></WindowsMap>>
   </div>
 </template>
 
 <script>
 import Nav from "./Nav.vue";
+import WindowsMap from "./WindowsMap.vue"
+import { ref } from 'vue'
+  const value1 = ref('')
+  const value2 = ref('')
 export default {
   name: "MyPage",
-  components: {
-    Nav
+  data(){
+    return{
+      value1,
+      value2
+    }
   },
+  components: {
+    Nav,
+    WindowsMap
+  },
+methods: {
+  showmap(){
+    this.$refs.WindowsMap.dialogVisible=true
+  }
+}
 };
 </script>
 
@@ -99,6 +118,18 @@ body{
   color: black;
   font-size: 30px;
   width: 300px;
+  height: 80px;
+  margin: auto;
+  border-radius: 11px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+}
+
+.bt2{
+  font-family: "smiley sans";
+  color: black;
+  font-size: 30px;
   height: 80px;
   margin: auto;
   border-radius: 11px;
