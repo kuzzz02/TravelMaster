@@ -28,7 +28,7 @@
             <div class="name">{{ `${index + 1}.${item.name} ` }}</div>
             <div class="website">
               <img :src="internetImg" alt="" width="25px" />
-              <div>{{ item.website }}</div>
+              <el-link :underline="false" style="font-size: 18px; color: black;"><el-icon><Connection /></el-icon>{{ item.website }}</el-link>
             </div>
             <div class="phone">
               <img :src="phoneImg" alt="" width="25px" />
@@ -44,7 +44,7 @@
             <el-icon><Star /></el-icon>
         </div>
         </div>
-        <WindowsMap ref="WindowsMap"></WindowsMap>>
+        <WindowsMap ref="WindowsMap"></WindowsMap>
       </div>
     </div>
   </div>
