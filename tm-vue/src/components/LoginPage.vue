@@ -48,18 +48,22 @@ export default {
         event.target.value = hiddenValue;
         },
         Login(username,password){
-            UserService.getUsername(username)
+            UserService.getUser(username)
             .then(reponse =>{
                 username = reponse.data
+                console.log(username)
+                UserService.getUser(password)
+                    .then(response =>{
+                        if(password == response.data){
+                            this.$router.push({name:"Explore"})
+                        }
+                        else{
+                            alert("INVALID INPUT")
+                        }
+                    })
             })
-            UserService.getPassword(username,password)
-            .then(response =>{
-                if(password == response.data){
-                    this.$router.push({name:"Explore"})
-                }
-                else{
-                    alert("INVALID INPUT")
-                }
+            .catch(error =>{
+                console.log(error)
             })
         },
         goRegister(){
