@@ -1,5 +1,5 @@
 const Sequelize= require("sequelize");
-exports.sequelize = new Sequelize("tm-db","root","tm123",{
+exports.sequelize = new Sequelize("tmdb","tm","tm123",{
     host:"localhost",
     dialect:"mysql",
     logging:console.log
@@ -12,3 +12,7 @@ db.user = require("./UserModel");
 
 
 module.exports = db;
+
+// create database tmdb;
+// grant all on tmdb.* to 'tm'@'%';
+// create user 'tm'@'%' identified by 'tm123';

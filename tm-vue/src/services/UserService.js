@@ -11,7 +11,7 @@ class UserService{
         return http.put(`/user/${id}`,data)
     }
     getUser(data){
-        return http.get(`/user/${data}`)
+        return http.get("/user",data)
     }
 };
 

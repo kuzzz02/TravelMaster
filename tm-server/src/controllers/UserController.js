@@ -3,8 +3,8 @@ const User = db.user;
 
 exports.create = (req,res) =>{
     const user = {
-        username: req.body.name,
-        password: req.body.password
+        username: req.params.name,
+        password: req.params.password
     };
 
     User.create(user)
@@ -57,7 +57,7 @@ exports.update = (req,res) =>{
 exports.getUser = (req,res) =>{
     const name = req.params.name;
     var condition = { name: name } 
-    Goods.findAll({ where: condition })
+    User.findAll({ where: condition })
       .then(data => {
         res.send(data)
       })
