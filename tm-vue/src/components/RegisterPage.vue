@@ -47,7 +47,8 @@ export default {
         },
         Register(name,password){
             if(this.password == this.password2){
-                UserService.createUser(name,password)
+                UserService.create(name)
+                UserService.create(password)
                 .then(response =>{
                     this.user = response.data
                 })
