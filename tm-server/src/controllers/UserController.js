@@ -1,7 +1,5 @@
-const { Sequelize } = require("../models/db.js");
 const db = require("../models/db.js");
 const User = db.user;
-// const Op = db.Sequelize.Op;
 
 exports.create = (req,res) =>{
     const user = {

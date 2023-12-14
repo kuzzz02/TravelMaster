@@ -1,10 +1,8 @@
-const { Sequelize } = require("../models/db.js");
 const db = require("../models/db.js");
 const Map = db.map;
-// const Op = db.Sequelize.Op;
 
 exports.Geocoding = (req,res) =>{
-    const geocoding = req.body.geocoding;
+    const geocoding = req.params.geocoding;
     Map.findAll({ where: {geocoding:geocoding} })
       .then(data => {
         res.send(data)
@@ -18,7 +16,7 @@ exports.Geocoding = (req,res) =>{
 };
 
 exports.routePlanning = (req,res) =>{
-    const route = req.body.route;
+    const route = req.params.route;
     Map.findAll({ where: {route:route} })
       .then(data => {
         res.send(data)
@@ -32,7 +30,7 @@ exports.routePlanning = (req,res) =>{
 };
 
 exports.searchService = (req,res) =>{
-    const search = req.body.search;
+    const search = req.params.search;
     Map.findAll({ where: {search:search} })
       .then(data => {
         res.send(data)
@@ -45,7 +43,7 @@ exports.searchService = (req,res) =>{
       });
 };
 exports.getIP = (req,res) =>{
-    const ip = req.body.ip;
+    const ip = req.params.ip;
     Map.findAll({ where: {ip:ip} })
       .then(data => {
         res.send(data)
@@ -58,7 +56,7 @@ exports.getIP = (req,res) =>{
       });
 };
 exports.getMap = (req,res) =>{
-    const map = req.body.map;
+    const map = req.params.map;
     Map.findAll({ where: {map:map} })
       .then(data => {
         res.send(data)
@@ -71,7 +69,7 @@ exports.getMap = (req,res) =>{
       });
 };
 exports.IpTransform = (req,res) =>{
-    const iptrans = req.body.iptrans;
+    const iptrans = req.params.iptrans;
     Map.findAll({ where: {iptrans:iptrans} })
       .then(data => {
         res.send(data)
@@ -84,7 +82,7 @@ exports.IpTransform = (req,res) =>{
       });
 };
 exports.getWeather = (req,res) =>{
-    const weather = req.body.weather;
+    const weather = req.params.weather;
     Map.findAll({ where: {weather:weather} })
       .then(data => {
         res.send(data)
@@ -97,7 +95,7 @@ exports.getWeather = (req,res) =>{
       });
 };
 exports.InputPrompt = (req,res) =>{
-    const input = req.body.input;
+    const input = req.params.input;
     Map.findAll({ where: {input:input} })
       .then(data => {
         res.send(data)

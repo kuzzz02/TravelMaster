@@ -7,8 +7,6 @@ exports.sequelize = new Sequelize("tm-db","root","tm123",{
 
 
 const db = {};
-// db.Sequelize = Sequelize;
-// db.sequelize = sequelize;
 db.map = require("./MapModel");
 db.user = require("./UserModel");
 
