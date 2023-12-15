@@ -31,7 +31,7 @@ import WindowsMap from "./WindowsMap.vue";
 import WindowsLoc from "./WindowsLoc.vue";
 import { ref } from 'vue'
 import MapService from "@/services/MapService";
-import { MapLocation } from "@element-plus/icons-vue/dist/types";
+
   const value1 = ref('')
   const value2 = ref('')
 export default {
