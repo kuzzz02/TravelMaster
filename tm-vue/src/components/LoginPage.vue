@@ -49,8 +49,8 @@ export default {
         },
         Login(username,password){
             UserService.getUser(username)
-            .then(reponse =>{
-                username = reponse.data
+            .then(response =>{
+                username = response.data
                 console.log(username)
                 UserService.getUser(password)
                     .then(response =>{

@@ -4,13 +4,13 @@
         <div class="tital">Where to go?</div>
         <div class="input_Se">
           <el-icon class="search"><Search /></el-icon>
-           <input type="text" v-model="searchInput" placeholder="" @input="handleInputChange">
+           <input type="text" v-model="searchInput" placeholder=""  @keyup.enter="goSearch(searchInput)">
            <div class="dropdown" v-show="showDropdown">
              <ul>
                <li v-for="result in searchResults" :key="result">{{ result }}</li>
              </ul>
            </div>
-           <div @click="goSearch()" class="bt" >Search</div>
+           <div @click="goSearch(location)" class="bt">Search</div>
         </div>
         <div class="word">Trip to explore right now</div>
          <div class="carousel-container">
@@ -35,6 +35,8 @@
 </template>
  
 <script>
+import MapService from '@/services/MapService';
+
 export default {
   data() {
     return {
@@ -44,9 +46,18 @@ export default {
     };
   },
   methods: {
-    goSearch(){
-        this.$router.push({name:"Location"})
-    },
+    goSearch(searchInput){
+        MapService.getIP(searchInput)
+        .then(response =>{
+          if(searchInput == response.data){
+            this.$router.push({name:"Location"})
+          }
+          else{
+              alert("INVALID INPUT")
+              }
+        }
+        )
+    }
   }
 }
 </script>

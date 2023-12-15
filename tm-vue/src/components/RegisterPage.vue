@@ -17,7 +17,7 @@
             </div>
             <div class="CP">Confirm your Password</div>
             <div class="input_CP">
-                <input type="password" v-model="password2" placeholder="Confirm Your Password" @keyup.enter="Register()" @input="handlePasswordInput">
+                <input type="password" v-model="password2" placeholder="Confirm Your Password" @keyup.enter="Register(name,password)" @input="handlePasswordInput">
             </div>
             <div class="bt">
                 <div @click="Register()" class="white-text">Create an account</div>

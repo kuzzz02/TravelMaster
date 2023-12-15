@@ -1,14 +1,16 @@
 <template>
     <el-dialog
     v-model="dialogVisible"
-    title="Map"
-    width="50%"
+    title="Location"
+    width="30%"
     :before-close="handleClose">
-    <div class="map"></div>
+    <div class="loc"></div>
     <template #footer>
       <span class="dialog-footer">
+        <el-input v-model="input" @keyup.enter="getIP(address)" placeholder="Please input the address" />
+        <el-button @click="getIP()">Get your IP</el-button>
         <el-button type="primary" @click="dialogVisible = false" class="btt">
-          OK
+          Confirm
         </el-button>
       </span>
     </template>
@@ -16,13 +18,23 @@
 </template>
 
 <script>
+import MapService from '@/services/MapService';
 import { ref } from 'vue'
 export default{
-    name: "WindowsCom",
+    name: "WindowsLoc",
     data() {
       return {
         dialogVisible:ref(false)
       }
+  },
+  methods:{
+    getIP(address){
+      MapService.getIP(address)
+      .then(response => {
+        address = response.data
+        console.log(address)
+      })
+    }
   }
 }
 </script>
@@ -32,7 +44,7 @@ export default{
   margin-right: 10px;
 }
 
-.map{
+.loc{
     height: 420px;
     }
 

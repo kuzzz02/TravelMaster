@@ -118,8 +118,12 @@ export default {
   showdetail() {
       this.$refs.Drawer.drawer=true;
     },
-  showmap(){
-      this.$refs.WindowsMap.dialogVisible=true;
+    showmap(){
+      MapService.getMap(address)
+      .then(response =>{
+        //show the map;
+        this.$refs.WindowsMap.dialogVisible=true;
+      })
     },
     h(){
       this.hover=true;

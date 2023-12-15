@@ -7,8 +7,8 @@
       <div class="block"></div>
       </div>
       <div class="button-row">
-        <el-button class="bt" @mouseover="h"><el-icon class="left"><Location /></el-icon>From</el-button>
-        <el-button class="bt" @mouseover="h"><el-icon class="left"><Position /></el-icon>To</el-button>
+        <el-button class="bt" @mouseover="h" @click="getori()"><el-icon class="left"><Location /></el-icon>From</el-button>
+        <el-button class="bt" @mouseover="h" @click="getdst()"><el-icon class="left"><Position /></el-icon>To</el-button>
       </div>
       <div class="button-row2">
         <div class="bt2"><el-date-picker style="width:270px; height:80px; font-size: 25px;border-radius: 11px; " v-model="value1" type="date" size="larege" placeholder="Depart Date"
@@ -20,14 +20,18 @@
           <span class="button-text" @click.stop="showmap()">Create the Route</span>
       </div>
     </div>
-    <WindowsMap ref="WindowsMap"></WindowsMap>>
+    <WindowsMap ref="WindowsMap"></WindowsMap>
+    <WindowsLoc ref="WindowsLoc"></WindowsLoc>>
   </div>
 </template>
 
 <script>
 import Nav from "./Nav.vue";
-import WindowsMap from "./WindowsMap.vue"
+import WindowsMap from "./WindowsMap.vue";
+import WindowsLoc from "./WindowsLoc.vue";
 import { ref } from 'vue'
+import MapService from "@/services/MapService";
+import { MapLocation } from "@element-plus/icons-vue/dist/types";
   const value1 = ref('')
   const value2 = ref('')
 export default {
@@ -40,13 +44,21 @@ export default {
   },
   components: {
     Nav,
-    WindowsMap
+    WindowsMap,
+    WindowsLoc
   },
 methods: {
-  showmap(){
+  getori(){
+    this.$refs.WindowsLoc.dialogVisible=true
+  },
+  getdst(){
+    this.$refs.WindowsLoc.dialogVisible=true
+  },
+  showmap(ori,dst){
+    MapService.routePlanning(ori,dst)
     this.$refs.WindowsMap.dialogVisible=true
   }
-}
+  }
 };
 </script>
 
