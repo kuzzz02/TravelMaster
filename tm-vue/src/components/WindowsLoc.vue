@@ -4,11 +4,11 @@
     title="Location"
     width="30%"
     :before-close="handleClose">
+    <el-input class="input" v-model="input" @keyup.enter="getIP(address)" placeholder="Please input the address" />
     <div class="loc"></div>
     <template #footer>
       <span class="dialog-footer">
-        <el-input v-model="input" @keyup.enter="getIP(address)" placeholder="Please input the address" />
-        <el-button @click="getIP()">Get your IP</el-button>
+        
         <el-button type="primary" @click="dialogVisible = false" class="btt">
           Confirm
         </el-button>
@@ -45,10 +45,11 @@ export default{
 }
 
 .loc{
-    height: 420px;
+    height: 10px;
     }
 
 .btt{
     background-color: #58c4b6 !important;
 }
+
 </style>

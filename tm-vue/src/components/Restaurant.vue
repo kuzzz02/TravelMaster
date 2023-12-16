@@ -10,7 +10,7 @@
         <div class="text">Search various restaurants to help you find the best</div>
         <div class="select">
           Sorted By:
-          <el-select v-model="value" placeholder="Best Rated">
+          <el-select v-model="value" @change="sort()" placeholder="Best Rated">
             <el-option
               v-for="item in options"
               :key="item.value"
@@ -28,6 +28,12 @@
             <div class="name">{{ `${index + 1}.${item.name} ` }}</div>
             <div class="website">
               <img :src="internetImg" alt="" width="25px" />
+              <div class="star">
+            <el-rate
+              v-model="item.star"
+              size = "large"
+              disabled/>
+          </div>
               <el-link :underline="false" style="font-size: 18px; color: black;"><el-icon><Connection /></el-icon>{{ item.website }}</el-link>
             </div>
             <div class="phone">
@@ -35,13 +41,6 @@
               <div>{{ item.phone }}</div>
             </div>
             <el-button class="bt" @mouseover="h" @click.stop="showmap()">View in the Map</el-button>
-          </div>
-          <div class="star">
-            <el-icon><Star /></el-icon>
-            <el-icon><Star /></el-icon>
-            <el-icon><Star /></el-icon>
-            <el-icon><Star /></el-icon>
-            <el-icon><Star /></el-icon>
           </div>
         </div>
         <WindowsMap ref="WindowsMap"></WindowsMap>>
@@ -54,12 +53,12 @@
 import hotelImg from "../assets/pic/hotel_image.png";
 import PhoneImg from "../assets/pic/phone.png";
 import InternetImg from "../assets/pic/internet.png";
-import star from "../assets/pic/star.png";
 import Nav from "./Nav.vue";
 import WindowsMap from "./WindowsMap.vue";
 import Drawer from "./Drawer.vue";
 import { ref } from 'vue'
-const value = ref('')
+const value = ref('');
+
 export default {
   components: {
       Nav,
@@ -87,31 +86,41 @@ export default {
         {
           name: "XXXXXXXX",
           website: "wwww.baidu.com",
-          phone: "185121312",
-          image: hotelImg
+          phone: "111111",
+          image: hotelImg,
+          price:1,
+          distance:1,
+          star:5
         },
         {
           name: "XXXXXXXX",
           website: "wwww.baidu.com",
-          phone: "185121312",
-          image: hotelImg
+          phone: "2222222",
+          image: hotelImg,
+          star:3,
+          price:2,
+          distance:1
         },
         {
           name: "XXXXXXXX",
           website: "wwww.baidu.com",
-          phone: "185121312",
-          image: hotelImg
+          phone: "3333333",
+          image: hotelImg,
+          star:5,
+          price:2,
+          distance:2
         },
         {
           name: "XXXXXXXX",
           website: "wwww.baidu.com",
-          phone: "185121312",
-          image: hotelImg
-        }
-      ],
+          phone: "444444",
+          image: hotelImg,
+          star:1,
+          price:3,
+          distance:3
+        }],
       phoneImg: PhoneImg,
       internetImg: InternetImg,
-      star: star
     };
   },
   methods: {
@@ -127,6 +136,23 @@ export default {
     },
     h(){
       this.hover=true;
+    },
+    sort(){
+      if (this.value == 'Best Rated'){
+        this.data.sort((a,b)=>{
+          return parseInt(b.star)-parseInt(a.star);
+        })
+      }
+      if (this.value == 'Best Price'){
+        this.data.sort((a,b)=>{
+          return parseInt(a.prce)-parseInt(b.price);
+        })
+      }
+      if (this.value == 'Shortest Distance'){
+        this.data.sort((a,b)=>{
+          return parseInt(a.distance)-parseInt(b.distance);
+        })
+      }
     }
 }
 };
@@ -241,8 +267,8 @@ export default {
   display: flex;
   flex-direction: row;
   gap: 8px;
-  right: 20px;
-  top: 20px;
+  left: 730px;
+  top: 15px;
 }
 .el-icon{
   font-size: 25px;

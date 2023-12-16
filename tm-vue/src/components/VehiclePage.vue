@@ -11,16 +11,24 @@
         <el-button class="bt" @mouseover="h" @click="getdst()"><el-icon class="left"><Position /></el-icon>To</el-button>
       </div>
       <div class="button-row2">
-        <div class="bt2"><el-date-picker style="width:270px; height:80px; font-size: 25px;border-radius: 11px; " v-model="value1" type="date" size="larege" placeholder="Depart Date"
-        :default-value="new Date(2023, 12, 12)"/></div>
-        <div class="bt2"><el-date-picker style="width:270px; height:80px; font-size: 25px;border-radius: 11px; " v-model="value2" type="date" size="larege" placeholder="Return Date"
-        :default-value="new Date(2023, 12, 12)"/></div>
+        <div class="select" >
+          Select Your Vehicle:
+          <el-select v-model="value" placeholder="Best Rated" style="width:300px" size="large">
+            <el-option class="choose" @mouseover="h"
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            >
+            </el-option>
+          </el-select>
+        </div>
       </div>
         <div class="button">
           <span class="button-text" @click.stop="showmap()">Create the Route</span>
       </div>
     </div>
-    <WindowsMap ref="WindowsMap"></WindowsMap>
+    <WindowsMap ref="WindowsMap" id ="container"></WindowsMap>
     <WindowsLoc ref="WindowsLoc"></WindowsLoc>>
   </div>
 </template>
@@ -32,14 +40,30 @@ import WindowsLoc from "./WindowsLoc.vue";
 import { ref } from 'vue'
 import MapService from "@/services/MapService";
 
+  const value = ref('')
   const value1 = ref('')
   const value2 = ref('')
 export default {
   name: "MyPage",
   data(){
     return{
+      value,
       value1,
-      value2
+      value2,
+      options: [
+        {
+          value: "Best price",
+          label: "Best Price"
+        },
+        {
+          value: "Shortest Distance",
+          label: "Shortest Distance"
+        },
+        {
+          value: "Best Rated",
+          label: "Best Rated"
+        }
+      ],
     }
   },
   components: {
@@ -47,19 +71,38 @@ export default {
     WindowsMap,
     WindowsLoc
   },
-methods: {
-  getori(){
-    this.$refs.WindowsLoc.dialogVisible=true
-  },
-  getdst(){
-    this.$refs.WindowsLoc.dialogVisible=true
-  },
-  showmap(ori,dst){
-    MapService.routePlanning(ori,dst)
-    this.$refs.WindowsMap.dialogVisible=true
-  }
-  }
-};
+  methods: {
+    getori(){
+      this.$refs.WindowsLoc.dialogVisible=true
+    },
+    getdst(){
+      this.$refs.WindowsLoc.dialogVisible=true
+    },
+    h(){
+      this.hover = true;
+    },
+    showmap(){ //TODO
+      // MapService.routePlanning(ori,dst)
+      window._AMapSecurityConfig = {securityJsCode:'87fd761862beba6b2c49194d67af351e',}
+            AMapLoader.load({
+            "key": "927f030785f9827cf4f5d6ba34591fbb",  // 申请好的Web端开发者Key，首次调用 load 时必填
+            "version": "2.0",  // 指定要加载的 JS API 的版本，缺省时默认为 1.4.15
+            "plugins": [],    // 需要使用的的插件列表，如比例尺'AMap.Scale'等
+            })
+            .then((AMap)=>{
+                const map = new AMap.Map("container",{
+                    viewMode: '2D', //默认使用 2D 模式
+                    zoom: 11, //地图级别
+                    center: [116.397428, 39.90923], //地图中心点
+                })
+            })
+            .catch(err => {
+                console.log(err);
+            })
+      this.$refs.WindowsMap.dialogVisible=true
+    }
+    }
+  };
 </script>
 
 <style>
@@ -138,17 +181,14 @@ body{
   align-items: center;
 }
 
-.bt2{
-  font-family: "smiley sans";
-  color: black;
+.select{
   font-size: 30px;
-  height: 80px;
-  margin: auto;
-  border-radius: 11px;
-  background-color: #fff;
-  display: flex;
-  align-items: center;
+  font-family: 'smiley sans';
+  margin-top: 20px;
+  margin-left: 15px;
+
 }
+
 .bt:hover {
   background-color:#58c4b6 !important;
   color: white !important;
@@ -162,7 +202,7 @@ body{
   width: 207px;
   height: 50px;
   margin-left: 155px;
-  margin-top: 50px;
+  margin-top: 25px;
   border-radius: 11px;
   background-color: #fff;
   display: flex;
@@ -187,6 +227,11 @@ body{
   letter-spacing: 0;
   text-align: center;
   color: #fff;
+}
+
+.choose:hover {
+  background-color:#7ddbcf !important;
+  color: white !important;
 }
 
 </style>

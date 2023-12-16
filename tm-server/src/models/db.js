@@ -1,18 +1,13 @@
 const Sequelize= require("sequelize");
-exports.sequelize = new Sequelize("tmdb","tm","tm123",{
-    host:"localhost",
-    dialect:"mysql",
-    logging:console.log
-});
-
+const sequelize = require("./dbconfig");
+const map = require("./MapModel")(sequelize,Sequelize);
+const user = require("./UserModel")(sequelize,Sequelize);
 
 const db = {};
-db.map = require("./MapModel");
-db.user = require("./UserModel");
+db.Sequelize = Sequelize;
+db.sequelize = sequelize;
+db.map = map;
+db.user = user;
 
 
 module.exports = db;
-
-// create database tmdb;
-// grant all on tmdb.* to 'tm'@'%';
-// create user 'tm'@'%' identified by 'tm123';

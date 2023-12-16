@@ -40,23 +40,22 @@ import MapService from '@/services/MapService';
 export default {
   data() {
     return {
-      searchInput: "",
-      searchResults: [],
-      showDropdown: false
+      searchInput: ""
     };
   },
   methods: {
-    goSearch(searchInput){
-        MapService.getIP(searchInput)
-        .then(response =>{
-          if(searchInput == response.data){
-            this.$router.push({name:"Location"})
-          }
-          else{
-              alert("INVALID INPUT")
-              }
-        }
-        )
+    goSearch(searchInput){ //TODO
+      this.$router.push({name:"Location"})
+      // MapService.getIP(searchInput)
+      // .then(response =>{
+      //   if(searchInput == response.data){
+      //     this.$router.push({name:"Location"})
+      //   }
+      //   else{
+      //       alert("INVALID INPUT")
+      //       }
+      // }
+      // )
     }
   }
 }

@@ -13,7 +13,7 @@
         <div class="plat"><el-button class="bt1" @click="search">Search The Weather</el-button></div>
       </div>
       <WindowsWea ref="WindowsWea"></WindowsWea>
-      <WindowsWea ref="WindowsLoc"></WindowsWea>
+      <WindowsLoc ref="WindowsLoc"></WindowsLoc>
     </div>
   </template>
   
@@ -22,7 +22,7 @@
   import WindowsWea from "./WindowsWea.vue";
   import WindowsLoc from "./WindowsLoc.vue";
   import { ref } from 'vue'
-import MapService from "@/services/MapService";
+  import MapService from "@/services/MapService";
   const value1 = ref('')
   export default {
     name:"VehiclePage",
@@ -38,22 +38,22 @@ import MapService from "@/services/MapService";
   },
     methods: {
       search(address,date){
-      MapService.getWeather(address,date)
-      .then(response =>{
-        address = response.data
-        console.log(username)
-        MapService.getWeather(date)
-        .then(response =>{
-              if(date == response.data){
-                  //show the weather
-                }
-              else{
-                  alert("INVALID INPUT")
-                  }
-                })
-        //show the weather;
-        this.$refs.WindowsMap.dialogVisible=true;
-      })
+      // MapService.getWeather(address,date)
+      // .then(response =>{
+      //   address = response.data
+      //   console.log(username)
+      //   MapService.getWeather(date)
+      //   .then(response =>{
+      //         if(date == response.data){
+      //             //show the weather
+      //           }
+      //         else{
+      //             alert("INVALID INPUT")
+      //             }
+      //           })
+      //   //show the weather;
+      // })
+      this.$refs.WindowsWea.dialogVisible=true;
     },
       location(){
         this.$refs.WindowsLoc.dialogVisible=true
