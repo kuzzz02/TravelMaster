@@ -1,10 +1,11 @@
 const db = require("../models/db.js");
 const User = db.user;
 
+//TODO: update files + complete more requirements
 exports.create = (req,res) =>{
     const user = {
-        username: req.params.name,
-        password: req.params.password
+        username: req.body.name,
+        password: req.body.password
     };
 
     User.create(user)
@@ -12,7 +13,7 @@ exports.create = (req,res) =>{
         res.send(data)
     })
     .catch(err =>{
-        res.status(500).send({message:err.message + "ERROR"})
+        res.status(500).send({message:err.message + "Some error occurred."})
     });
 };
 
@@ -31,7 +32,7 @@ exports.delete = (req,res) =>{
         
     })
     .catch(err =>{
-        res.status(500).send({message:err.message + "ERROR"})
+        res.status(500).send({message:err.message + "Some error occurred."})
     })
 };
 
@@ -50,7 +51,7 @@ exports.update = (req,res) =>{
         
     })
     .catch(err =>{
-        res.status(500).send({message:err.message + "ERROR"})
+        res.status(500).send({message:err.message + "Some error occurred."})
     })
 };
 
@@ -62,9 +63,6 @@ exports.getUser = (req,res) =>{
         res.send(data)
       })
       .catch(err => {
-        res.status(500).send({
-          message:
-            err.message || "Some error occurred while retrieving materials."
-        });
+        res.status(500).send({message:err.message + "Some error occurred."});
       });
 };

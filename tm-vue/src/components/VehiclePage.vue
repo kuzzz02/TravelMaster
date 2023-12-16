@@ -39,7 +39,7 @@ import WindowsMap from "./WindowsMap.vue";
 import WindowsLoc from "./WindowsLoc.vue";
 import { ref } from 'vue'
 import MapService from "@/services/MapService";
-
+import AMapLoader from '@amap/amap-jsapi-loader';
   const value = ref('')
   const value1 = ref('')
   const value2 = ref('')
@@ -77,9 +77,6 @@ export default {
     },
     getdst(){
       this.$refs.WindowsLoc.dialogVisible=true
-    },
-    h(){
-      this.hover = true;
     },
     showmap(){ //TODO
       // MapService.routePlanning(ori,dst)
