@@ -1,24 +1,30 @@
 module.exports = (sequelize,Sequelize) => {
     const Shopping = sequelize.define("shoppings",{
         ShoppingName:{
-            type: Sequelize.STRING,
+            type: Sequelize.DataTypes.STRING,
             primaryKey:true
         },
-        ShoppingDescription:{
-            type: Sequelize.STRING
+        Description:{
+            type: Sequelize.DataTypes.STRING
         },
-        ShoppingStar:{
-            type: Sequelize.BIGINT
+        Star:{
+            type: Sequelize.DataTypes.INTEGER
         },
         Website:{
-            type: Sequelize.STRING
+            type: Sequelize.DataTypes.STRING
         },
         Phone:{
-            type: Sequelize.STRING
+            type: Sequelize.DataTypes.STRING
         },
-        LocationName:{
-            type: Sequelize.STRING
+        Price:{
+            type: Sequelize.DataTypes.STRING
         },
+        Image:{
+            type: Sequelize.DataTypes.STRING
+        },
+        Image_Name:{
+            type: Sequelize.DataTypes.STRING
+        }
     });
     return Shopping;
 }

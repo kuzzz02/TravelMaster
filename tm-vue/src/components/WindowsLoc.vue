@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import MapService from '@/services/MapService';
+// import MapService from '@/services/MapService';
 import { ref } from 'vue'
 export default{
     name: "WindowsLoc",
@@ -28,13 +28,13 @@ export default{
       }
   },
   methods:{
-    getIP(address){
-      MapService.getIP(address)
-      .then(response => {
-        address = response.data
-        console.log(address)
-      })
-    }
+    // getIP(address){
+    //   MapService.getIP(address)
+    //   .then(response => {
+    //     address = response.data
+    //     console.log(address)
+    //   })
+    // }
   }
 }
 </script>

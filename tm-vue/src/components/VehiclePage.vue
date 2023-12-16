@@ -30,7 +30,7 @@ import Nav from "./Nav.vue";
 import WindowsMap from "./WindowsMap.vue";
 import WindowsLoc from "./WindowsLoc.vue";
 import { ref } from 'vue'
-import MapService from "@/services/MapService";
+// import MapService from "@/services/MapService";
 import AMapLoader from '@amap/amap-jsapi-loader';
   const value1 = ref('')
   const value2 = ref('')
@@ -54,7 +54,7 @@ export default {
     getdst(){
       this.$refs.WindowsLoc.dialogVisible=true
     },
-    showmap(){ //TODO
+    showmap(){
       // MapService.routePlanning(ori,dst)
       window._AMapSecurityConfig = {securityJsCode:'87fd761862beba6b2c49194d67af351e',}
             AMapLoader.load({

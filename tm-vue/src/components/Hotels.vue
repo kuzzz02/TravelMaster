@@ -71,7 +71,7 @@ import Nav from "./Nav.vue";
 import Drawer from "./Drawer.vue";
 import WindowsMap from "./WindowsMap.vue";
 import { ref } from 'vue'
-import MapService from "@/services/MapService";
+// import MapService from "@/services/MapService";
 const value1 = ref('')
 const value = ref('')
 export default {
@@ -133,12 +133,12 @@ export default {
       this.$refs.Drawer.drawer=true;
       
     },
-    showmap(){ //TODO
-      MapService.getMap(address)
-      .then(response =>{
-        //show the map;
-        this.$refs.WindowsMap.dialogVisible=true;
-      })
+    showmap(){
+      // MapService.getMap(address)
+      // .then(response =>{
+      //   //show the map;
+      //   this.$refs.WindowsMap.dialogVisible=true;
+      // })
     },
     h(){
       this.hover=true;

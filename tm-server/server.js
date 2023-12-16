@@ -1,16 +1,9 @@
 const db = require("./src/models/db.js")
 const express = require('express');
 const app = express();
-
-const userR = require("./src/router/UserRouter.js");
-const travelR = require("./src/router/TravelRouter.js");
 app.use(express.static("src"));
-app.use('/',userR);
-app.use('/',travelR);
-
-var bodyParser = require('body-parser') 
-app.use(bodyParser.urlencoded({ extended: false })) 
-app.use(bodyParser.json())
+const PORT = process.env.PORT || 8000;
+// global.__basedir = __dirname
 
 const cors = require('cors')
 var corsOptions = {
@@ -18,8 +11,16 @@ var corsOptions = {
 };
 app.use(cors(corsOptions));
 
+var bodyParser = require('body-parser') 
+app.use(bodyParser.urlencoded({ extended: false })) 
+app.use(bodyParser.json())
 
-const PORT = process.env.PORT || 8000;
+const userR = require("./src/router/UserRouter.js");
+const travelR = require("./src/router/TravelRouter.js");
+app.use('/api/user',userR);
+app.use('/api/travel',travelR);
+
+
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });

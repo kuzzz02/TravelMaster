@@ -9,11 +9,17 @@ const Op = db.Sequelize.Op;
 const fs = require("fs")
 
 
-//TODO: update files + complete more requirements
-exports.searchService = (req,res) =>{
-    const search = req.params.search;
-    Location.findAll({ where: {search:search} })
+exports.getLocation = (req,res) =>{
+    const LocationName = req.params.LocationName;
+    Location.findAll({ where: {LocationName:LocationName} })
       .then(data => {
+        // const dataPath = __basedir + `/data/${LocationName}`;
+        // for(let i=0;i<data.length;i++){
+        //   let fileName = data[i].dataValues.LocationImage_Name;
+        //   let imageData = fs.readFileSync(dataPath + fileName);
+        //   let base64Data = Buffer.from(imageData, 'binary').toString('base64');
+        //   data[i].dataValues.LocationImage="data:image/png;base64,"+base64Data;
+        // }
         res.send(data)
       })
       .catch(err => {
@@ -21,16 +27,39 @@ exports.searchService = (req,res) =>{
       });
 };
 
-exports.getIP = (req,res) =>{
-    const ip = req.params.ip;
-    Location.findAll({ where: {ip:ip} })
-      .then(data => {
-        res.send(data)
-      })
-      .catch(err => {
-        res.status(500).send({message:err.message + "Some error occurred."})
-      });
+exports.getHotel = (req,res) =>{
+  const HotelName = req.params.HotelName;
+  Hotel.findAll({ where: {HotelName:HotelName} })
+    .then(data => {
+      res.send(data)
+    })
+    .catch(err => {
+      res.status(500).send({message:err.message + "Some error occurred."})
+    });
 };
+
+exports.getRestaurant = (req,res) =>{
+  const RestaurantName = req.params.RestaurantName;
+  Restaurant.findAll({ where: {RestaurantName:RestaurantName} })
+    .then(data => {
+      res.send(data)
+    })
+    .catch(err => {
+      res.status(500).send({message:err.message + "Some error occurred."})
+    });
+};
+
+exports.getShopping = (req,res) =>{
+  const ShoppingName = req.params.ShoppingName;
+  Shopping.findAll({ where: {ShoppingName:ShoppingName} })
+    .then(data => {
+      res.send(data)
+    })
+    .catch(err => {
+      res.status(500).send({message:err.message + "Some error occurred."})
+    });
+};
+
 
 exports.getByKey = (req,res) =>{
   var key = req.body.key;

@@ -1,5 +1,5 @@
 const Sequelize= require("sequelize");
-const sequelize = require("../config/dbconfig");
+const sequelize = require("../config/config");
 
 const user = require("./UserModel")(sequelize,Sequelize);
 const location = require("./LocationModel")(sequelize,Sequelize);

@@ -1,24 +1,30 @@
 module.exports = (sequelize,Sequelize) => {
     const Hotel = sequelize.define("hotels",{
         HotelName:{
-            type: Sequelize.STRING,
+            type: Sequelize.DataTypes.STRING,
             primaryKey:true
         },
-        HotelDescription:{
-            type: Sequelize.STRING
+        Description:{
+            type: Sequelize.DataTypes.STRING
         },
-        HotelStar:{
-            type: Sequelize.BIGINT
+        Star:{
+            type: Sequelize.DataTypes.INTEGER
         },
         Website:{
-            type: Sequelize.STRING
+            type: Sequelize.DataTypes.STRING
         },
         Phone:{
-            type: Sequelize.STRING
+            type: Sequelize.DataTypes.STRING
         },
-        LocationName:{
-            type: Sequelize.STRING
+        Price:{
+            type: Sequelize.DataTypes.STRING
         },
+        Image:{
+            type: Sequelize.DataTypes.STRING
+        },
+        Image_Name:{
+            type: Sequelize.DataTypes.STRING
+        }
     });
     return Hotel;
 }

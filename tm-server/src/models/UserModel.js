@@ -1,11 +1,17 @@
 module.exports = (sequelize,Sequelize) => {
     const User = sequelize.define("user",{
         username:{
-            type: Sequelize.STRING
+            type: Sequelize.DataTypes.STRING
         },
         password:{
-            type: Sequelize.STRING
+            type: Sequelize.DataTypes.STRING
         }
+    },
+    {
+        // timestamps: false,
+        // freezeTableName: false
     });
     return User;
 }
+
+// User.sync({force:true})

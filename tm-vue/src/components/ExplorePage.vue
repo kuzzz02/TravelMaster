@@ -35,7 +35,6 @@
 </template>
  
 <script>
-import MapService from '@/services/MapService';
 
 export default {
   data() {
@@ -44,7 +43,7 @@ export default {
     };
   },
   methods: {
-    goSearch(searchInput){ //TODO
+    goSearch(searchInput){
       this.$router.push({name:"Location"})
       // MapService.getIP(searchInput)
       // .then(response =>{

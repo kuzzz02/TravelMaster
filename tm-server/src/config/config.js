@@ -2,6 +2,11 @@ const Sequelize= require("sequelize");
 const sequelize = new Sequelize("tmdb","tm","tm123",{
     host:"localhost",
     dialect:"mysql",
+    pool: {
+        max: 5,
+        min: 0,
+        idle: 10000
+    },
     logging:console.log
 });
 
