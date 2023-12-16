@@ -13,7 +13,7 @@
       <div class="button-row2">
         <div class="select" >
           Select Your Vehicle:
-          <el-select v-model="value" placeholder="Best Rated" style="width:300px" size="large">
+          <el-select v-model="value" placeholder="Public Transmission" style="width:300px" size="large">
             <el-option class="choose" @mouseover="h"
               v-for="item in options"
               :key="item.value"
@@ -39,7 +39,7 @@ import WindowsMap from "./WindowsMap.vue";
 import WindowsLoc from "./WindowsLoc.vue";
 import { ref } from 'vue'
 import MapService from "@/services/MapService";
-import AMapLoader from '@amap/amap-jsapi-loader';
+// import AMapLoader from '@amap/amap-jsapi-loader';
   const value = ref('')
   const value1 = ref('')
   const value2 = ref('')
@@ -52,16 +52,16 @@ export default {
       value2,
       options: [
         {
-          value: "Best price",
-          label: "Best Price"
+          value: "Public Transmission",
+          label: "Public Transmission"
         },
         {
-          value: "Shortest Distance",
-          label: "Shortest Distance"
+          value: "Driving",
+          label: "Driving"
         },
         {
-          value: "Best Rated",
-          label: "Best Rated"
+          value: "Walking",
+          label: "Walking"
         }
       ],
     }

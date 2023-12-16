@@ -4,12 +4,12 @@
     title="Location"
     width="30%"
     :before-close="handleClose">
-    <el-input class="input" v-model="input" @keyup.enter="getIP(address)" placeholder="Please input the address" />
+    <el-input class="input" type="textarea" v-model="input" @keyup.enter="getIP(address)" placeholder="Please input the address" />
     <div class="loc"></div>
     <template #footer>
       <span class="dialog-footer">
         
-        <el-button type="primary" @click="dialogVisible = false" class="btt">
+        <el-button type="primary" @click="clear()" class="btt">
           Confirm
         </el-button>
       </span>
@@ -20,14 +20,22 @@
 <script>
 import MapService from '@/services/MapService';
 import { ref } from 'vue'
+const input = ref('')
+let dialogVisible = ref('')
+
 export default{
     name: "WindowsLoc",
     data() {
       return {
+        input:'',
         dialogVisible:ref(false)
       }
   },
   methods:{
+    clear(){
+      this.input = ''
+      this.dialogVisible = false;
+    },
     getIP(address){
       MapService.getIP(address)
       .then(response => {
