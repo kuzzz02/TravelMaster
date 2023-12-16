@@ -24,7 +24,7 @@
             </div>
         </div>
         <img src="../assets/pic/OIP-C.jpg" alt="Description" class="Ima1">
-        <router-view></router-view>         
+        <router-view></router-view>      
     </div>
 </template>
 
@@ -40,6 +40,8 @@ export default {
             password:"",
             user:undefined
         }
+    },
+    components:{
     },
     methods: {
         handlePasswordInput(event) {

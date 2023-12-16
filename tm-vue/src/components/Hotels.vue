@@ -1,4 +1,3 @@
-
 <template>
   <div class="container">
     <Drawer ref="Drawer"></Drawer>
@@ -21,7 +20,7 @@
         <div class="text">Search various hotels to help you find the best</div>
         <div class="select">
           Sorted By:
-          <el-select v-model="value" placeholder="Best Rated">
+          <el-select v-model="value" @change="sort()" placeholder="Best Rated" >
             <el-option
               v-for="item in options"
               :key="item.value"
@@ -39,6 +38,12 @@
             <div class="name">{{ `${index + 1}.${item.name} ` }}</div>
             <div class="website">
               <img :src="internetImg" alt="" width="25px" />
+              <div class="star">
+            <el-rate
+              v-model="item.star"
+              size = "large"
+              disabled/>
+          </div>
               <el-link :underline="false" style="font-size: 18px; color: black;"><el-icon><Connection /></el-icon>{{ item.website }}</el-link>
             </div>
             <div class="phone">
@@ -47,14 +52,6 @@
             </div>
             <el-button class="bt" @mouseover="h" @click.stop="showmap()">View in the Map</el-button>
           </div>
-          <Windows></Windows>
-          <div class="star">
-            <el-icon><Star /></el-icon>
-            <el-icon><Star /></el-icon>
-            <el-icon><Star /></el-icon>
-            <el-icon><Star /></el-icon>
-            <el-icon><Star /></el-icon>
-        </div>
         </div>
    <WindowsMap ref="WindowsMap"></WindowsMap>>
       </div>
@@ -73,7 +70,7 @@ import WindowsMap from "./WindowsMap.vue";
 import { ref } from 'vue'
 // import MapService from "@/services/MapService";
 const value1 = ref('')
-const value = ref('')
+const value = ''
 export default {
   components: {
       Drawer,
@@ -82,32 +79,44 @@ export default {
     },
   data() {
     return {
-      value1,
       value,
+      value1,
       data: [
         {
           name: "XXXXXXXX",
           website: "wwww.baidu.com",
-          phone: "111121312",
-          image: hotelImg
+          phone: "111111",
+          image: hotelImg,
+          star:3,
+          price:1,
+          distance:1
         },
         {
           name: "XXXXXXXX",
           website: "wwww.baidu.com",
-          phone: "185121312",
-          image: hotelImg
+          phone: "22222",
+          image: hotelImg,
+          star:3,
+          price:2,
+          distance:1
         },
         {
           name: "XXXXXXXX",
           website: "wwww.baidu.com",
-          phone: "185121312",
-          image: hotelImg
+          phone: "333333",
+          image: hotelImg,
+          star:5,
+          price:2,
+          distance:2
         },
         {
           name: "XXXXXXXX",
           website: "wwww.baidu.com",
-          phone: "185121312",
-          image: hotelImg
+          phone: "444444",
+          image: hotelImg,
+          star:1,
+          price:3,
+          distance:3
         }],
         options:[
         {
@@ -131,7 +140,7 @@ export default {
   methods: {
     showdetail() {
       this.$refs.Drawer.drawer=true;
-      
+      console.log(this.value)
     },
     showmap(){
       // MapService.getMap(address)
@@ -142,6 +151,23 @@ export default {
     },
     h(){
       this.hover=true;
+    },
+    sort(){
+      if (this.value == 'Best Rated'){
+        this.data.sort((a,b)=>{
+          return parseInt(b.star)-parseInt(a.star);
+        })
+      }
+      if (this.value == 'Best Price'){
+        this.data.sort((a,b)=>{
+          return parseInt(a.prce)-parseInt(b.price);
+        })
+      }
+      if (this.value == 'Shortest Distance'){
+        this.data.sort((a,b)=>{
+          return parseInt(a.distance)-parseInt(b.distance);
+        })
+      }
     }
   },
   mounted(){
@@ -189,6 +215,15 @@ export default {
   justify-content: space-between;
   align-items: center;
   padding: 0 10px;
+}
+
+.star {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  margin-top: -20px;
+  left: 730px;
 }
 .search .text {
   margin-top: -10px;

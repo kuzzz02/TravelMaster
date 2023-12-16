@@ -28,6 +28,12 @@
             <div class="name">{{ `${index + 1}.${item.name} ` }}</div>
             <div class="website">
               <img :src="internetImg" alt="" width="25px" />
+              <div class="star">
+            <el-rate
+              v-model="item.star"
+              size = "large"
+              disabled/>
+          </div>
               <el-link :underline="false" style="font-size: 18px; color: black;"><el-icon><Connection /></el-icon>{{ item.website }}</el-link>
             </div>
             <div class="phone">
@@ -36,13 +42,6 @@
             </div>
             <el-button class="bt" @mouseover="h" @click.stop="showmap()">View in the Map</el-button>
           </div>
-          <div class="star">
-            <el-icon><Star /></el-icon>
-            <el-icon><Star /></el-icon>
-            <el-icon><Star /></el-icon>
-            <el-icon><Star /></el-icon>
-            <el-icon><Star /></el-icon>
-        </div>
         </div>
         <WindowsMap ref="WindowsMap"></WindowsMap>
       </div>
@@ -83,28 +82,39 @@ export default {
         {
           name: "XXXXXXXX",
           website: "wwww.baidu.com",
-          phone: "185121312",
-          image: hotelImg
+          phone: "111111111",
+          image: hotelImg,
+          price:1,
+          distance:1,
+          star:5
         },
         {
           name: "XXXXXXXX",
           website: "wwww.baidu.com",
-          phone: "185121312",
-          image: hotelImg
+          phone: "22222222",
+          image: hotelImg,
+          star:3,
+          price:2,
+          distance:1
         },
         {
           name: "XXXXXXXX",
           website: "wwww.baidu.com",
-          phone: "185121312",
-          image: hotelImg
+          phone: "33333333",
+          image: hotelImg,
+          star:5,
+          price:2,
+          distance:2
         },
         {
           name: "XXXXXXXX",
           website: "wwww.baidu.com",
-          phone: "185121312",
-          image: hotelImg
-        }
-      ],
+          phone: "4444444",
+          image: hotelImg,
+          star:1,
+          price:3,
+          distance:3
+        }],
       phoneImg: PhoneImg,
       internetImg: InternetImg,
       star: star
@@ -123,6 +133,23 @@ export default {
     },
     h(){
       this.hover=true;
+    },
+    sort(){
+      if (this.value == 'Best Rated'){
+        this.data.sort((a,b)=>{
+          return parseInt(b.star)-parseInt(a.star);
+        })
+      }
+      if (this.value == 'Best Price'){
+        this.data.sort((a,b)=>{
+          return parseInt(a.prce)-parseInt(b.price);
+        })
+      }
+      if (this.value == 'Shortest Distance'){
+        this.data.sort((a,b)=>{
+          return parseInt(a.distance)-parseInt(b.distance);
+        })
+      }
     }
 }
 };
@@ -175,6 +202,15 @@ export default {
   font-size: 30px;
   font-weight: 700;
   font-family: "Smiley Sans";
+}
+
+.star {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  left: 650px;
+  top: 15px;
 }
 .list {
   display: flex;
@@ -230,14 +266,7 @@ export default {
   gap: 4px;
   align-items: center;
 }
-.star{
-  position: absolute;
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  right: 20px;
-  top: 20px;
-}
+
 .el-icon{
   font-size: 25px;
 }

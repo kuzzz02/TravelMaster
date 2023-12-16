@@ -11,10 +11,18 @@
         <el-button class="bt" @mouseover="h" @click="getdst()"><el-icon class="left"><Position /></el-icon>To</el-button>
       </div>
       <div class="button-row2">
-        <div class="bt2"><el-date-picker style="width:270px; height:80px; font-size: 25px;border-radius: 11px; " v-model="value1" type="date" size="larege" placeholder="Depart Date"
-        :default-value="new Date(2023, 12, 12)"/></div>
-        <div class="bt2"><el-date-picker style="width:270px; height:80px; font-size: 25px;border-radius: 11px; " v-model="value2" type="date" size="larege" placeholder="Return Date"
-        :default-value="new Date(2023, 12, 12)"/></div>
+        <div class="select" >
+          Select Your Vehicle:
+          <el-select v-model="value" placeholder="Public Transmission" style="width:300px" size="large">
+            <el-option class="choose" @mouseover="h"
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            >
+            </el-option>
+          </el-select>
+        </div>
       </div>
         <div class="button">
           <span class="button-text" @click.stop="showmap()">Create the Route</span>
@@ -30,16 +38,37 @@ import Nav from "./Nav.vue";
 import WindowsMap from "./WindowsMap.vue";
 import WindowsLoc from "./WindowsLoc.vue";
 import { ref } from 'vue'
+<<<<<<< HEAD
 // import MapService from "@/services/MapService";
 import AMapLoader from '@amap/amap-jsapi-loader';
+=======
+import MapService from "@/services/MapService";
+// import AMapLoader from '@amap/amap-jsapi-loader';
+  const value = ref('')
+>>>>>>> e55dda3c0514c92589ca8cfc267c61fea410c80f
   const value1 = ref('')
   const value2 = ref('')
 export default {
   name: "MyPage",
   data(){
     return{
+      value,
       value1,
-      value2
+      value2,
+      options: [
+        {
+          value: "Public Transmission",
+          label: "Public Transmission"
+        },
+        {
+          value: "Driving",
+          label: "Driving"
+        },
+        {
+          value: "Walking",
+          label: "Walking"
+        }
+      ],
     }
   },
   components: {
@@ -154,17 +183,14 @@ body{
   align-items: center;
 }
 
-.bt2{
-  font-family: "smiley sans";
-  color: black;
+.select{
   font-size: 30px;
-  height: 80px;
-  margin: auto;
-  border-radius: 11px;
-  background-color: #fff;
-  display: flex;
-  align-items: center;
+  font-family: 'smiley sans';
+  margin-top: 20px;
+  margin-left: 15px;
+
 }
+
 .bt:hover {
   background-color:#58c4b6 !important;
   color: white !important;
@@ -178,7 +204,7 @@ body{
   width: 207px;
   height: 50px;
   margin-left: 155px;
-  margin-top: 50px;
+  margin-top: 25px;
   border-radius: 11px;
   background-color: #fff;
   display: flex;
@@ -203,6 +229,11 @@ body{
   letter-spacing: 0;
   text-align: center;
   color: #fff;
+}
+
+.choose:hover {
+  background-color:#7ddbcf !important;
+  color: white !important;
 }
 
 </style>

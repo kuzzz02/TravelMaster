@@ -13,7 +13,7 @@
         <div class="plat"><el-button class="bt1" @click="search">Search The Weather</el-button></div>
       </div>
       <WindowsWea ref="WindowsWea"></WindowsWea>
-      <WindowsWea ref="WindowsLoc"></WindowsWea>
+      <WindowsLoc ref="WindowsLoc"></WindowsLoc>
     </div>
   </template>
   
@@ -22,7 +22,11 @@
   import WindowsWea from "./WindowsWea.vue";
   import WindowsLoc from "./WindowsLoc.vue";
   import { ref } from 'vue'
+<<<<<<< HEAD
 // import MapService from "@/services/MapService";
+=======
+  import MapService from "@/services/MapService";
+>>>>>>> e55dda3c0514c92589ca8cfc267c61fea410c80f
   const value1 = ref('')
   export default {
     name:"VehiclePage",
@@ -37,6 +41,7 @@
     WindowsLoc
   },
     methods: {
+<<<<<<< HEAD
     //   search(address,date){
     //   MapService.getWeather(address,date)
     //   .then(response =>{
@@ -58,6 +63,29 @@
     //   location(){
     //     this.$refs.WindowsLoc.dialogVisible=true
     //   }
+=======
+      search(address,date){
+      // MapService.getWeather(address,date)
+      // .then(response =>{
+      //   address = response.data
+      //   console.log(username)
+      //   MapService.getWeather(date)
+      //   .then(response =>{
+      //         if(date == response.data){
+      //             //show the weather
+      //           }
+      //         else{
+      //             alert("INVALID INPUT")
+      //             }
+      //           })
+      //   //show the weather;
+      // })
+      this.$refs.WindowsWea.dialogVisible=true;
+    },
+      location(){
+        this.$refs.WindowsLoc.dialogVisible=true
+      }
+>>>>>>> e55dda3c0514c92589ca8cfc267c61fea410c80f
     }
   }
   </script>
