@@ -1,13 +1,14 @@
 <template>
   <div class="container">
-    <Drawer ref="Drawer"></Drawer>
     <Nav></Nav>
+    <FSDrawershoppingmall1 ref="Drawer3"></FSDrawershoppingmall1>
+    <FSDrawershoppingmall2 ref="Drawer4"></FSDrawershoppingmall2>
     <div class="content">
       <div class="title">
-        <div class="text">Restaurant in XXXXX</div>
+        <div class="text">Shoppingmall in XXXXX</div>
       </div>
       <div class="search">
-        <div class="text">Search various restaurants to help you find the best</div>
+        <div class="text">Search various shoppingmall to help you find the best</div>
         <div class="select">
           Sorted By:
           <el-select v-model="value" @change="sort()" placeholder="Best Rated">
@@ -22,8 +23,8 @@
         </div>
       </div>
       <div class="list">
-        <div class="item" v-for="(item, index) in data" :key="index" @click="showdetail()">
-          <img :src="item.image" alt="" />
+        <div class="item" v-for="(item, index) in data" :key="index" @click="showdetail1(item.name)">
+          <div class="imghotel"><img class="img2" :src="item.image" alt="" /></div>
           <div class="text">
             <div class="name">{{ `${index + 1}.${item.name} ` }}</div>
             <div class="website">
@@ -43,93 +44,113 @@
             <el-button class="bt" @mouseover="h" @click.stop="showmap()">View in the Map</el-button>
           </div>
         </div>
-        <WindowsMap ref="WindowsMap"></WindowsMap>>
+        <WindowsMap ref="WindowsMap"></WindowsMap>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import hotelImg from "../assets/pic/hotel_image.png";
+import hotelImg1 from "../assets/pic/data/佛山/Shoppingmall/万达广场/万达广场.webp";
+import hotelImg2 from "../assets/pic/data/佛山/Shoppingmall/三水广场/封面.jpg";
+import hotelImg3 from "../assets/pic/data/佛山/Shoppingmall/保利水城购物中心/1.jpg";
+import hotelImg4 from "../assets/pic/data/佛山/Shoppingmall/岭南天地/3.jpg";
 import PhoneImg from "../assets/pic/phone.png";
 import InternetImg from "../assets/pic/internet.png";
+import star from "../assets/pic/star.png";
 import Nav from "./Nav.vue";
 import WindowsMap from "./WindowsMap.vue";
-// import Drawer from "./Drawer.vue";
-import { ref } from 'vue'
-const value = ref('');
+import FSDrawershoppingmall1 from "./FSDrawershoppingmall1.vue";
+import FSDrawershoppingmall2 from "./FSDrawershoppingmall2.vue";
 
+
+import { ref } from 'vue'
+const value = ref('')
 export default {
   components: {
-      Nav,
-      Drawer,
-      WindowsMap
-    },
+    Nav,
+    FSDrawershoppingmall1,
+    FSDrawershoppingmall2,
+    WindowsMap
+  },
   data() {
     return {
       value,
       options: [
         {
-          value: "Best price",
-          label: "Best Price"
+          value: "Best Rated",
+          label: "Best Rated"
         },
         {
           value: "Shortest Distance",
           label: "Shortest Distance"
         },
         {
-          value: "Best Rated",
-          label: "Best Rated"
+          value: "Best Price",
+          label: "Best Price"
         }
       ],
       data: [
         {
-          name: "XXXXXXXX",
-          website: "wwww.baidu.com",
-          phone: "111111",
-          image: hotelImg,
+          name: "保利水城购物中心",
+          website: "wwww.gouwu.com",
+          phone: "111111111",
+          image: hotelImg1,
           price:1,
           distance:1,
           star:5
         },
         {
-          name: "XXXXXXXX",
-          website: "wwww.baidu.com",
-          phone: "2222222",
-          image: hotelImg,
+          name: "岭南天地",
+          website: "wwww.lingnan.com",
+          phone: "22222222",
+          image: hotelImg2,
           star:3,
           price:2,
           distance:1
         },
         {
-          name: "XXXXXXXX",
-          website: "wwww.baidu.com",
-          phone: "3333333",
-          image: hotelImg,
+          name: "三水广场",
+          website: "wwww.sanshui.com",
+          phone: "33333333",
+          image: hotelImg3,
           star:5,
           price:2,
           distance:2
         },
         {
-          name: "XXXXXXXX",
-          website: "wwww.baidu.com",
-          phone: "444444",
-          image: hotelImg,
+          name: "万达广场",
+          website: "wwww.wanda.com",
+          phone: "4444444",
+          image: hotelImg4,
           star:1,
           price:3,
           distance:3
         }],
       phoneImg: PhoneImg,
       internetImg: InternetImg,
+      star: star
     };
   },
   methods: {
-  showdetail() {
-      this.$refs.Drawer.drawer=true;
+    showdetail1(name) {
+      if(name == "保利水城购物中心"){
+        this.$refs.Drawer3.drawer=true;
+      }
+      if(name == "岭南天地"){
+        this.$refs.Drawer4.drawer=true;
+      }
+      // if(name == "佛山顺德欢乐海岸亚朵酒店"){
+      //   this.$refs.Drawer3.drawer=true;
+      // }
+      // if(name == "佛山陈村希尔顿欢朋酒店"){
+      //   this.$refs.Drawer4.drawer=true;
+      // }
     },
     showmap(){
       MapService.getMap(address)
       .then(response =>{
+        //show the map;
         this.$refs.WindowsMap.dialogVisible=true;
       })
     },
@@ -164,36 +185,43 @@ export default {
     height: 750px;
     width: 1280px;
 }
-
 .content {
-  margin-top: 40px;
+  width: 1200px;
+  margin: auto;
 }
 .title {
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: 'smiley sans';
-  margin-top: -25px;
   margin-bottom: 40px;
+  
 }
+
+.imghotel{
+  width:200px;
+  height:100%;
+}
+
+.img2{
+  height: 100%;
+  width:100%;
+}
+
 .text {
-  font-size: 38px;
+  font-size: 36px;
   font-weight: 700;
   position: relative;
-}
-.text .name {
-  font-size: 24px;
-  font-family: 'smiley sans';
-  font-size: 600;
+  
 }
 .title .text::after {
   position: absolute;
   content: "";
-  width: 200px;
+  width: 300px;
   height: 15px;
   background: rgb(88, 196, 182);
   top: 25px;
-  right: 0px;
+  left: 30px;
   z-index: -1;
 }
 .search {
@@ -205,8 +233,17 @@ export default {
 }
 .search .text {
   font-size: 30px;
-  font-weight: 300;
-  font-family: 'smiley sans';
+  font-weight: 700;
+  font-family: "Smiley Sans";
+}
+
+.star {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  left: 650px;
+  top: 15px;
 }
 .list {
   display: flex;
@@ -222,6 +259,7 @@ export default {
   flex-direction: row;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   border-radius: 10px;
+  height: 200px;
 }
 .item .text {
   padding: 10px;
@@ -232,7 +270,8 @@ export default {
   font-size: 400;
 }
 .text .name {
-  font-size: 24x;
+  font-size: 24px;
+  font-family: 'smiley sans';
   font-size: 600;
 }
 .bt {
@@ -261,14 +300,7 @@ export default {
   gap: 4px;
   align-items: center;
 }
-.star {
-  position: absolute;
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  left: 730px;
-  top: 15px;
-}
+
 .el-icon{
   font-size: 25px;
 }

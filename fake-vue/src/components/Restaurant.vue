@@ -1,16 +1,17 @@
 <template>
   <div class="container">
-    <Drawer ref="Drawer"></Drawer>
+    <FSDrawerrestaurant1 ref="Drawer5"></FSDrawerrestaurant1>
+    <FSDrawerrestaurant2 ref="Drawer6"></FSDrawerrestaurant2>
     <Nav></Nav>
     <div class="content">
       <div class="title">
-        <div class="text">Shoppingmall in XXXXX</div>
+        <div class="text">Restaurant in XXXXX</div>
       </div>
       <div class="search">
-        <div class="text">Search various shoppingmall to help you find the best</div>
+        <div class="text">Search various restaurants to help you find the best</div>
         <div class="select">
           Sorted By:
-          <el-select v-model="value" placeholder="Best Rated">
+          <el-select v-model="value" @change="sort()" placeholder="Best Rated">
             <el-option
               v-for="item in options"
               :key="item.value"
@@ -22,8 +23,8 @@
         </div>
       </div>
       <div class="list">
-        <div class="item" v-for="(item, index) in data" :key="index" @click="showdetail()">
-          <img :src="item.image" alt="" />
+        <div class="item" v-for="(item, index) in data" :key="index" @click="showdetail(item.name)">
+          <div class="imghotel"><img class="img2" :src="item.image" alt="" /></div>
           <div class="text">
             <div class="name">{{ `${index + 1}.${item.name} ` }}</div>
             <div class="website">
@@ -43,91 +44,103 @@
             <el-button class="bt" @mouseover="h" @click.stop="showmap()">View in the Map</el-button>
           </div>
         </div>
-        <WindowsMap ref="WindowsMap"></WindowsMap>
+        <WindowsMap ref="WindowsMap"></WindowsMap>>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import hotelImg from "../assets/pic/hotel_image.png";
+import hotelImg1 from "../assets/pic/data/佛山/Restaurant/大门公/封面.jpg";
+import hotelImg2 from "../assets/pic/data/佛山/Restaurant/野仙鱼生/封面.webp";
+import hotelImg3 from "../assets/pic/data/佛山/Restaurant/顺德婆私房菜/封面.webp";
+import hotelImg4 from "../assets/pic/data/佛山/Restaurant/香江水蛇粥/封面.jpeg";
 import PhoneImg from "../assets/pic/phone.png";
 import InternetImg from "../assets/pic/internet.png";
-import star from "../assets/pic/star.png";
 import Nav from "./Nav.vue";
 import WindowsMap from "./WindowsMap.vue";
-// import Drawer from "./Drawerhotel1.vue";
+import FSDrawerrestaurant1 from "./FSDrawerrestaurant1.vue";
+import FSDrawerrestaurant2 from "./FSDrawerrestaurant2.vue";
 import { ref } from 'vue'
-const value = ref('')
+const value = ref('');
+
 export default {
   components: {
-    Nav,
-    Drawer,
-    WindowsMap
-  },
+      Nav,
+      FSDrawerrestaurant1,
+      FSDrawerrestaurant2,
+      WindowsMap
+    },
   data() {
     return {
       value,
       options: [
         {
-          value: "Best Rated",
-          label: "Best Rated"
+          value: "Best price",
+          label: "Best Price"
         },
         {
           value: "Shortest Distance",
           label: "Shortest Distance"
+        },
+        {
+          value: "Best Rated",
+          label: "Best Rated"
         }
       ],
       data: [
         {
-          name: "XXXXXXXX",
-          website: "wwww.baidu.com",
-          phone: "111111111",
-          image: hotelImg,
+          name: "大门公",
+          website: "wwww.damen.com",
+          phone: "111111",
+          image: hotelImg1,
           price:1,
           distance:1,
           star:5
         },
         {
-          name: "XXXXXXXX",
-          website: "wwww.baidu.com",
-          phone: "22222222",
-          image: hotelImg,
+          name: "顺德私房婆菜",
+          website: "wwww.sifang.com",
+          phone: "2222222",
+          image: hotelImg2,
           star:3,
           price:2,
           distance:1
         },
         {
-          name: "XXXXXXXX",
-          website: "wwww.baidu.com",
-          phone: "33333333",
-          image: hotelImg,
+          name: "香江水蛇粥",
+          website: "wwww.xiangjiang.com",
+          phone: "3333333",
+          image: hotelImg3,
           star:5,
           price:2,
           distance:2
         },
         {
-          name: "XXXXXXXX",
-          website: "wwww.baidu.com",
-          phone: "4444444",
-          image: hotelImg,
+          name: "野仙鱼生",
+          website: "wwww.yusheng.com",
+          phone: "444444",
+          image: hotelImg4,
           star:1,
           price:3,
           distance:3
         }],
       phoneImg: PhoneImg,
       internetImg: InternetImg,
-      star: star
     };
   },
   methods: {
-  showdetail() {
-      this.$refs.Drawer.drawer=true;
+    showdetail(name) {
+      if(name == "大门公"){
+        this.$refs.Drawer5.drawer=true;
+      }
+      if(name == "顺德私房婆菜"){
+        this.$refs.Drawer6.drawer=true;
+      }
     },
     showmap(){
       MapService.getMap(address)
       .then(response =>{
-        //show the map;
         this.$refs.WindowsMap.dialogVisible=true;
       })
     },
@@ -162,33 +175,46 @@ export default {
     height: 750px;
     width: 1280px;
 }
+
 .content {
-  width: 1200px;
-  margin: auto;
+  margin-top: 40px;
+}
+
+.imghotel{
+  width:200px;
+  height:100%;
+}
+
+.img2{
+  height: 100%;
+  width:100%;
 }
 .title {
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: 'smiley sans';
+  margin-top: -25px;
   margin-bottom: 40px;
-  
 }
-
 .text {
-  font-size: 36px;
+  font-size: 38px;
   font-weight: 700;
   position: relative;
-  
+}
+.text .name {
+  font-size: 24px;
+  font-family: 'smiley sans';
+  font-size: 600;
 }
 .title .text::after {
   position: absolute;
   content: "";
-  width: 300px;
+  width: 200px;
   height: 15px;
   background: rgb(88, 196, 182);
   top: 25px;
-  left: 30px;
+  right: 0px;
   z-index: -1;
 }
 .search {
@@ -200,17 +226,8 @@ export default {
 }
 .search .text {
   font-size: 30px;
-  font-weight: 700;
-  font-family: "Smiley Sans";
-}
-
-.star {
-  position: absolute;
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  left: 650px;
-  top: 15px;
+  font-weight: 300;
+  font-family: 'smiley sans';
 }
 .list {
   display: flex;
@@ -226,6 +243,7 @@ export default {
   flex-direction: row;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   border-radius: 10px;
+  height: 200px;
 }
 .item .text {
   padding: 10px;
@@ -236,8 +254,7 @@ export default {
   font-size: 400;
 }
 .text .name {
-  font-size: 24px;
-  font-family: 'smiley sans';
+  font-size: 24x;
   font-size: 600;
 }
 .bt {
@@ -266,7 +283,14 @@ export default {
   gap: 4px;
   align-items: center;
 }
-
+.star {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  left: 730px;
+  top: 15px;
+}
 .el-icon{
   font-size: 25px;
 }

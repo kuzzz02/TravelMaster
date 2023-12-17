@@ -2,7 +2,7 @@
     <div class="container">
       <div class="content">
         <Nav></Nav>
-        <div class="title"><span>Explore </span>XXX </div>
+        <div class="title"><span>Explore </span>FOSHAN! </div>
         <div class="list">
           <div
             v-for="(item, index) in locationList"
@@ -14,15 +14,15 @@
           </div>
         </div>
         <div class="image">
-          <div class="area1"></div>
+          <div class="area1"><img class="img1" src="../assets/pic/data/佛山/Location/1.jpeg"></div>
           <div class="area2">
-            <div class="area2-1"></div>
-            <div class="area2-2"></div>
+            <div class="area2-1"><img class="img2" src="../assets/pic/data/佛山/Location/2.jpg"></div>
+            <div class="area2-1"><img class="img3" src="../assets/pic/data/佛山/Location/3.webp"></div>
           </div>
         </div>
         <div class="footer">
-          <div>About xxx</div>
-          <div>XXXXX</div>
+          <div class="i">About FOSHAN</div>
+          <div class="i">佛山市是广府文化的核心区域，有粤剧、陶瓷、剪纸、秋色等传统文化，佛山是国家历史文化名城 [2-3]，历史上是中国天下四聚、四大名镇之一，有陶艺之乡、武术之乡、粤剧之乡之称，是中国龙舟龙狮文化名城，粤剧发源地，广府文化发源地、兴盛地、传承地</div>
         </div>
       </div>
 
@@ -107,6 +107,11 @@
     margin-top: 10px;
     font-family: "smiley sans";
   }
+  .i {
+    font-size: 20px;
+    font-weight: 700;
+    font-family: "smiley sans";
+  }
   .content .list {
     display: flex;
     flex-wrap: wrap;
@@ -157,7 +162,7 @@
   }
   
   .image .area1 {
-    width: 65%;
+    width: 55%;
     background-color: rgb(196, 196, 196);
   }
   
@@ -178,6 +183,18 @@
     height: 50%;
     width: 100%;
     background-color: rgb(196, 196, 196);
+  }
+  .img1{
+    width: 100%;
+    height: 100%;
+  }
+  .img2{
+    width: 100%;
+    height: 100%;
+  }
+  .img3{
+    width: 100%;
+    height: 100%;
   }
   </style>
   

@@ -4,7 +4,9 @@
     <div class="bg-block">
       <div class="green-bg">
         <div class="text-box">
-      Things to Do in xxx
+      Things to Do in FOSHAN<br>
+      1. 打工：可以在当地的工厂、餐厅、超市等地方打工，这些地方通常都需要人手，而且工资也比较稳定。
+      2. 做生意：可以在佛山开个小店，卖些当地的特色产品或服务，如佛山砂锅、佛山剪纸等。
     </div>
       </div>
     </div>

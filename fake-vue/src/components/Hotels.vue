@@ -1,11 +1,13 @@
 <template>
   <div class="container">
-    <CQDrawerhotel1 ref="Drawer1"></CQDrawerhotel1>
-    <CQDrawerhotel2 ref="Drawer2"></CQDrawerhotel2>
+    <FSDrawerhotel1 ref="Drawer1"></FSDrawerhotel1>
+    <FSDrawerhotel2 ref="Drawer2"></FSDrawerhotel2>
+    <FSDrawerhotel3 ref="Drawer3"></FSDrawerhotel3>
+    <FSDrawerhotel4 ref="Drawer4"></FSDrawerhotel4>
     <div class="content">
       <Nav></Nav>
       <div class="title">
-        <div class="text">xxx Hotels and Places to Stay</div>
+        <div class="text">FOSHAN Hotels and Places to Stay</div>
         <div class="calender">
           <el-date-picker
             v-model="value1"
@@ -33,8 +35,8 @@
         </div>
       </div>
       <div class="list">
-        <div class="item" v-for="(item, index) in data" :key="index" @click="showdetail()">
-          <img :src="item.image" alt="" />
+        <div class="item" v-for="(item, index) in data" :key="index" @click="showdetail(item.name)">
+          <div class="imghotel"><img class="img2" :src="item.image" alt="" /></div>
           <div class="text">
             <div class="name">{{ `${index + 1}.${item.name} ` }}</div>
             <div class="website">
@@ -61,21 +63,28 @@
 </template>
 
 <script>
-import hotelImg from "../assets/pic/hotel_image.png";
+import hotelImg1 from "../assets/pic/data/佛山/Hotel/老八酒店/1.jpg";
+import hotelImg2 from "../assets/pic/data/佛山/Hotel/亚朵酒店/2.jpg";
+import hotelImg3 from "../assets/pic/data/佛山/Hotel/顺联酒店/3.webp";
+import hotelImg4 from "../assets/pic/data/佛山/Hotel/老八酒店/3.jpg";
 import PhoneImg from "../assets/pic/phone.png";
 import InternetImg from "../assets/pic/internet.png";
 import star from "../assets/pic/star.png";
 import Nav from "./Nav.vue";
-import CQDrawerhotel1 from "./CQDrawerhotel1.vue";
-import CQDrawerhotel2 from "./CQDrawerhotel2.vue";
+import FSDrawerhotel1 from "./FSDrawerhotel1.vue";
+import FSDrawerhotel2 from "./FSDrawerhotel2.vue";
+import FSDrawerhotel3 from "./FSDrawerhotel3.vue";
+import FSDrawerhotel4 from "./FSDrawerhotel4.vue";
 import WindowsMap from "./WindowsMap.vue";
 import { ref } from 'vue'
 const value1 = ref('')
 const value = ''
 export default {
   components: {
-      CQDrawerhotel1,
-      CQDrawerhotel2,
+      FSDrawerhotel1,
+      FSDrawerhotel2,
+      FSDrawerhotel3,
+      FSDrawerhotel4,
       Nav,
       WindowsMap
     },
@@ -85,40 +94,40 @@ export default {
       value1,
       data: [
         {
-          name: "XXXXXXXX",
-          website: "wwww.baidu.com",
-          phone: "111111",
-          image: hotelImg,
-          star:3,
-          price:110,
-          distance:30
-        },
-        {
-          name: "XXXXXXXX",
-          website: "wwww.baidu.com",
-          phone: "22222",
-          image: hotelImg,
-          star:3,
-          price:2,
-          distance:1
-        },
-        {
-          name: "XXXXXXXX",
-          website: "wwww.baidu.com",
-          phone: "333333",
-          image: hotelImg,
+          name: "佛山顺德顺联温德姆酒店",
+          website: "https://www.marriott.com.cn/hotels/fuosi-sheraton-shunde-hotel/overview/",
+          phone: "+86-757-29833333",
+          image: hotelImg1,
           star:5,
-          price:2,
-          distance:2
+          price:529,
+          distance:30.4
         },
         {
-          name: "XXXXXXXX",
-          website: "wwww.baidu.com",
-          phone: "444444",
-          image: hotelImg,
-          star:1,
-          price:3,
-          distance:3
+          name: "佛山顺德喜来登酒店",
+          website: "https://www.marriott.com.cn/hotels/fuosi-sheraton-shunde-hotel/overview/",
+          phone: "+86-757-28888888",
+          image: hotelImg2,
+          star:5,
+          price:781,
+          distance:121.9
+        },
+        {
+          name: "佛山顺德欢乐海岸亚朵酒店",
+          website: "https://www.marriott.com.cn/hotels/fuosi-sheraton-shunde-hotel/overview/",
+          phone: "+86-757-22218666",
+          image: hotelImg3,
+          star:4,
+          price:684,
+          distance:241.8
+        },
+        {
+          name: "佛山陈村希尔顿欢朋酒店",
+          website: "https://www.marriott.com.cn/hotels/fuosi-sheraton-shunde-hotel/overview/",
+          phone: "+86-757-23328888",
+          image: hotelImg4,
+          star:4,
+          price:464,
+          distance:112.3
         }],
         options:[
         {
@@ -140,9 +149,19 @@ export default {
     };
   },
   methods: {
-    showdetail() {
-      this.$refs.Drawer1.drawer=true;
-      console.log(this.value)
+    showdetail(name) {
+      if(name == "佛山顺德顺联温德姆酒店"){
+        this.$refs.Drawer1.drawer=true;
+      }
+      if(name == "佛山顺德喜来登酒店"){
+        this.$refs.Drawer2.drawer=true;
+      }
+      if(name == "佛山顺德欢乐海岸亚朵酒店"){
+        this.$refs.Drawer3.drawer=true;
+      }
+      if(name == "佛山陈村希尔顿欢朋酒店"){
+        this.$refs.Drawer4.drawer=true;
+      }
     },
     showmap(){
       this.$refs.WindowsMap.dialogVisible=true;
@@ -190,6 +209,14 @@ export default {
   align-items: center;
   font-family: "Smiley Sans";
   margin-bottom: 40px;
+}
+.imghotel{
+  width:200px;
+  height:100%;
+}
+.img2{
+  height: 100%;
+  width:100%;
 }
 .text {
   font-size: 36px;
@@ -246,6 +273,7 @@ export default {
   flex-direction: row;
   box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
   border-radius: 10px;
+  height: 200px;
 }
 .item .text {
   padding: 10px;

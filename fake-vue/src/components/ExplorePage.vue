@@ -17,16 +17,16 @@
         <el-carousel height="248px" indicator-position="outside">
           <el-carousel-item v-for="item in 2" :key="item">
             <div class="image-container" v-if="item % 2 !== 0">
-              <img src="../assets/pic/b70f06b21f95d5548b1313da56194914.jpg" alt="Image 1">
-              <img src="../assets/pic/b70f06b21f95d5548b1313da56194914.jpg" alt="Image 2">
-              <img src="../assets/pic/b70f06b21f95d5548b1313da56194914.jpg" alt="Image 3">
-              <img src="../assets/pic/b70f06b21f95d5548b1313da56194914.jpg" alt="Image 4">
+              <img src="../assets/pic/data/德令哈/Location/哈拉湖.jpeg" alt="Image 1">
+              <img src="../assets/pic/data/德令哈/Location/巴音河.jpg" alt="Image 2">
+              <img src="../assets/pic/data/佛山/Location/5.webp" alt="Image 3">
+              <img src="../assets/pic/data/重庆/Location/1.png" alt="Image 4">
             </div>
             <div class="image-container" v-if="item % 2 === 0">
-              <img src="../assets/pic/dubai.jpg" alt="Image 5">
-              <img src="../assets/pic/dubai.jpg" alt="Image 6">
-              <img src="../assets/pic/dubai.jpg" alt="Image 7">
-              <img src="../assets/pic/dubai.jpg" alt="Image 8">
+              <img src="../assets/pic/data/重庆/Location/5.png" alt="Image 5">
+              <img src="../assets/pic/data/佛山/Location/3.webp" alt="Image 6">
+              <img src="../assets/pic/data/德令哈/Location/德令哈夜市.jpg" alt="Image 7">
+              <img src="../assets/pic/data/重庆/Location/3.png" alt="Image 8">
             </div>
           </el-carousel-item>
         </el-carousel>
@@ -37,7 +37,7 @@
  
 <script>
 import TravelService from '@/services/TravelService';
-import Location from './Location.vue';
+import Location from './FSLocation.vue';
 
 export default {
   components:{Location},
@@ -54,9 +54,13 @@ export default {
         const res = [response.data[0]]
         this.location = res[0] //.LocationName
         console.log(this.location)
+        if(this.location.LocationName == "佛山" || this.location.LocationName == "重庆"){
+          this.$router.push({name:`${LocationName}`})
+        }
         // this.$router.push({name:"Location"})
       })
       .catch(err=>{
+        alert("INVALID INPUT!")
         console.log(err)
       })
     }

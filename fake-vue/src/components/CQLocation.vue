@@ -2,30 +2,35 @@
   <div class="container">
     <div class="content">
       <Nav></Nav>
-      <div class="title"><span>Explore </span>XXX</div> <!--{{this.location.LocationName}}-->
+      <div class="title"><span>Explore </span>CHONGQING! </div>
       <div class="list">
-        <div v-for="(item, index) in locationList" :key="index" class="item" @click="Explore(item.name)">
+        <div
+          v-for="(item, index) in locationList"
+          :key="index"
+          class="item"
+          @click="Explore(item.name)">
           <span class="text">{{ item.name }}</span>
           <img :src="item.icon" alt="" class="icon" />
         </div>
       </div>
       <div class="image">
-        <div class="area1"></div>
+        <div class="area1"><img class="img1" src="../assets/pic/data/重庆/Location/1.png"></div>
         <div class="area2">
-          <div class="area2-1"></div>
-          <div class="area2-2"></div>
+          <div class="area2-1"><img class="img2" src="../assets/pic/data/重庆/Location/2.png"></div>
+          <div class="area2-1"><img class="img3" src="../assets/pic/data/重庆/Location/3.png"></div>
         </div>
       </div>
       <div class="footer">
-        <div>About xxx</div>
-        <div>XXXXX</div>
+        <div class="i">About CHONGQING</div>
+        <div class="i">重庆市是国家历史文化名城 、巴渝文化发祥地，有3000余年建城史 ，自古被称为“天生重庆” 。宋光宗先封恭王再即帝位，升恭州为重庆府，由此得名。夏商巴国在此建都， 元末大夏在此建国。清末重庆开埠及国民政府迁都重庆，使重庆成为近代中国大后方政治军事经济文化中心，红岩精神起源地。 新中国初为西南大区驻地及直辖市，1997年又恢复为直辖市。</div>
       </div>
     </div>
-    <ExplorePage :location="location" @success="getmsg" ></ExplorePage>
+
   </div>
-</template>
   
-<script >
+</template>
+
+<script>
 import todo from "../assets/pic/todo.png";
 import shopping from "../assets/pic/shopping.png";
 import restaurant from "../assets/pic/restaurant.png";
@@ -33,10 +38,10 @@ import hotel from "../assets/pic/Hotel.png";
 import vehicles from "../assets/pic/vehicles.png";
 import Nav from "./Nav.vue";
 import weather from "../assets/pic/weather.png";
-import ExplorePage from "./ExplorePage.vue";
 
 export default {
-  components: { Nav, ExplorePage },
+  components: {Nav},
+  props:["location"],
   data() {
     return {
       locationList: [
@@ -64,27 +69,22 @@ export default {
           name: "Weather",
           icon: weather,
         }
-      ],
-      location: undefined
+      ]
     };
   },
   methods: {
     Explore(name) {
       this.$router.push({ name: name });
+      
     },
-    getmsg(data) {
-      this.location = data;
-      console.log(this.location)
-    }
   },
-  mounted() {
-    
-  },
+  mounted(){
+    // console.log(this.location)
 
+  }
 };
-
 </script>
-  
+
 <style  scoped>
 .container {
   margin: 0 auto;
@@ -98,18 +98,20 @@ export default {
   font-weight: 600;
   line-height: 25px;
 }
-
 .content {
   padding: 0 20px;
 }
-
 .title {
   font-size: 64px;
   font-weight: 700;
   margin-top: 10px;
   font-family: "smiley sans";
 }
-
+.i {
+  font-size: 20px;
+  font-weight: 700;
+  font-family: "smiley sans";
+}
 .content .list {
   display: flex;
   flex-wrap: wrap;
@@ -133,13 +135,11 @@ export default {
   width: 180px;
   margin-left: 20px;
 }
-
 .list :hover {
-  background-color: #7ddbcf;
+  background-color:#7ddbcf;
   border: 0;
   color: white;
 }
-
 .icon {
   width: 50px;
   height: 50px;
@@ -162,7 +162,7 @@ export default {
 }
 
 .image .area1 {
-  width: 65%;
+  width: 55%;
   background-color: rgb(196, 196, 196);
 }
 
@@ -184,5 +184,17 @@ export default {
   width: 100%;
   background-color: rgb(196, 196, 196);
 }
+.img1{
+  width: 100%;
+  height: 100%;
+}
+.img2{
+  width: 100%;
+  height: 100%;
+}
+.img3{
+  width: 100%;
+  height: 100%;
+}
 </style>
-  
+
