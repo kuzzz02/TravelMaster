@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <CQDrawerhotel1 ref="Drawer"></CQDrawerhotel1>
-    <CQDrawerhotel2 ref="Drawer"></CQDrawerhotel2>
+    <CQDrawerhotel1 ref="Drawer1"></CQDrawerhotel1>
+    <CQDrawerhotel2 ref="Drawer2"></CQDrawerhotel2>
     <div class="content">
       <Nav></Nav>
       <div class="title">
@@ -141,7 +141,7 @@ export default {
   },
   methods: {
     showdetail() {
-      this.$refs.Drawer.drawer=true;
+      this.$refs.Drawer1.drawer=true;
       console.log(this.value)
     },
     showmap(){
@@ -173,9 +173,7 @@ export default {
       }
     }
   },
-  mounted(){
-    this.$refs.Drawer.drawer=false
-  }
+
 }
 </script>
 

@@ -20,7 +20,7 @@
   <script>
 import { ref } from 'vue';
   export default{
-    name: "Drawer",
+    name: "Drawer1",
     data() {
         return {
             drawer: ref(false)
