@@ -55,6 +55,7 @@ import { ref } from 'vue'
 const value = ref('')
 const value1 = ref('')
 const value2 = ref('')
+
 export default {
   name: "VehiclePage",
   data(){

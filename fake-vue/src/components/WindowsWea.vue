@@ -4,7 +4,7 @@
     title="Weather"
     width="50%"
     :before-close="handleClose">
-    <div class="wea"></div>
+    <div class="wea">多云 7℃</div>
     <template #footer>
       <span class="dialog-footer">
         <el-button type="primary" @click="dialogVisible = false" class="btt">
