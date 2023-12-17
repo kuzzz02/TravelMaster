@@ -3,7 +3,7 @@
       <div class="body">
         <div class="title">111</div>
         <div class="image">
-          <div class="area1"><img class="pic1" src="../assets/pic/data/重庆/Hotel/传统酒店/1.png" alt="" /></div>
+          <div class="area1"><img class="pic1" src=" ../assets/pic/data/重庆/Hotel/传统酒店/1.png" alt="" /></div>
           <div class="area2">
             <div class="area2-1"><img class="pic2" src="../assets/pic/data/重庆/Hotel/传统酒店/2.png" alt="" /></div>
             <div class="area2-2"><img class="pic2" src="../assets/pic/data/重庆/Hotel/传统酒店/3.png" alt="" /></div>
