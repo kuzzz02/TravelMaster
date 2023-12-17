@@ -25,7 +25,7 @@
 // import MapService from "@/services/MapService";
   const value1 = ref('')
   export default {
-    name:"VehiclePage",
+    name:"WeatherPage",
     data(){
       return{
         value1
@@ -37,27 +37,9 @@
     WindowsLoc
   },
     methods: {
-    //   search(address,date){
-    //   MapService.getWeather(address,date)
-    //   .then(response =>{
-    //     address = response.data
-    //     console.log(username)
-    //     MapService.getWeather(date)
-    //     .then(response =>{
-    //           if(date == response.data){
-    //               //show the weather
-    //             }
-    //           else{
-    //               alert("INVALID INPUT")
-    //               }
-    //             })
-    //     //show the weather;
-    //     this.$refs.WindowsMap.dialogVisible=true;
-    //   })
-    // },
-    //   location(){
-    //     this.$refs.WindowsLoc.dialogVisible=true
-    //   }
+      location(){
+         this.$refs.WindowsLoc.dialogVisible=true
+      }
     }
   }
   </script>

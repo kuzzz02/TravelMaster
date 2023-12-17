@@ -3,15 +3,15 @@
       <div class="body">
         <div class="title">111</div>
         <div class="image">
-          <div class="area1"><img class="pic1" src=" ../assets/pic/data/重庆/Hotel/传统酒店/1.png" alt="" /></div>
+          <div class="area1"><img class="pic1" src="../assets/pic/data/重庆/Hotel/电子酒店/1.png" alt="" /></div>
           <div class="area2">
-            <div class="area2-1"><img class="pic2" src="../assets/pic/data/重庆/Hotel/传统酒店/2.png" alt="" /></div>
-            <div class="area2-2"><img class="pic2" src="../assets/pic/data/重庆/Hotel/传统酒店/3.png" alt="" /></div>
+            <div class="area2-1"><img class="pic2" src="../assets/pic/data/重庆/Hotel/电子酒店/2.png" alt="" /></div>
+            <div class="area2-2"><img class="pic2" src="../assets/pic/data/重庆/Hotel/电子酒店/3.png" alt="" /></div>
           </div>
         </div>
-        <div class="con"><el-icon class="m"><CreditCard /></el-icon>Averge Price: 110</div>
-        <div class="con"><el-icon class="m"><MapLocation /></el-icon>Distance: 30km</div>
-        <div class="con">酒店设有总统套房、行政豪华套房、豪华标准间、商务标准间等不同风格、档次的房间188套。客房内设施高档，装修时尚、新潮，格调温馨怡人。所有房间均配备液晶数字电视，百兆LAN网络专线和顶级卫浴设备。人性化的空间规划与设计，温馨舒适，带给您家的感觉。酒店同时设有中、小型会议室，可根据会议类型的需求提供各式会议的接待。</div>
+        <div class="con"><el-icon class="m"><CreditCard /></el-icon>Averge Price: 781</div>
+        <div class="con"><el-icon class="m"><MapLocation /></el-icon>Distance: 121.29km</div>
+        <div class="con">酒店，是由全球最大酒店管理公司——美国温德姆国际酒店集团管理的豪华商务型酒店。酒店的设计处处流露着花卉的独特理念，精雕细琢，与花卉灵魂互相交融，承载着陈村“千年花乡”的浓郁文化。酒店位于港澳及珠三角重要城市的交汇处。</div>
       </div>
     </el-drawer>
   </template>
@@ -20,7 +20,7 @@
   <script>
 import { ref } from 'vue';
   export default{
-    name: "Drawer",
+    name: "Drawer2",
     data() {
         return {
             drawer: ref(false)

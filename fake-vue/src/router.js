@@ -18,8 +18,13 @@ const routes =  [
   },
   {
     path: "/location",
-    name: "Location",
-    component:() => import("./components/Location.vue")
+    name: "佛山",
+    component:() => import("./components/FSLocation.vue")
+  },
+  {
+    path: "/location",
+    name: "重庆",
+    component:() => import("./components/CQLocation.vue")
   },
   {
     path: "/hotels",

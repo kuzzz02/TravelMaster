@@ -56,11 +56,9 @@ export default {
                         this.$router.push({name:"Explore"})
                     },1000)
                 }
-                else if(this.flag == true){
-                    alert("Your password is not correct!")
-                }
             })
             .catch(error =>{
+                alert("INVALID INPUT")
                 console.log(error)
             })
         },

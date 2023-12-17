@@ -2,7 +2,7 @@
     <div class="container">
       <div class="content">
         <Nav></Nav>
-        <div class="title"><span>Explore </span>XXX </div>
+        <div class="title"><span>Explore </span>FOSHAN! </div>
         <div class="list">
           <div
             v-for="(item, index) in locationList"
@@ -14,15 +14,15 @@
           </div>
         </div>
         <div class="image">
-          <div class="area1"></div>
+          <div class="area1"><img src="../assets/pic/data/佛山/Location/1.jpeg"></div>
           <div class="area2">
-            <div class="area2-1"></div>
-            <div class="area2-2"></div>
+            <div class="area2-1"><img src="../assets/pic/data/佛山/Location/2.jpg"></div>
+            <div class="area2-1"><img src="../assets/pic/data/佛山/Location/3.webp"></div>
           </div>
         </div>
         <div class="footer">
-          <div>About xxx</div>
-          <div>XXXXX</div>
+          <div>About FOSHAN</div>
+          <div>美食天堂！</div>
         </div>
       </div>
 
@@ -157,7 +157,7 @@
   }
   
   .image .area1 {
-    width: 65%;
+    width: 55%;
     background-color: rgb(196, 196, 196);
   }
   

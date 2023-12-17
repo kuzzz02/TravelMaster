@@ -9,9 +9,9 @@
             <div class="area2-2"><img class="pic2" src="../assets/pic/data/重庆/Hotel/电子酒店/3.png" alt="" /></div>
           </div>
         </div>
-        <div class="con"><el-icon class="m"><CreditCard /></el-icon>Averge Price: 100</div>
-        <div class="con"><el-icon class="m"><MapLocation /></el-icon>Distance: 50km</div>
-        <div class="con">酒店设有总统套房、行政豪华套房、豪华标准间、商务标准间等不同风格、档次的房间188套。客房内设施高档，装修时尚、新潮，格调温馨怡人。所有房间均配备液晶数字电视，百兆LAN网络专线和顶级卫浴设备。人性化的空间规划与设计，温馨舒适，带给您家的感觉。酒店同时设有中、小型会议室，可根据会议类型的需求提供各式会议的接待。</div>
+        <div class="con"><el-icon class="m"><CreditCard /></el-icon>Averge Price: 464</div>
+        <div class="con"><el-icon class="m"><MapLocation /></el-icon>Distance: 112.3km</div>
+        <div class="con">店设有各式温馨舒适客房，均设有独立工作区，并配备休闲沙发床等设施。每间客房全景落地窗，拥有充分的自然光采，城市天际线一览无余。虽身处城市，却又闹中取静，在这里尽享惬意舒适的放松之旅，现代设计风格与独特的岭南水乡风俗特色相结合，营造出一个优雅独特充满活力的空间，让您全方位享受到高品质的快乐居停体验。</div>
       </div>
     </el-drawer>
   </template>
@@ -20,7 +20,7 @@
   <script>
 import { ref } from 'vue';
   export default{
-    name: "CQDrawerhotel2",
+    name: "Drawer4",
     data() {
         return {
             drawer: ref(false)
