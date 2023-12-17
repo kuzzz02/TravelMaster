@@ -19,6 +19,10 @@ module.exports = (sequelize,Sequelize) => {
         ToDoImage_Name:{
             type: Sequelize.DataTypes.STRING
         }
+    },
+    {
+        timestamps: false,
+        // freezeTableName: false
     });
     return Location;
 }

@@ -7,8 +7,8 @@
       <div class="block"></div>
       </div>
       <div class="button-row">
-        <el-button class="bt" @mouseover="h" @click="getori()"><el-icon class="left"><Location /></el-icon>From</el-button>
-        <el-button class="bt" @mouseover="h" @click="getdst()"><el-icon class="left"><Position /></el-icon>To</el-button>
+        <el-button class="bt" @mouseover="h" v-model="ori" @click="getori()"><el-icon class="left"><Location /></el-icon>From</el-button>
+        <el-button class="bt" @mouseover="h" v-model="dst" @click="getdst()"><el-icon class="left"><Position /></el-icon>To</el-button>
       </div>
       <div class="button-row2">
         <div class="select" >
@@ -37,21 +37,17 @@
 import Nav from "./Nav.vue";
 import WindowsMap from "./WindowsMap.vue";
 import WindowsLoc from "./WindowsLoc.vue";
-import { ref } from 'vue'
-<<<<<<< HEAD
-// import MapService from "@/services/MapService";
 import AMapLoader from '@amap/amap-jsapi-loader';
-=======
-import MapService from "@/services/MapService";
-// import AMapLoader from '@amap/amap-jsapi-loader';
-  const value = ref('')
->>>>>>> e55dda3c0514c92589ca8cfc267c61fea410c80f
-  const value1 = ref('')
-  const value2 = ref('')
+import { ref } from 'vue'
+const value = ref('')
+const value1 = ref('')
+const value2 = ref('')
 export default {
   name: "MyPage",
   data(){
     return{
+      ori:"",
+      dst:"",
       value,
       value1,
       value2,
@@ -84,7 +80,7 @@ export default {
       this.$refs.WindowsLoc.dialogVisible=true
     },
     showmap(){
-      // MapService.routePlanning(ori,dst)
+      this.$refs.WindowsMap.dialogVisible=true
       window._AMapSecurityConfig = {securityJsCode:'87fd761862beba6b2c49194d67af351e',}
             AMapLoader.load({
             "key": "927f030785f9827cf4f5d6ba34591fbb",  // 申请好的Web端开发者Key，首次调用 load 时必填
@@ -94,14 +90,30 @@ export default {
             .then((AMap)=>{
                 const map = new AMap.Map("container",{
                     viewMode: '2D', //默认使用 2D 模式
+                    resizeEnable: true,
                     zoom: 11, //地图级别
                     center: [116.397428, 39.90923], //地图中心点
                 })
+                // if(this.options[0].keys.value == "Driving"){
+                  var driving = new AMap.Driving({
+                        map: map,
+                        panel: "panel"
+                      }); 
+                      driving.search([
+                          {keyword: '东城区',city:'北京'},
+                          {keyword: '亦庄文化园(地铁站)',city:'北京'}
+                      ], function(status, result) {
+                          if (status === 'complete') {
+                              log.success('绘制驾车路线完成')
+                          } else {
+                              log.error('获取驾车数据失败：' + result)
+                          }
+                      })
+                // }
             })
             .catch(err => {
                 console.log(err);
-            })
-      this.$refs.WindowsMap.dialogVisible=true
+            })      
     }
     }
   };

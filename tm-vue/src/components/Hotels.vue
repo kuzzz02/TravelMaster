@@ -68,7 +68,6 @@ import Nav from "./Nav.vue";
 import Drawer from "./Drawer.vue";
 import WindowsMap from "./WindowsMap.vue";
 import { ref } from 'vue'
-// import MapService from "@/services/MapService";
 const value1 = ref('')
 const value = ''
 export default {

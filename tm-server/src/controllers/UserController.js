@@ -1,5 +1,7 @@
 const db = require("../models/db.js");
 const User = db.user;
+const Sequelize = require("sequelize");
+const Op = db.Sequelize.Op;
 
 
 exports.create = (req,res) =>{
@@ -18,6 +20,7 @@ exports.create = (req,res) =>{
     User.create(user)
     .then(data =>{
         res.send(data)
+        // console.log(data)
     })
     .catch(err =>{
         res.status(500).send({message:err.message + "Some error occurred."})
@@ -63,11 +66,12 @@ exports.update = (req,res) =>{
 };
 
 exports.getUser = (req,res) =>{
-    const name = req.body.username;
-    var condition = { name: name } 
+    const username = req.body.username;
+    var condition = { username: username } 
     User.findAll({ where: condition })
       .then(data => {
         res.send(data)
+        // console.log(data)
       })
       .catch(err => {
         res.status(500).send({message:err.message + "Some error occurred."});

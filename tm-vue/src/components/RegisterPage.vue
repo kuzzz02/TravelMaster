@@ -7,17 +7,17 @@
                 <div class="block"></div>
             </div>
             <div class="word">Get best experence in your travelling by signing up in our website!</div>
-            <div class="Email">Email</div>
+            <div class="Email">Username</div>
             <div class="input_Email">
-                <input type="text" v-model="username" placeholder="Your Username">
+                <input type="text" v-model="user.username" placeholder="Your Username">
             </div>
             <div class="Pas">Password</div>
             <div class="input_Pas">
-                <input type="password" v-model="password" placeholder="Your Password" @input="handlePasswordInput">
+                <input type="password" v-model="user.password" placeholder="Your Password" @input="handlePasswordInput">
             </div>
             <div class="CP">Confirm your Password</div>
             <div class="input_CP">
-                <input type="password" v-model="password2" placeholder="Confirm Your Password" @keyup.enter="Register(name,password)" @input="handlePasswordInput">
+                <input type="password" v-model="password2" placeholder="Confirm Your Password" @keydown.enter="Register()" @input="handlePasswordInput">
             </div>
             <div class="bt">
                 <div @click="Register()" class="white-text">Create an account</div>
@@ -31,12 +31,13 @@
 <script>
 import UserService from '@/services/UserService';
 export default {
-    props:["user"],
     data(){
         return{
-            username:"",
-            password:"",
-            password2:""
+            user:{
+                username:undefined,
+                password:undefined
+            },
+            password2:undefined
         }
     },
     methods: {
@@ -45,19 +46,22 @@ export default {
         const hiddenValue = "*".repeat(inputValue.length);
         event.target.value = hiddenValue;
         },
-        Register(name,password){
-            if(this.password == this.password2){
-                UserService.create(name)
-                UserService.create(password)
+        Register(){
+            if(this.user.password == this.password2){
+                UserService.create(this.user)
                 .then(response =>{
                     this.user = response.data
+                    setTimeout(() => {
+                        this.$router.push({name:"Login"})
+                    },2000)
                 })
-                setTimeout(() => {
-                    this.$router.push({name:"Login"})
-                },1000)
+                .catch(error =>{
+                    console.log(error)
+                })
+                
             }
             else{
-                alert("INVALID INPUT")
+                alert("Your password is not correct!")
             }
         }
     }
@@ -129,7 +133,7 @@ export default {
     line-height: 26px; 
     letter-spacing: 0; 
     text-align: center; 
-    margin-left: 132px;
+    margin-left: 144px;
     margin-top: 1px;
 }
 .input_Email {

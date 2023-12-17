@@ -2,7 +2,7 @@
     <div class="container">
       <div class="content">
         <Nav></Nav>
-        <div class="title"><span>Explore </span> xxx</div>
+        <div class="title"><span>Explore </span>XXX </div>
         <div class="list">
           <div
             v-for="(item, index) in locationList"
@@ -25,6 +25,7 @@
           <div>XXXXX</div>
         </div>
       </div>
+
     </div>
     
   </template>
@@ -39,9 +40,8 @@
   import weather from "../assets/pic/weather.png";
   
   export default {
-    components: {
-      Nav
-    },  
+    components: {Nav},
+    props:["location"],
     data() {
       return {
         locationList: [
@@ -69,15 +69,17 @@
             name: "Weather",
             icon: weather,
           }
-        ],
+        ]
       };
     },
     methods: {
       Explore(name) {
         this.$router.push({ name: name });
+        
       },
     },
     mounted(){
+      // console.log(this.location)
 
     }
   };

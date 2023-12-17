@@ -32,7 +32,6 @@ export default{
       }
   },
   methods:{
-<<<<<<< HEAD
     // getIP(address){
     //   MapService.getIP(address)
     //   .then(response => {
@@ -40,19 +39,6 @@ export default{
     //     console.log(address)
     //   })
     // }
-=======
-    clear(){
-      this.input = ''
-      this.dialogVisible = false;
-    },
-    getIP(address){
-      MapService.getIP(address)
-      .then(response => {
-        address = response.data
-        console.log(address)
-      })
-    }
->>>>>>> e55dda3c0514c92589ca8cfc267c61fea410c80f
   }
 }
 </script>

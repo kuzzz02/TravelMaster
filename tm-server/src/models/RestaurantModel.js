@@ -25,6 +25,10 @@ module.exports = (sequelize,Sequelize) => {
         Image_Name:{
             type: Sequelize.DataTypes.STRING
         }
+    },
+    {
+        timestamps: false,
+        // freezeTableName: false
     });
     return Restaurant;
 }

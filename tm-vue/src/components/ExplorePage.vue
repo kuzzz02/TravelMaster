@@ -4,57 +4,61 @@
         <div class="tital">Where to go?</div>
         <div class="input_Se">
           <el-icon class="search"><Search /></el-icon>
-           <input type="text" v-model="searchInput" placeholder=""  @keyup.enter="goSearch(searchInput)">
+           <input type="text" v-model="LocationName" placeholder="" @keydown.enter="goLocation(LocationName)">
            <div class="dropdown" v-show="showDropdown">
              <ul>
                <li v-for="result in searchResults" :key="result">{{ result }}</li>
              </ul>
            </div>
-           <div @click="goSearch(location)" class="bt">Search</div>
+           <div @click="goLocation(LocationName)" class="bt">Search</div>
         </div>
         <div class="word">Trip to explore right now</div>
          <div class="carousel-container">
-      <el-carousel height="248px" indicator-position="outside">
-        <el-carousel-item v-for="item in 2" :key="item">
-          <div class="image-container" v-if="item % 2 !== 0">
-            <img src="../assets/pic/b70f06b21f95d5548b1313da56194914.jpg" alt="Image 1">
-            <img src="../assets/pic/b70f06b21f95d5548b1313da56194914.jpg" alt="Image 2">
-            <img src="../assets/pic/b70f06b21f95d5548b1313da56194914.jpg" alt="Image 3">
-            <img src="../assets/pic/b70f06b21f95d5548b1313da56194914.jpg" alt="Image 4">
+        <el-carousel height="248px" indicator-position="outside">
+          <el-carousel-item v-for="item in 2" :key="item">
+            <div class="image-container" v-if="item % 2 !== 0">
+              <img src="../assets/pic/b70f06b21f95d5548b1313da56194914.jpg" alt="Image 1">
+              <img src="../assets/pic/b70f06b21f95d5548b1313da56194914.jpg" alt="Image 2">
+              <img src="../assets/pic/b70f06b21f95d5548b1313da56194914.jpg" alt="Image 3">
+              <img src="../assets/pic/b70f06b21f95d5548b1313da56194914.jpg" alt="Image 4">
+            </div>
+            <div class="image-container" v-if="item % 2 === 0">
+              <img src="../assets/pic/dubai.jpg" alt="Image 5">
+              <img src="../assets/pic/dubai.jpg" alt="Image 6">
+              <img src="../assets/pic/dubai.jpg" alt="Image 7">
+              <img src="../assets/pic/dubai.jpg" alt="Image 8">
+            </div>
+          </el-carousel-item>
+        </el-carousel>
           </div>
-          <div class="image-container" v-if="item % 2 === 0">
-            <img src="../assets/pic/dubai.jpg" alt="Image 5">
-            <img src="../assets/pic/dubai.jpg" alt="Image 6">
-            <img src="../assets/pic/dubai.jpg" alt="Image 7">
-            <img src="../assets/pic/dubai.jpg" alt="Image 8">
-          </div>
-        </el-carousel-item>
-      </el-carousel>
-        </div>
+        <Location :location="location"></Location>
     </div>
 </template>
  
 <script>
+import TravelService from '@/services/TravelService';
+import Location from './Location.vue';
 
 export default {
+  components:{Location},
   data() {
     return {
-      searchInput: ""
+      LocationName: undefined,
+      location:undefined
     };
   },
   methods: {
-    goSearch(searchInput){
-      this.$router.push({name:"Location"})
-      // MapService.getIP(searchInput)
-      // .then(response =>{
-      //   if(searchInput == response.data){
-      //     this.$router.push({name:"Location"})
-      //   }
-      //   else{
-      //       alert("INVALID INPUT")
-      //       }
-      // }
-      // )
+    goLocation(LocationName){
+      TravelService.getLocation({LocationName:LocationName})
+      .then(response =>{
+        const res = [response.data[0]]
+        this.location = res[0] //.LocationName
+        console.log(this.location)
+        // this.$router.push({name:"Location"})
+      })
+      .catch(err=>{
+        console.log(err)
+      })
     }
   }
 }

@@ -3,16 +3,16 @@ import http from "../api";
 class TravelService{
 
     getLocation(data){
-        return http.get("/travel/locationName",data)
+        return http.post("/travel/locationName",data)
     }
     getHotel(data){
-        return http.get("/travel/hotelName",data)
+        return http.post("/travel/hotelName",data)
     }
     getRestaurant(data){
-        return http.get("/travel/restaurantName",data)
+        return http.post("/travel/restaurantName",data)
     }
     getShopping(data){
-        return http.get("/travel/shoppingName",data)
+        return http.post("/travel/shoppingName",data)
     }
     
 };

@@ -3,13 +3,9 @@ const express = require('express');
 const app = express();
 app.use(express.static("src"));
 const PORT = process.env.PORT || 8000;
-// global.__basedir = __dirname
 
 const cors = require('cors')
-var corsOptions = {
-  origin: "*"
-};
-app.use(cors(corsOptions));
+app.use(cors({origin:"*"}));
 
 var bodyParser = require('body-parser') 
 app.use(bodyParser.urlencoded({ extended: false })) 
