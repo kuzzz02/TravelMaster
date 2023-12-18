@@ -2,9 +2,9 @@
     <el-dialog
     v-model="dialogVisible"
     title="Weather"
-    width="50%"
+    width="14%"
     :before-close="handleClose">
-    <div class="wea">多云 7℃</div>
+    <div class="wea">阴天 5℃</div>
     <template #footer>
       <span class="dialog-footer">
         <el-button type="primary" @click="dialogVisible = false" class="btt">
@@ -33,7 +33,10 @@ export default{
 }
 
 .wea{
-    height: 220px;
+    height:10%;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    font-size: 18px;
     }
 
 .btt{
