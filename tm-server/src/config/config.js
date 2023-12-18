@@ -13,5 +13,5 @@ const sequelize = new Sequelize("tmdb","tm","tm123",{
 module.exports = sequelize;
 
 // create database tmdb;
-// grant all on tmdb.* to 'tm'@'%';
 // create user 'tm'@'%' identified by 'tm123';
+// grant all on tmdb.* to 'tm'@'%';
