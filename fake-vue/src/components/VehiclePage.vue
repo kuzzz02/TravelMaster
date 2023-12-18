@@ -123,20 +123,20 @@ export default {
             center: [116.397428, 39.90923],
         })
         // if(this.options[0].keys.value == "Driving"){
-          var driving = new AMap.Driving({
-                map: map,
-                panel: "panel"
-              }); 
-              driving.search([
-                  {keyword: '东城区',city:'北京'},
-                  {keyword: '亦庄文化园(地铁站)',city:'北京'}
-              ], function(status, result) {
-                  if (status === 'complete') {
-                      console.log('绘制驾车路线完成')
-                  } else {
-                      console.log('获取驾车数据失败：' + result)
-                  }
-              })
+          // var driving = new AMap.Driving({
+          //       map: map,
+          //       panel: "panel"
+          //     }); 
+          //     driving.search([
+          //         {keyword: '东城区',city:'北京'},
+          //         {keyword: '亦庄文化园(地铁站)',city:'北京'}
+          //     ], function(status, result) {
+          //         if (status === 'complete') {
+          //             console.log('绘制驾车路线完成')
+          //         } else {
+          //             console.log('获取驾车数据失败：' + result)
+          //         }
+          //     })
         })
         .catch(err => {
             console.log(err);

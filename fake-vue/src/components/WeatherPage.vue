@@ -22,7 +22,6 @@
   import WindowsWea from "./WindowsWea.vue";
   import WindowsLoc from "./WindowsLoc.vue";
   import { ref } from 'vue'
-// import MapService from "@/services/MapService";
   const value1 = ref('')
   export default {
     name:"WeatherPage",
@@ -39,6 +38,9 @@
     methods: {
       location(){
          this.$refs.WindowsLoc.dialogVisible=true
+      },
+      search(){
+
       }
     }
   }

@@ -41,10 +41,10 @@
               <img :src="phoneImg" alt="" width="25px" />
               <div>{{ item.phone }}</div>
             </div>
-            <el-button class="bt" @mouseover="h" @click.stop="showmap()">View in the Map</el-button>
+            <el-button class="bt" @mouseover="h" @click.stop="showmap(item.name)">View in the Map</el-button>
           </div>
         </div>
-        <WindowsMap ref="WindowsMap"></WindowsMap>
+        <WindowsMapShop1 ref="WindowsMapShop1" id="container1"></WindowsMapShop1>
       </div>
     </div>
   </div>
@@ -59,20 +59,21 @@ import PhoneImg from "../assets/pic/phone.png";
 import InternetImg from "../assets/pic/internet.png";
 import star from "../assets/pic/star.png";
 import Nav from "./Nav.vue";
-import WindowsMap from "./WindowsMap.vue";
 import FSDrawershoppingmall1 from "./FSDrawershoppingmall1.vue";
 import FSDrawershoppingmall2 from "./FSDrawershoppingmall2.vue";
 
-
+import AMapLoader from '@amap/amap-jsapi-loader';
 import { ref } from 'vue'
+import WindowsMapShop1 from "./WindowsMapShop1.vue";
 const value = ref('')
+
 export default {
   components: {
     Nav,
     FSDrawershoppingmall1,
     FSDrawershoppingmall2,
-    WindowsMap
-  },
+    WindowsMapShop1
+},
   data() {
     return {
       value,
@@ -94,7 +95,7 @@ export default {
         {
           name: "保利水城购物中心",
           website: "wwww.gouwu.com",
-          phone: "111111111",
+          phone: "0757-82552606",
           image: hotelImg1,
           price:1,
           distance:1,
@@ -103,16 +104,16 @@ export default {
         {
           name: "岭南天地",
           website: "wwww.lingnan.com",
-          phone: "22222222",
+          phone: "0757-63818888",
           image: hotelImg2,
-          star:3,
+          star:5,
           price:2,
           distance:1
         },
         {
           name: "三水广场",
           website: "wwww.sanshui.com",
-          phone: "33333333",
+          phone: "0757-12832888",
           image: hotelImg3,
           star:5,
           price:2,
@@ -121,9 +122,9 @@ export default {
         {
           name: "万达广场",
           website: "wwww.wanda.com",
-          phone: "4444444",
+          phone: "0757-91223311",
           image: hotelImg4,
-          star:1,
+          star:3,
           price:3,
           distance:3
         }],
@@ -147,12 +148,25 @@ export default {
       //   this.$refs.Drawer4.drawer=true;
       // }
     },
-    showmap(){
-      MapService.getMap(address)
-      .then(response =>{
-        //show the map;
-        this.$refs.WindowsMap.dialogVisible=true;
-      })
+    showmap(name){
+      if(name == "岭南天地"){
+        this.$refs.WindowsMapShop1.dialogVisible=true;
+        AMapLoader.load({
+          "key": "927f030785f9827cf4f5d6ba34591fbb",
+          "securityJsCode":'87fd761862beba6b2c49194d67af351e',
+          "version": "2.0",
+          "plugins": ["AMap.Driving"]
+        })
+        .then((AMap)=>{
+          var map = new AMap.Map("container1",{
+              viewMode: '2D',
+              resizeEnable: true,
+              zoom: 11,
+              center: [113.238843,22.950591],
+          })
+        })
+      }
+
     },
     h(){
       this.hover=true;

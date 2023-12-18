@@ -53,10 +53,11 @@
               <img :src="phoneImg" alt="" width="25px" />
               <div>{{ item.phone }}</div>
             </div>
-            <el-button class="bt" @mouseover="h" @click.stop="showmap()">View in the Map</el-button>
+            <el-button class="bt" @mouseover="h" @click.stop="showmap(item.name)">View in the Map</el-button>
           </div>
         </div>
-   <WindowsMap ref="WindowsMap"></WindowsMap>>
+   <WindowsMapHotel1 ref="WindowsMapHotel1" id="container1"></WindowsMapHotel1>>
+   <WindowsMapHotel2 ref="WindowsMapHotel2" id="container2"></WindowsMapHotel2>>
       </div>
     </div>
   </div>
@@ -75,8 +76,12 @@ import FSDrawerhotel1 from "./FSDrawerhotel1.vue";
 import FSDrawerhotel2 from "./FSDrawerhotel2.vue";
 import FSDrawerhotel3 from "./FSDrawerhotel3.vue";
 import FSDrawerhotel4 from "./FSDrawerhotel4.vue";
-import WindowsMap from "./WindowsMap.vue";
+
+
+import AMapLoader from '@amap/amap-jsapi-loader';
 import { ref } from 'vue'
+import WindowsMapHotel1 from './WindowsMapHotel1.vue';
+import WindowsMapHotel2 from './WindowsMapHotel2.vue';
 const value1 = ref('')
 const value = ''
 export default {
@@ -86,7 +91,8 @@ export default {
       FSDrawerhotel3,
       FSDrawerhotel4,
       Nav,
-      WindowsMap
+    WindowsMapHotel1,
+    WindowsMapHotel2
     },
   data() {
     return {
@@ -100,7 +106,7 @@ export default {
           image: hotelImg1,
           star:5,
           price:529,
-          distance:30.4
+          distance:30.6
         },
         {
           name: "佛山顺德喜来登酒店",
@@ -118,7 +124,7 @@ export default {
           image: hotelImg3,
           star:4,
           price:684,
-          distance:241.8
+          distance:70.4
         },
         {
           name: "佛山陈村希尔顿欢朋酒店",
@@ -163,13 +169,41 @@ export default {
         this.$refs.Drawer4.drawer=true;
       }
     },
-    showmap(){
-      this.$refs.WindowsMap.dialogVisible=true;
-      // MapService.getMap(address)
-      // .then(response =>{
-      //   //show the map;
-      //   this.$refs.WindowsMap.dialogVisible=true;
-      // })
+    showmap(name){
+      if(name == "佛山顺德顺联温德姆酒店"){
+        this.$refs.WindowsMapHotel1.dialogVisible=true;
+        AMapLoader.load({
+          "key": "927f030785f9827cf4f5d6ba34591fbb",
+          "securityJsCode":'87fd761862beba6b2c49194d67af351e',
+          "version": "2.0",
+          "plugins": ["AMap.Driving"]
+        })
+        .then((AMap)=>{
+          var map = new AMap.Map("container1",{
+              viewMode: '2D',
+              resizeEnable: true,
+              zoom: 11,
+              center: [113.238843,22.950591],
+          })
+        })
+      }
+      if(name == "佛山顺德喜来登酒店"){
+        this.$refs.WindowsMapHotel2.dialogVisible=true;
+        AMapLoader.load({
+          "key": "927f030785f9827cf4f5d6ba34591fbb",
+          "securityJsCode":'87fd761862beba6b2c49194d67af351e',
+          "version": "2.0",
+          "plugins": ["AMap.Driving"]
+        })
+        .then((AMap)=>{
+          var map = new AMap.Map("container2",{
+              viewMode: '2D',
+              resizeEnable: true,
+              zoom: 11,
+              center: [113.313398,22.743396],
+          })
+        })
+      }
     },
     h(){
       this.hover=true;

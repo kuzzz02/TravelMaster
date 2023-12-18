@@ -13,7 +13,7 @@
     <div class="image-container">
       <img src="../assets/pic/greatWall.jpg" alt="" class="greatwall">
     </div>
-    <el-pagination class="page" background="true" layout="prev, pager, next" :total="100" />
+    <!-- <el-pagination class="page" background="true" layout="prev, pager, next" :total="100"/> -->
   </div>
 </template>
 
@@ -77,7 +77,8 @@ export default {
   margin-top: 35px;
   font-family: "Smiley Sans";
   font-weight: 900;
-  font-size: 36px;
+  font-size: 20px;
+  text-align: left;
   line-height: 52px;
   letter-spacing: 0;
   text-align: center;

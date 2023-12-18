@@ -18,7 +18,6 @@
 </template>
 
 <script>
-// import MapService from '@/services/MapService';
 import { ref } from 'vue'
 const input = ref('')
 let dialogVisible = ref('')
