@@ -1,10 +1,10 @@
 <template>
     <el-dialog
     v-model="dialogVisible"
-    title="Weather"
-    width="14%"
+    title="Map"
+    width="50%"
     :before-close="handleClose">
-    <div class="wea">阴天 5℃</div>
+    <div class="map"></div>
     <template #footer>
       <span class="dialog-footer">
         <el-button type="primary" @click="dialogVisible = false" class="btt">
@@ -18,7 +18,7 @@
 <script>
 import { ref } from 'vue'
 export default{
-    name: "WindowsWea",
+    name: "WindowsMapHotel1",
     data() {
       return {
         dialogVisible:ref(false)
@@ -32,11 +32,8 @@ export default{
   margin-right: 10px;
 }
 
-.wea{
-    height:10%;
-    font-family: 'Times New Roman', Times, serif;
-    text-align: center;
-    font-size: 18px;
+.map{
+    height: 420px;
     }
 
 .btt{

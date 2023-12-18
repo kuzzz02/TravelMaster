@@ -21,9 +21,10 @@
   import Nav from "./Nav.vue";
   import WindowsWea from "./WindowsWea.vue";
   import WindowsLoc from "./WindowsLoc.vue";
+  import AMapLoader from '@amap/amap-jsapi-loader';
   import { ref } from 'vue'
-// import MapService from "@/services/MapService";
   const value1 = ref('')
+
   export default {
     name:"WeatherPage",
     data(){
@@ -39,6 +40,30 @@
     methods: {
       location(){
          this.$refs.WindowsLoc.dialogVisible=true
+      },
+      search(){
+        this.$refs.WindowsWea.dialogVisible=true
+        AMapLoader.load({
+        "key": "927f030785f9827cf4f5d6ba34591fbb",
+        "securityJsCode":'87fd761862beba6b2c49194d67af351e',
+        "version": "2.0",
+        "plugins": ["AMap.Weather"]
+      })
+      .then((AMap)=>{
+        var map = new AMap.Map("container",{
+            viewMode: '2D',
+            resizeEnable: true,
+            zoom: 11,
+            center: [116.397428, 39.90923],
+        })
+          var weather = new AMap.Weather();
+          weather.getForecast('北京市', function(err, data) {
+          console.log(err, data);
+        })
+        .catch(err => {
+            console.log(err);
+        })
+      })
       }
     }
   }

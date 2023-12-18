@@ -13,11 +13,11 @@
             </div>
             <div class="Pas">Password</div>
             <div class="input_Pas">
-                <input type="password" v-model="user.password" placeholder="Your Password" @input="handlePasswordInput">
+                <input type="password" v-model="user.password" placeholder="Your Password" >
             </div>
             <div class="CP">Confirm your Password</div>
             <div class="input_CP">
-                <input type="password" v-model="password2" placeholder="Confirm Your Password" @keydown.enter="Register()" @input="handlePasswordInput">
+                <input type="password" v-model="password2" placeholder="Confirm Your Password" @keydown.enter="Register()">
             </div>
             <div class="bt">
                 <div @click="Register()" class="white-text">Create an account</div>

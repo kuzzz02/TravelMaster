@@ -41,10 +41,10 @@
               <img :src="phoneImg" alt="" width="25px" />
               <div>{{ item.phone }}</div>
             </div>
-            <el-button class="bt" @mouseover="h" @click.stop="showmap()">View in the Map</el-button>
+            <el-button class="bt" @mouseover="h" @click.stop="showmap(item.name)">View in the Map</el-button>
           </div>
         </div>
-        <WindowsMap ref="WindowsMap"></WindowsMap>>
+        <WindowsMapRes1 ref="WindowsMapRes1" id="container1"></WindowsMapRes1>>
       </div>
     </div>
   </div>
@@ -58,19 +58,21 @@ import hotelImg4 from "../assets/pic/data/佛山/Restaurant/香江水蛇粥/封�
 import PhoneImg from "../assets/pic/phone.png";
 import InternetImg from "../assets/pic/internet.png";
 import Nav from "./Nav.vue";
-import WindowsMap from "./WindowsMap.vue";
 import FSDrawerrestaurant1 from "./FSDrawerrestaurant1.vue";
 import FSDrawerrestaurant2 from "./FSDrawerrestaurant2.vue";
+
+import AMapLoader from '@amap/amap-jsapi-loader';
 import { ref } from 'vue'
+import WindowsMapRes1 from "./WindowsMapRes1.vue";
 const value = ref('');
 
 export default {
   components: {
-      Nav,
-      FSDrawerrestaurant1,
-      FSDrawerrestaurant2,
-      WindowsMap
-    },
+    Nav,
+    FSDrawerrestaurant1,
+    FSDrawerrestaurant2,
+    WindowsMapRes1
+},
   data() {
     return {
       value,
@@ -91,8 +93,8 @@ export default {
       data: [
         {
           name: "大门公",
-          website: "wwww.damen.com",
-          phone: "111111",
+          website: "www.yuanshen.com",
+          phone: "0757-29832098",
           image: hotelImg1,
           price:1,
           distance:1,
@@ -101,7 +103,7 @@ export default {
         {
           name: "顺德私房婆菜",
           website: "wwww.sifang.com",
-          phone: "2222222",
+          phone: "0757-22660003",
           image: hotelImg2,
           star:3,
           price:2,
@@ -110,7 +112,7 @@ export default {
         {
           name: "香江水蛇粥",
           website: "wwww.xiangjiang.com",
-          phone: "3333333",
+          phone: "0757-27732777",
           image: hotelImg3,
           star:5,
           price:2,
@@ -119,9 +121,9 @@ export default {
         {
           name: "野仙鱼生",
           website: "wwww.yusheng.com",
-          phone: "444444",
+          phone: "18475717497",
           image: hotelImg4,
-          star:1,
+          star:4,
           price:3,
           distance:3
         }],
@@ -138,11 +140,24 @@ export default {
         this.$refs.Drawer6.drawer=true;
       }
     },
-    showmap(){
-      MapService.getMap(address)
-      .then(response =>{
-        this.$refs.WindowsMap.dialogVisible=true;
-      })
+    showmap(name){
+      if(name == "大门公"){
+        this.$refs.WindowsMapRes1.dialogVisible=true;
+        AMapLoader.load({
+          "key": "927f030785f9827cf4f5d6ba34591fbb",
+          "securityJsCode":'87fd761862beba6b2c49194d67af351e',
+          "version": "2.0",
+          "plugins": ["AMap.Driving"]
+        })
+        .then((AMap)=>{
+          var map = new AMap.Map("container1",{
+              viewMode: '2D',
+              resizeEnable: true,
+              zoom: 11,
+              center: [113.238843,22.950591],
+          })
+        })
+      }
     },
     h(){
       this.hover=true;

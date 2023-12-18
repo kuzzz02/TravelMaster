@@ -9,7 +9,7 @@
     <template #footer>
       <span class="dialog-footer">
         
-        <el-button type="primary" @click="clear()" class="btt">
+        <el-button type="primary" @click="dialogVisible = false" class="btt">
           Confirm
         </el-button>
       </span>
@@ -18,8 +18,8 @@
 </template>
 
 <script>
-// import MapService from '@/services/MapService';
 import { ref } from 'vue'
+import WeatherPage from './WeatherPage.vue'
 const input = ref('')
 let dialogVisible = ref('')
 
@@ -39,9 +39,7 @@ export default{
     //     console.log(address)
     //   })
     // }
-    clear(){
-      dialogVisible:ref(false)
-    }
+ 
 }
 }
 </script>

@@ -10,7 +10,7 @@
           </div>
         </div>
         <div class="con"><el-icon class="m"><CreditCard /></el-icon>Averge Price: 684</div>
-        <div class="con"><el-icon class="m"><MapLocation /></el-icon>Distance: 241.8km</div>
+        <div class="con"><el-icon class="m"><MapLocation /></el-icon>Distance: 70.4km</div>
         <div class="con">酒店坐落于佛山市顺德区逢沙村欢乐大道3号欢乐海岸广场4栋。背靠佛山顺德华侨城欢乐海岸PLUS、玛雅海滩水公园，毗邻佛山顺德区政府、新能源汽车小镇、南方智谷、美的写字楼等商业区；近顺峰山公园，清晖园，宝林寺等著名景点。全新智能化配置，配备智能机器人送餐送物服务，酒店拥有210间客房，房间内配有普兰特床垫、裸睡级床品、高端的洗护套装，百兆高速无线网络。酒店以阅读为设计理念，在酒店大堂及竹居（商务区）摆设上千本不同种类的藏书，24小时可以体验静谧的读书环境。酒店公共区域设置了健身房(汗出）自助洗衣房（出尘），及会议室（共语）为来自五湖四海的宾客提供高品质、舒适、超值的住宿体验。酒店提倡人文，温暖的，有趣的“在路上”的第四空间生活方式，人生是一场旅行，总会有不期而遇的温暖。</div>
       </div>
     </el-drawer>
