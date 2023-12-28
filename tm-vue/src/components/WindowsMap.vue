@@ -15,16 +15,15 @@
   </el-dialog>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue'
-export default{
-    name: "WindowsMap",
-    data() {
-      return {
-        dialogVisible:ref(false)
-      }
-  }
+const dialogVisible = ref(false)
+const openWindow =() =>{
+  dialogVisible.value = true
 }
+defineExpose({
+  openWindow
+})
 </script>
 
 <style scoped>

@@ -29,29 +29,18 @@
       </div>
     </div>
     <WindowsMap ref="WindowsMap" id ="container"></WindowsMap>
-    <WindowsLoc ref="WindowsLoc"></WindowsLoc>>
+    <WindowsLoc ref="windowsLoc"></WindowsLoc>>
   </div>
 </template>
 
-<script>
+<script setup>
 import Nav from "./Nav.vue";
 import WindowsMap from "./WindowsMap.vue";
 import WindowsLoc from "./WindowsLoc.vue";
 import AMapLoader from '@amap/amap-jsapi-loader';
 import { ref } from 'vue'
-const value = ref('')
-const value1 = ref('')
-const value2 = ref('')
-export default {
-  name: "MyPage",
-  data(){
-    return{
-      ori:"",
-      dst:"",
-      value,
-      value1,
-      value2,
-      options: [
+const value = ref('');
+      const options = ref([
         {
           value: "Public Transmission",
           label: "Public Transmission"
@@ -64,22 +53,17 @@ export default {
           value: "Walking",
           label: "Walking"
         }
-      ],
+      ]);
+      
+  const windowsLoc = ref(null)
+  function getori(){
+      windowsLoc.value.openWindows()
     }
-  },
-  components: {
-    Nav,
-    WindowsMap,
-    WindowsLoc
-  },
-  methods: {
-    getori(){
-      this.$refs.WindowsLoc.dialogVisible=true
-    },
-    getdst(){
-      this.$refs.WindowsLoc.dialogVisible=true
-    },
-    showmap(){
+    function getdst(){
+      windowsLoc.value.openWindows()
+    }
+
+    function showmap(){
       this.$refs.WindowsMap.dialogVisible=true
       window._AMapSecurityConfig = {securityJsCode:'87fd761862beba6b2c49194d67af351e',}
             AMapLoader.load({
@@ -115,8 +99,6 @@ export default {
                 console.log(err);
             })      
     }
-    }
-  };
 </script>
 
 <style>

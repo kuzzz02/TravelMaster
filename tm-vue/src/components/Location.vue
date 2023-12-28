@@ -25,7 +25,7 @@
   </div>
 </template>
   
-<script >
+<!-- <script >
 import todo from "../assets/pic/todo.png";
 import shopping from "../assets/pic/shopping.png";
 import restaurant from "../assets/pic/restaurant.png";
@@ -82,6 +82,56 @@ export default {
   },
 
 };
+
+</script> -->
+
+<script setup>
+import todo from "../assets/pic/todo.png";
+import shopping from "../assets/pic/shopping.png";
+import restaurant from "../assets/pic/restaurant.png";
+import hotel from "../assets/pic/Hotel.png";
+import vehicles from "../assets/pic/vehicles.png";
+import Nav from "./Nav.vue";
+import weather from "../assets/pic/weather.png";
+import ExplorePage from "./ExplorePage.vue";
+import router from "@/router";
+import { ref } from 'vue';
+
+const locationList = ref([
+        {
+          name: "Hotels",
+          icon: hotel,
+        },
+        {
+          name: "Restaurant",
+          icon: restaurant,
+        },
+        {
+          name: "Shopping",
+          icon: shopping,
+        },
+        {
+          name: "ToDo",
+          icon: todo,
+        },
+        {
+          name: "Vehicle",
+          icon: vehicles,
+        },
+        {
+          name: "Weather",
+          icon: weather,
+        }
+]);
+
+function Explore(name){
+  router.push({ name: name });
+}
+
+function getmsg(data) {
+      this.location = data;
+      console.log(this.location)
+    }
 
 </script>
   

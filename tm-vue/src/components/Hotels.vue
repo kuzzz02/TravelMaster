@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Drawer ref="Drawer"></Drawer>
+    <Drawer ref="draweRef"/>
     <div class="content">
       <Nav></Nav>
       <div class="title">
@@ -53,40 +53,29 @@
             <el-button class="bt" @mouseover="h" @click.stop="showmap()">View in the Map</el-button>
           </div>
         </div>
-   <WindowsMap ref="WindowsMap"></WindowsMap>>
+      <WindowsMap ref="windowRef"></WindowsMap>
       </div>
     </div>
   </div>
 </template>
 
-<script>
-import hotelImg from "../assets/pic/hotel_image.png";
-import PhoneImg from "../assets/pic/phone.png";
-import InternetImg from "../assets/pic/internet.png";
-import star from "../assets/pic/star.png";
+
+<script setup>
+import hotelImg from "../assets/pic/hotel_image.png";;
 import Nav from "./Nav.vue";
 import Drawer from "./Drawer.vue";
 import WindowsMap from "./WindowsMap.vue";
-import { ref } from 'vue'
-const value1 = ref('')
-const value = ''
-export default {
-  components: {
-      Drawer,
-      Nav,
-      WindowsMap
-    },
-  data() {
-    return {
-      value,
-      value1,
-      data: [
+import { ref } from 'vue';
+
+      const value = ref('')
+      const value1 = ref('')
+      const data=ref ( [
         {
           name: "XXXXXXXX",
           website: "wwww.baidu.com",
           phone: "111111",
           image: hotelImg,
-          star:3,
+          star:1,
           price:1,
           distance:1
         },
@@ -116,8 +105,8 @@ export default {
           star:1,
           price:3,
           distance:3
-        }],
-        options:[
+        }])
+        const options= ref([
         {
           value: 'Best Price',
           label: 'Best Price',
@@ -130,28 +119,27 @@ export default {
           value: 'Best Rated',
           label: 'Best Rated',
         }
-      ],
-      phoneImg: PhoneImg,
-      internetImg: InternetImg,
-      star: star
-    };
-  },
-  methods: {
-    showdetail() {
-      this.$refs.Drawer.drawer=true;
-      console.log(this.value)
-    },
-    showmap(){
+      ])
+
+
+    const draweRef =ref(null)
+    const showdetail=()=>{
+      draweRef.value.openDrawer()
+    }
+      
+  
+    const windowRef = ref(null)
+    const showmap=()=>{
+      windowRef.value.openWindow()
       // MapService.getMap(address)
       // .then(response =>{
       //   //show the map;
       //   this.$refs.WindowsMap.dialogVisible=true;
       // })
-    },
-    h(){
-      this.hover=true;
-    },
-    sort(){
+    }
+
+
+    function sort(){
       if (this.value == 'Best Rated'){
         this.data.sort((a,b)=>{
           return parseInt(b.star)-parseInt(a.star);
@@ -159,7 +147,7 @@ export default {
       }
       if (this.value == 'Best Price'){
         this.data.sort((a,b)=>{
-          return parseInt(a.prce)-parseInt(b.price);
+          return parseInt(a.price)-parseInt(b.price);
         })
       }
       if (this.value == 'Shortest Distance'){
@@ -168,11 +156,8 @@ export default {
         })
       }
     }
-  },
-  mounted(){
-    this.$refs.Drawer.drawer=false
-  }
-}
+
+
 </script>
 
 <style scoped>

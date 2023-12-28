@@ -11,21 +11,12 @@
     <div class="image-container">
       <img src="../assets/pic/greatWall.jpg" alt="" class="greatwall">
     </div>
-    <el-pagination class="page" background="true" layout="prev, pager, next" :total="100" />
   </div>
 </template>
 
-<script>
+<script setup>
 import Nav from "./Nav.vue";
-export default {
-  name:"ToDoPage",
-  components: {
-    Nav
-  },
-  methods: {
-    
-  }
-}
+
 </script>
 
 <style scoped>

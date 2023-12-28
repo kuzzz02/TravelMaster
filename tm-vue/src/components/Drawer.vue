@@ -17,16 +17,17 @@
   </template>
   
   
-  <script>
+  <script setup>
 import { ref } from 'vue';
-  export default{
-    name: "Drawer",
-    data() {
-        return {
-            drawer: ref(false)
-        };
-    }
-}
+
+const drawer = ref(false)
+
+const openDrawer =()=>drawer.value=true
+
+defineExpose({
+  openDrawer
+})
+
   </script>
 
 <style scoped>

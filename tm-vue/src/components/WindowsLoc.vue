@@ -17,30 +17,28 @@
   </el-dialog>
 </template>
 
-<script>
+<script setup>
 // import MapService from '@/services/MapService';
-import { ref } from 'vue'
-const input = ref('')
-let dialogVisible = ref('')
+import { ref } from 'vue';
 
-export default{
-    name: "WindowsLoc",
-    data() {
-      return {
-        input:'',
-        dialogVisible:ref(false)
-      }
-  },
-  methods:{
-    // getIP(address){
-    //   MapService.getIP(address)
-    //   .then(response => {
-    //     address = response.data
-    //     console.log(address)
-    //   })
-    // }
-  }
-}
+const input = ref('')
+const dialogVisible = ref(false)
+
+const openWindows =()=>{
+  dialogVisible.value = true
+} 
+defineExpose({openWindows})
+
+  // methods:{
+  //   // getIP(address){
+  //   //   MapService.getIP(address)
+  //   //   .then(response => {
+  //   //     address = response.data
+  //   //     console.log(address)
+  //   //   })
+  //   // }
+  // }
+
 </script>
 
 <style scoped>

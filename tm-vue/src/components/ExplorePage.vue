@@ -36,7 +36,7 @@
   </div>
 </template>
  
-<script>
+<!-- <script>
 import TravelService from '@/services/TravelService';
 
 export default {
@@ -65,7 +65,13 @@ export default {
     }
   }
 }
+</script> -->
+
+<script setup>
+import TravelService from '@/services/TravelService';
+
 </script>
+
 <style scoped> .container {
    margin: 0 auto;
    padding: 0;

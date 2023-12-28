@@ -20,26 +20,11 @@
   </el-menu>
 </template>
 
-<script>
-export default {
-  name: "Nav",
-  methods: {
-    goExplore(path){
-        this.$router.push({name: path})
-    },
-    h(){
-      this.hover = true;
+<script setup>
+import router from '@/router';
+function goExplore(path){
+    router.push({name: path})
     }
-  },
-  data() {
-    return {
-      hover:false,
-    }
-  },
-  mounted(){
-    
-  }
-};
 </script>
 
 <style scoped>

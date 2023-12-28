@@ -6,36 +6,32 @@
       </div>
       <div class="overlay">
         <div class="button-row11">
-          <el-button class="btq" @mouseover="h" @click="location"><el-icon class="left"><Location /></el-icon>Location</el-button>
+          <el-button class="btq" @mouseover="h" @click="location()"><el-icon class="left"><Location /></el-icon>Location</el-button>
           <div class="btq"><el-date-picker style="width:300px; height:80px; font-size: 25px;border-radius: 11px; " v-model="value1" type="date" size="larege" placeholder="Pick a date"
         :default-value="new Date(2023, 12, 12)"/></div>
         </div>
-        <div class="plat"><el-button class="bt1" @click="search">Search The Weather</el-button></div>
+        <div class="plat"><el-button class="bt1" @click="search()">Search The Weather</el-button></div>
       </div>
-      <WindowsWea ref="WindowsWea"></WindowsWea>
-      <WindowsLoc ref="WindowsLoc"></WindowsLoc>
+      <WindowsWea ref="windowsWea"></WindowsWea>
+      <WindowsLoc ref="windowsLoc"></WindowsLoc>
     </div>
   </template>
   
-  <script>
+  <script setup>
   import Nav from "./Nav.vue";
   import WindowsWea from "./WindowsWea.vue";
   import WindowsLoc from "./WindowsLoc.vue";
   import { ref } from 'vue'
 // import MapService from "@/services/MapService";
   const value1 = ref('')
-  export default {
-    name:"VehiclePage",
-    data(){
-      return{
-        value1
-      }
-    },
-    components: {
-    Nav,
-    WindowsWea,
-    WindowsLoc
-  },
+  const windowsWea = ref(null)
+  const windowsLoc = ref(null)
+    function search(){
+      windowsWea.value.openWindows()
+    }
+    function location(){
+      windowsLoc.value.openWindows()
+    }
     methods: {
     //   search(address,date){
     //   MapService.getWeather(address,date)
@@ -59,7 +55,7 @@
     //     this.$refs.WindowsLoc.dialogVisible=true
     //   }
     }
-  }
+
   </script>
   
   <style scoped> 
