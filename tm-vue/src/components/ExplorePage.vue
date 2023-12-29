@@ -69,6 +69,42 @@ export default {
 
 <script setup>
 import TravelService from '@/services/TravelService';
+import router from '@/router';
+import { onMounted,onUpdated } from 'vue';
+import { nextTick } from 'vue';
+
+const props = defineProps({
+  location:undefined
+})
+
+const emit = defineEmits(['success'])
+
+function goLocation(LocationName){
+  TravelService.getLocation({ LocationName: LocationName })
+    .then(response => {
+      const res = [response.data[0]]
+      const location = res[0] //.LocationName
+      console.log(location + "123123")
+      if(location != undefined){
+        emit('success', location)
+        router.push({ name: "Location" })
+      }
+      else(
+        alert("INVALID INPUT!")
+      )
+    })
+    .catch(err => {
+      console.log(err)
+    })
+}
+onMounted(() => {
+  nextTick(() =>{
+    // emit("success",location)
+  })
+  // console.log("123123")
+  // emit('success',"123123")
+  // emit('success', location)
+})
 
 </script>
 

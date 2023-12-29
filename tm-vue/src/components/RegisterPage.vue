@@ -13,11 +13,11 @@
             </div>
             <div class="Pas">Password</div>
             <div class="input_Pas">
-                <input type="password" v-model="user.password" placeholder="Your Password" @input="handlePasswordInput">
+                <input type="password" v-model="user.password" placeholder="Your Password">
             </div>
             <div class="CP">Confirm your Password</div>
             <div class="input_CP">
-                <input type="password" v-model="password2" placeholder="Confirm Your Password" @keydown.enter="Register()" @input="handlePasswordInput">
+                <input type="password" v-model="password2" placeholder="Confirm Your Password" @keydown.enter="Register()">
             </div>
             <div class="bt">
                 <div @click="Register()" class="white-text">Create an account</div>
@@ -41,11 +41,6 @@ export default {
         }
     },
     methods: {
-        handlePasswordInput(event) {
-        const inputValue = event.target.value;
-        const hiddenValue = "*".repeat(inputValue.length);
-        event.target.value = hiddenValue;
-        },
         Register(){
             if(this.user.password == this.password2){
                 UserService.create(this.user)

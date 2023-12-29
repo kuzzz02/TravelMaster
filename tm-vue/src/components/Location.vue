@@ -93,9 +93,11 @@ import hotel from "../assets/pic/Hotel.png";
 import vehicles from "../assets/pic/vehicles.png";
 import Nav from "./Nav.vue";
 import weather from "../assets/pic/weather.png";
+
 import ExplorePage from "./ExplorePage.vue";
 import router from "@/router";
 import { ref } from 'vue';
+import { onMounted } from 'vue';
 
 const locationList = ref([
         {
@@ -125,13 +127,13 @@ const locationList = ref([
 ]);
 
 function Explore(name){
-  router.push({ name: name });
+    router.push({ name: name });
 }
 
 function getmsg(data) {
-      this.location = data;
-      console.log(this.location)
-    }
+    const location = data;
+    console.log(location + "123123")
+}
 
 </script>
   

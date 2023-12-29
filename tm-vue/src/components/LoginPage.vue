@@ -13,7 +13,7 @@
             </div>
             <div class="Pas">Password</div>
             <div class="input_Pas">
-                <input type="password" v-model="user.password" @keydown.enter="Login()" placeholder="Your Password" ><!-- @input="handlePasswordInput" -->
+                <input type="password" v-model="user.password" @keydown.enter="Login()" placeholder="Your Password" >
             </div>   
             <div class="SU">
                 <span class="black-text">Don't you have an account?</span>
@@ -42,11 +42,6 @@ export default {
         }
     },
     methods: {
-        handlePasswordInput(event) {
-        const inputValue = event.target.value;
-        const hiddenValue = "*".repeat(inputValue.length);
-        event.target.value = hiddenValue;
-        },
         Login(){
             UserService.getUser({username:this.user.username})
             .then(response =>{
@@ -56,11 +51,9 @@ export default {
                         this.$router.push({name:"Explore"})
                     },1000)
                 }
-                else if(this.flag == true){
-                    alert("Your password is not correct!")
-                }
             })
             .catch(error =>{
+                alert("INVALID INPUT")
                 console.log(error)
             })
         },
