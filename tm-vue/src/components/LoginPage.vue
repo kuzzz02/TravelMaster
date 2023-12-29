@@ -7,13 +7,13 @@
                 <div class="block"></div>
             </div>
             <div class="word">Our website gives you the best experience in everything in travelling</div>
-            <div class="Email">Email</div>
+            <div class="Email">Username</div>
             <div class="input_Email">
-                <input type="text" v-model="username" placeholder="Your Username">
+                <input type="text" v-model="user.username" placeholder="Your Username">
             </div>
             <div class="Pas">Password</div>
             <div class="input_Pas">
-                <input type="password" v-model="password" placeholder="Your Password" @keyup.enter="Login(username,password)" @input="handlePasswordInput">
+                <input type="password" v-model="user.password" @keydown.enter="Login()" placeholder="Your Password" >
             </div>   
             <div class="SU">
                 <span class="black-text">Don't you have an account?</span>
@@ -24,51 +24,45 @@
             </div>
         </div>
         <img src="../assets/pic/OIP-C.jpg" alt="Description" class="Ima1">
-        <router-view></router-view>         
+        <router-view></router-view>      
     </div>
 </template>
 
  
 <script>
-import RegisterPage from './RegisterPage.vue';
 import UserService from '@/services/UserService';
+
 export default {
-    components:{RegisterPage},
     data(){
         return{
-            username:"",
-            password:"",
-            user:undefined
+            user:{
+                username:undefined,
+                password:undefined
+            }
         }
     },
     methods: {
-        handlePasswordInput(event) {
-        const inputValue = event.target.value;
-        const hiddenValue = "*".repeat(inputValue.length);
-        event.target.value = hiddenValue;
-        },
-        Login(username,password){
-            UserService.getUser(username)
-            .then(reponse =>{
-                username = reponse.data
-                console.log(username)
-                UserService.getUser(password)
-                    .then(response =>{
-                        if(password == response.data){
-                            this.$router.push({name:"Explore"})
-                        }
-                        else{
-                            alert("INVALID INPUT")
-                        }
-                    })
+        Login(){
+            UserService.getUser({username:this.user.username})
+            .then(response =>{
+                const res = [response.data[0]]
+                if(this.user.password == res[0].password){
+                    setTimeout(() => {
+                        this.$router.push({name:"Explore"})
+                    },1000)
+                }
             })
             .catch(error =>{
+                alert("INVALID INPUT")
                 console.log(error)
             })
         },
         goRegister(){
             this.$router.push({name:"Register"})
         }
+    },
+    mounted(){
+
     }
 }
 </script>
@@ -140,7 +134,7 @@ export default {
     line-height: 26px; 
     letter-spacing: 0; 
     text-align: center; 
-    margin-left: 132px;
+    margin-left: 144px;
     margin-top: 1px;
 }
 .Pas {

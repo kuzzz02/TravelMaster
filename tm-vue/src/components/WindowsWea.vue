@@ -15,16 +15,11 @@
   </el-dialog>
 </template>
 
-<script>
+<script setup>
 import { ref } from 'vue'
-export default{
-    name: "WindowsWea",
-    data() {
-      return {
-        dialogVisible:ref(false)
-      }
-  }
-}
+    const dialogVisible = ref(false)
+    const openWindows=()=> dialogVisible.value = true
+    defineExpose({openWindows})
 </script>
 
 <style scoped>

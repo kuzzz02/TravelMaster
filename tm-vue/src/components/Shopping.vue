@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Drawer ref="Drawer"></Drawer>
+    <Drawer ref="draweRef"></Drawer>
     <Nav></Nav>
     <div class="content">
       <div class="title">
@@ -10,7 +10,7 @@
         <div class="text">Search various shoppingmall to help you find the best</div>
         <div class="select">
           Sorted By:
-          <el-select v-model="value" placeholder="Best Rated">
+          <el-select v-model="value" @change="sort()" placeholder="Best Rated">
             <el-option
               v-for="item in options"
               :key="item.value"
@@ -28,6 +28,12 @@
             <div class="name">{{ `${index + 1}.${item.name} ` }}</div>
             <div class="website">
               <img :src="internetImg" alt="" width="25px" />
+              <div class="star">
+            <el-rate
+              v-model="item.star"
+              size = "large"
+              disabled/>
+          </div>
               <el-link :underline="false" style="font-size: 18px; color: black;"><el-icon><Connection /></el-icon>{{ item.website }}</el-link>
             </div>
             <div class="phone">
@@ -36,40 +42,22 @@
             </div>
             <el-button class="bt" @mouseover="h" @click.stop="showmap()">View in the Map</el-button>
           </div>
-          <div class="star">
-            <el-icon><Star /></el-icon>
-            <el-icon><Star /></el-icon>
-            <el-icon><Star /></el-icon>
-            <el-icon><Star /></el-icon>
-            <el-icon><Star /></el-icon>
         </div>
-        </div>
-        <WindowsMap ref="WindowsMap"></WindowsMap>
+        <WindowsMap ref="windowRef"></WindowsMap>
       </div>
     </div>
   </div>
 </template>
 
-<script>
+<script setup>
 import hotelImg from "../assets/pic/hotel_image.png";
-import PhoneImg from "../assets/pic/phone.png";
-import InternetImg from "../assets/pic/internet.png";
-import star from "../assets/pic/star.png";
 import Nav from "./Nav.vue";
 import WindowsMap from "./WindowsMap.vue";
 import Drawer from "./Drawer.vue";
 import { ref } from 'vue'
 const value = ref('')
-export default {
-  components: {
-    Nav,
-    Drawer,
-    WindowsMap
-  },
-  data() {
-    return {
-      value,
-      options: [
+
+      const options= ref([
         {
           value: "Best Rated",
           label: "Best Rated"
@@ -78,50 +66,77 @@ export default {
           value: "Shortest Distance",
           label: "Shortest Distance"
         }
-      ],
-      data: [
+      ])
+      const data= ref( [
         {
           name: "XXXXXXXX",
           website: "wwww.baidu.com",
-          phone: "185121312",
-          image: hotelImg
+          phone: "111111111",
+          image: hotelImg,
+          price:1,
+          distance:1,
+          star:5
         },
         {
           name: "XXXXXXXX",
           website: "wwww.baidu.com",
-          phone: "185121312",
-          image: hotelImg
+          phone: "22222222",
+          image: hotelImg,
+          star:3,
+          price:2,
+          distance:1
         },
         {
           name: "XXXXXXXX",
           website: "wwww.baidu.com",
-          phone: "185121312",
-          image: hotelImg
+          phone: "33333333",
+          image: hotelImg,
+          star:5,
+          price:2,
+          distance:2
         },
         {
           name: "XXXXXXXX",
           website: "wwww.baidu.com",
-          phone: "185121312",
-          image: hotelImg
-        }
-      ],
-      phoneImg: PhoneImg,
-      internetImg: InternetImg,
-      star: star
-    };
-  },
-  methods: {
-  showdetail() {
-      this.$refs.Drawer.drawer=true;
-    },
-  showmap(){
-      this.$refs.WindowsMap.dialogVisible=true;
-    },
-    h(){
-      this.hover=true;
+          phone: "4444444",
+          image: hotelImg,
+          star:1,
+          price:3,
+          distance:3
+        }])
+
+    const draweRef =ref(null)
+        const showdetail=()=>{
+        draweRef.value.openDrawer()
     }
-}
-};
+
+    const windowRef = ref(null)
+    function showmap(){
+      windowRef.value.openWindow()
+      // MapService.getMap(address)
+      // .then(response =>{
+      //   this.$refs.WindowsMap.dialogVisible=true;
+      // })
+
+    }
+
+    function sort(){
+      if (this.value == 'Best Rated'){
+        this.data.sort((a,b)=>{
+          return parseInt(b.star)-parseInt(a.star);
+        })
+      }
+      if (this.value == 'Best Price'){
+        this.data.sort((a,b)=>{
+          return parseInt(a.prce)-parseInt(b.price);
+        })
+      }
+      if (this.value == 'Shortest Distance'){
+        this.data.sort((a,b)=>{
+          return parseInt(a.distance)-parseInt(b.distance);
+        })
+      }
+    }
 </script>
 
 <style scoped>
@@ -171,6 +186,15 @@ export default {
   font-size: 30px;
   font-weight: 700;
   font-family: "Smiley Sans";
+}
+
+.star {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  left: 650px;
+  top: 15px;
 }
 .list {
   display: flex;
@@ -226,14 +250,7 @@ export default {
   gap: 4px;
   align-items: center;
 }
-.star{
-  position: absolute;
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
-  right: 20px;
-  top: 20px;
-}
+
 .el-icon{
   font-size: 25px;
 }
