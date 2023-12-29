@@ -13,5 +13,3 @@ module.exports = (sequelize,Sequelize) => {
     });
     return User;
 }
-
-// User.sync({force:true})
