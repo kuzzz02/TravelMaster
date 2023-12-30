@@ -39,7 +39,7 @@ import WindowsMap from "./WindowsMap.vue";
 import WindowsLoc from "./WindowsLoc.vue";
 import AMapLoader from '@amap/amap-jsapi-loader';
 import { ref } from 'vue'
-window._AMapSecurityConfig = {securityJsCode:'87fd761862beba6b2c49194d67af351e'}
+// window._AMapSecurityConfig = {securityJsCode:'87fd761862beba6b2c49194d67af351e'}
 
 const value = ref('');
       const options = ref([

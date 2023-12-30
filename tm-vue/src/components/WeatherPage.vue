@@ -21,39 +21,37 @@
   import Nav from "./Nav.vue";
   import WindowsWea from "./WindowsWea.vue";
   import WindowsLoc from "./WindowsLoc.vue";
+  import AMapLoader from '@amap/amap-jsapi-loader';
   import { ref } from 'vue'
-// import MapService from "@/services/MapService";
   const value1 = ref('')
   const windowsWea = ref(null)
   const windowsLoc = ref(null)
-    function search(){
-      windowsWea.value.openWindows()
-    }
+
     function location(){
       windowsLoc.value.openWindows()
     }
-    methods: {
-    //   search(address,date){
-    //   MapService.getWeather(address,date)
-    //   .then(response =>{
-    //     address = response.data
-    //     console.log(username)
-    //     MapService.getWeather(date)
-    //     .then(response =>{
-    //           if(date == response.data){
-    //               //show the weather
-    //             }
-    //           else{
-    //               alert("INVALID INPUT")
-    //               }
-    //             })
-    //     //show the weather;
-    //     this.$refs.WindowsMap.dialogVisible=true;
-    //   })
-    // },
-    //   location(){
-    //     this.$refs.WindowsLoc.dialogVisible=true
-    //   }
+    function search(){
+      windowsWea.value.openWindows()
+      AMapLoader.load({
+        "key": "927f030785f9827cf4f5d6ba34591fbb",
+        "version": "2.0",
+        "plugins": ["AMap.Weather"]
+      })
+      .then((AMap)=>{
+          const map = new AMap.Map("container",{
+              viewMode: '2D',
+              resizeEnable: true,
+              zoom: 11,
+              center: [116.397428, 39.90923],
+          })
+          var weather = new AMap.Weather();
+          weather.getForecast('北京市', function(err, data) {
+            console.log(err, data);
+          })
+      })
+      .catch(err => {
+          console.log(err);
+      })
     }
 
   </script>

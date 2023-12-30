@@ -18,9 +18,8 @@
 </template>
 
 <script setup>
-// import MapService from '@/services/MapService';
 import { ref } from 'vue';
-
+import WeatherPage from './WeatherPage.vue';
 const input = ref('')
 const dialogVisible = ref(false)
 
@@ -28,16 +27,6 @@ const openWindows =()=>{
   dialogVisible.value = true
 } 
 defineExpose({openWindows})
-
-  // methods:{
-  //   // getIP(address){
-  //   //   MapService.getIP(address)
-  //   //   .then(response => {
-  //   //     address = response.data
-  //   //     console.log(address)
-  //   //   })
-  //   // }
-  // }
 
 </script>
 

@@ -33,7 +33,7 @@ defineExpose({
 
 .map{
     height: 420px;
-    }
+}
 
 .btt{
     background-color: #58c4b6 !important;
