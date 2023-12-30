@@ -2,9 +2,9 @@
     <el-dialog
     v-model="dialogVisible"
     title="Weather"
-    width="50%"
+    width="14%"
     :before-close="handleClose">
-    <div class="wea"></div>
+    <div class="wea">{{ weather }}</div>
     <template #footer>
       <span class="dialog-footer">
         <el-button type="primary" @click="dialogVisible = false" class="btt">
@@ -20,6 +20,8 @@ import { ref } from 'vue'
     const dialogVisible = ref(false)
     const openWindows=()=> dialogVisible.value = true
     defineExpose({openWindows})
+
+    const weather = ref("多云15度")
 </script>
 
 <style scoped>
@@ -28,8 +30,11 @@ import { ref } from 'vue'
 }
 
 .wea{
-    height: 220px;
-    }
+  height:10%;
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+  font-size: 18px;
+}
 
 .btt{
     background-color: #58c4b6 !important;

@@ -43,7 +43,7 @@
             <el-button class="bt" @mouseover="h" @click.stop="showmap()">View in the Map</el-button>
           </div>
         </div>
-        <WindowsMap ref="windowRef"></WindowsMap>
+        <WindowsMap ref="windowRef" id="container"></WindowsMap>
       </div>
     </div>
   </div>
@@ -54,6 +54,7 @@ import hotelImg from "../assets/pic/hotel_image.png";
 import Nav from "./Nav.vue";
 import WindowsMap from "./WindowsMap.vue";
 import Drawer from "./Drawer.vue";
+import AMapLoader from '@amap/amap-jsapi-loader';
 import { ref } from 'vue'
 const value = ref('')
 
@@ -113,11 +114,20 @@ const value = ref('')
     const windowRef = ref(null)
     function showmap(){
       windowRef.value.openWindow()
-      // MapService.getMap(address)
-      // .then(response =>{
-      //   this.$refs.WindowsMap.dialogVisible=true;
-      // })
-
+      AMapLoader.load({
+          "key": "927f030785f9827cf4f5d6ba34591fbb",
+          "securityJsCode":'87fd761862beba6b2c49194d67af351e',
+          "version": "2.0",
+          "plugins": []
+        })
+        .then((AMap)=>{
+          var map = new AMap.Map("container",{
+              viewMode: '2D',
+              resizeEnable: true,
+              zoom: 11,
+              center: [113.238843,22.950591],
+          })
+        })
     }
 
     function sort(){
