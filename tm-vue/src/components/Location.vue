@@ -2,7 +2,7 @@
   <div class="container">
     <div class="content">
       <Nav></Nav>
-      <div class="title"><span>Explore </span>XXX</div> <!--{{this.location.LocationName}}-->
+      <div class="title"><span>Explore </span>{{ Location.Name }}</div> <!--{{this.location.LocationName}}-->
       <div class="list">
         <div v-for="(item, index) in locationList" :key="index" class="item" @click="Explore(item.name)">
           <span class="text">{{ item.name }}</span>
@@ -17,11 +17,11 @@
         </div>
       </div>
       <div class="footer">
-        <div>About xxx</div>
-        <div>XXXXX</div>
+        <div>About {{ Location.Name }}</div>
+        <div>{{ Location.Description }}</div>
       </div>
+      <ExplorePage :location="location" @success="getmsg" hidden></ExplorePage>
     </div>
-    <ExplorePage :location="location" @success="getmsg" ></ExplorePage>
   </div>
 </template>
   
@@ -126,13 +126,44 @@ const locationList = ref([
         }
 ]);
 
+const Location = ref({
+    Name:"XXX",
+    Description:"XXXXX",
+})
+const Image = ref([
+    {
+      name:"",
+      image:undefined
+    },
+    {
+      name:"",
+      image:undefined
+    },
+    {
+      name:"",
+      image:undefined
+    }
+])
+
 function Explore(name){
-    router.push({ name: name });
+    router.push({ name: name })
 }
 
 function getmsg(data) {
     const location = data;
     console.log(location + "123123")
+    update(location)
+}
+
+function update(data){
+    Location.Name = data.LocationName
+    Location.Description = data.LocationDescription
+    Image.value[0].name = data.LocationImage_Name[0]
+    Image.value[1].name = data.LocationImage_Name[1]
+    Image.value[2].name = data.LocationImage_Name[2]
+    Image.value[0].image = data.LocationImage[0]
+    Image.value[1].image = data.LocationImage[1]
+    Image.value[2].image = data.LocationImage[2]
 }
 
 </script>
