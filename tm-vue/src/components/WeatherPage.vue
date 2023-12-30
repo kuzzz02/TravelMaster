@@ -54,12 +54,35 @@ function search(){
           viewMode: '2D',
           resizeEnable: true,
           zoom: 11,
-          center: [116.397428, 39.90923],
+          center: [113.029126,23.149213],
       })
       var weather = new AMap.Weather();
-      weather.getForecast('北京市', function(err, data) {
-        console.log(err, data);
-      })
+      // weather.getForecast('佛山市', function(err, data) {
+      //   console.log(err, data);
+      // })
+      weather.getLive('南海区', function(err, data) {
+        if (!err) {
+            var str = [];
+            str.push('<h4 >实时天气' + '</h4><hr>');
+            str.push('<p>城市/区：' + data.city + '</p>');
+            str.push('<p>天气：' + data.weather + '</p>');
+            str.push('<p>温度：' + data.temperature + '℃</p>');
+            str.push('<p>风向：' + data.windDirection + '</p>');
+            str.push('<p>风力：' + data.windPower + ' 级</p>');
+            str.push('<p>空气湿度：' + data.humidity + '</p>');
+            str.push('<p>发布时间：' + data.reportTime + '</p>');
+            var marker = new AMap.Marker({map: map, position: map.getCenter()});
+            var infoWin = new AMap.InfoWindow({
+                content: '<div class="info" style="position:inherit;margin-bottom:0;background:white;padding:10px">'+str.join('')+'</div><div class="sharp"></div>',
+                isCustom:true,
+                offset: new AMap.Pixel(0, -37)
+            });
+            infoWin.open(map, marker.getPosition());
+            marker.on('mouseover', function() {
+                infoWin.open(map, marker.getPosition());
+            });
+          }
+        })
   })
   .catch(err => {
       console.log(err);

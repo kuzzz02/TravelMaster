@@ -77,10 +77,10 @@ function showmap(){
   })
   .then((AMap)=>{
       const map = new AMap.Map("container",{
-          viewMode: '2D', //默认使用 2D 模式
+          viewMode: '2D',
           resizeEnable: true,
-          zoom: 11, //地图级别
-          center: [116.397428, 39.90923], //地图中心点
+          zoom: 11,
+          center: [113.029126,23.149213]
       })
       // if(this.options[0].keys.value == "Driving"){
         var driving = new AMap.Driving({
@@ -88,8 +88,8 @@ function showmap(){
               panel: "panel"
             }); 
             driving.search([
-                {keyword: '东城区',city:'北京'},
-                {keyword: '亦庄文化园(地铁站)',city:'北京'}
+                {keyword: '华南师范大学',city:'佛山'},
+                {keyword: '佛山西站',city:'佛山'}
             ], function(status, result) {
                 if (status === 'complete') {
                     console.log('绘制驾车路线完成')

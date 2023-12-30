@@ -1,7 +1,7 @@
 <template>
-    <el-dialog v-model="dialogVisible" title="Weather" width="14%" :before-close="handleClose">
+    <el-dialog v-model="dialogVisible" title="Weather" width="50%" :before-close="handleClose">
     <div class="wea">
-      <div id="panel">{{ weather }}</div>
+      <div id="panel"></div>
     </div>
     <template #footer>
       <span class="dialog-footer">
@@ -21,7 +21,7 @@ defineExpose({
   openWindows
 })
 
-const weather = ref("多云15度")
+// const weather = ref("多云15度")
 
 </script>
 
@@ -31,10 +31,7 @@ const weather = ref("多云15度")
 }
 
 .wea{
-  height:10%;
-  font-family: 'Times New Roman', Times, serif;
-  text-align: center;
-  font-size: 18px;
+  height:420px;
 }
 
 #panel {
