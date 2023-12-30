@@ -6,14 +6,14 @@
       </div>
       <div class="overlay">
         <div class="button-row11">
-          <el-button class="btq" @mouseover="h" @click="location()"><el-icon class="left"><Location /></el-icon>Location</el-button>
+          <el-button class="btq" @mouseover="h" @click="selectAddress('location')"><el-icon class="left"><Location /></el-icon>Location</el-button>
           <div class="btq"><el-date-picker style="width:300px; height:80px; font-size: 25px;border-radius: 11px; " v-model="value1" type="date" size="larege" placeholder="Pick a date"
         :default-value="new Date(2023, 12, 12)"/></div>
         </div>
         <div class="plat"><el-button class="bt1" @click="search()">Search The Weather</el-button></div>
       </div>
-      <WindowsWea ref="windowsWea"></WindowsWea>
-      <WindowsLoc ref="windowsLoc"></WindowsLoc>
+      <WindowsWea ref="windowsWea" id="container"></WindowsWea>
+      <WindowsLoc ref="windowsLoc" @confirm="confrimAddress"></WindowsLoc>
     </div>
   </template>
   
@@ -23,36 +23,48 @@
   import WindowsLoc from "./WindowsLoc.vue";
   import AMapLoader from '@amap/amap-jsapi-loader';
   import { ref } from 'vue'
-  const value1 = ref('')
-  const windowsWea = ref(null)
-  const windowsLoc = ref(null)
+  window._AMapSecurityConfig = {securityJsCode:'87fd761862beba6b2c49194d67af351e'}
 
-    function location(){
-      windowsLoc.value.openWindows()
-    }
-    function search(){
-      windowsWea.value.openWindows()
-      AMapLoader.load({
-        "key": "927f030785f9827cf4f5d6ba34591fbb",
-        "version": "2.0",
-        "plugins": ["AMap.Weather"]
+
+const value1 = ref('')
+const windowsWea = ref(null)
+const windowsLoc = ref(null)
+const targetAddr = ref("");
+const addrType = ref("location");
+
+function selectAddress(type) {
+  addrType.value = type;
+  windowsLoc.value.openWindows();
+}
+
+function confrimAddress(addr){
+  if(addrType.value == 'location') targetAddr.value = addr;
+}
+
+function search(){
+  windowsWea.value.openWindows()
+  window._AMapSecurityConfig = {securityJsCode:'87fd761862beba6b2c49194d67af351e'}
+  AMapLoader.load({
+    "key": "927f030785f9827cf4f5d6ba34591fbb",
+    "version": "2.0",
+    "plugins": ["AMap.Weather"]
+  })
+  .then((AMap)=>{
+      const map = new AMap.Map("container",{
+          viewMode: '2D',
+          resizeEnable: true,
+          zoom: 11,
+          center: [116.397428, 39.90923],
       })
-      .then((AMap)=>{
-          const map = new AMap.Map("container",{
-              viewMode: '2D',
-              resizeEnable: true,
-              zoom: 11,
-              center: [116.397428, 39.90923],
-          })
-          var weather = new AMap.Weather();
-          weather.getForecast('北京市', function(err, data) {
-            console.log(err, data);
-          })
+      var weather = new AMap.Weather();
+      weather.getForecast('北京市', function(err, data) {
+        console.log(err, data);
       })
-      .catch(err => {
-          console.log(err);
-      })
-    }
+  })
+  .catch(err => {
+      console.log(err);
+  })
+}
 
   </script>
   

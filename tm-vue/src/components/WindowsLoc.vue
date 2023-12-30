@@ -1,17 +1,10 @@
 <template>
-    <el-dialog
-    v-model="dialogVisible"
-    title="Location"
-    width="30%"
-    :before-close="handleClose">
+    <el-dialog v-model="dialogVisible" title="Location" width="30%" :before-close="handleClose">
     <el-input class="input" type="textarea" v-model="input" @keyup.enter="getIP(address)" placeholder="Please input the address" />
     <div class="loc"></div>
     <template #footer>
       <span class="dialog-footer">
-        
-        <el-button type="primary" @click="clear()" class="btt">
-          Confirm
-        </el-button>
+        <el-button type="primary" @click="confirm()" class="btt">Confirm</el-button>
       </span>
     </template>
   </el-dialog>
@@ -22,11 +15,17 @@ import { ref } from 'vue';
 import WeatherPage from './WeatherPage.vue';
 const input = ref('')
 const dialogVisible = ref(false)
+const emit = defineEmits(['confirm'])
 
 const openWindows =()=>{
   dialogVisible.value = true
 } 
 defineExpose({openWindows})
+
+function confirm() {
+  dialogVisible.value = false;
+  emit('confirm',input.value);
+}
 
 </script>
 
