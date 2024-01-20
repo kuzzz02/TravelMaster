@@ -89,14 +89,15 @@ function goLocation(LocationName){
         emit('success', location)
         router.push({ name: "Location" })
       }
-      else(
+      else{
         alert("INVALID INPUT!")
-      )
+      }
     })
     .catch(err => {
       console.log(err)
     })
 }
+
 onMounted(() => {
   nextTick(() =>{
     // emit("success",location)

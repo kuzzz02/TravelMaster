@@ -126,11 +126,11 @@ const locationList = ref([
         }
 ]);
 
-const Location = ref({
+let Location = ref({
     Name:"XXX",
     Description:"XXXXX",
 })
-const Image = ref([
+let Image = ref([
     {
       name:"",
       image:undefined
