@@ -55,6 +55,6 @@ npm run build
 
 ## Future Ｗork
 #### 1. Automate mysql deployment by using python to upload local data
-#### 2. Solve Front-end communication bugs
+#### 2. Solve Front-end communication bugs (event-bus or VueX implement components communication)
 #### 3. Add login security functions to protect web pages
-#### 4. Deplory mature software with Docker
+#### 4. Deploy mature software with Docker to aliyun
